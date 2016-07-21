@@ -1,0 +1,67 @@
+/**
+ * Created by Darren_YCDing on 16/4/8.
+ */
+module.exports = function($scope,$stateParams,subscribeMgService){
+
+    //获取应用信息
+    $scope.apps = [];
+
+    $scope.fenlei = "分类";
+    //if($stateParams.selectType==0){
+    //    $scope.fenlei = "开发商";
+    //}else if($stateParams.selectType==1){
+    //    $scope.fenlei = "分类";
+    //}
+
+    //按开发商加载
+    var selectAppsByCompany = function(){
+        //$scope.fenlei = "开发商";
+        subscribeMgService.getAppsByCompany().then(function (data) {
+            //$scope.byCompany = data.byCompany;
+            $scope.apps = data.infos;
+        }, function () {
+            console.log('subscribeMgController 管理_我的应用_我的订阅:按开发商加载失败！');
+        });
+    };
+    //按分类加载
+    var selectAppsByClass = function(){
+        //$scope.fenlei = "分类";
+        subscribeMgService.getAppsByClass().then(function (data) {
+            //$scope.byClass = data.byClass;
+            $scope.apps = data.infos;
+        }, function () {
+            console.log('subscribeMgController 管理_我的应用_我的订阅:按分类加载失败！');
+        });
+    };
+
+    //取消订阅
+    $scope.unDo = function(appId,flowId){
+        subscribeMgService.unDoApp(appId,flowId).then(function (data) {
+            if(data.flag==true){
+                for(var i=0;i<$scope.apps.length;i++){
+                    var m = $scope.apps[i]['appInfos'];
+                    for(var j=0;j<m.length;j++){
+                        if(m[j]['appId']==appId){
+                            m[j]['Station']="取消中";
+                        }
+                    }
+                }
+            }
+        }, function () {
+            console.log('subscribeMgController 管理_我的应用_我的订阅:取消订阅失败！');
+        });
+    };
+
+    if($stateParams.selectType==0){
+        $scope.fenlei = "开发商";
+        selectAppsByCompany();
+        //console.log($scope.fenlei);
+    }
+    else if ($stateParams.selectType==1){
+        $scope.fenlei = "分类";
+        selectAppsByClass();
+        //console.log($scope.fenlei);
+    }
+    //console.log($scope.fenlei);
+
+};

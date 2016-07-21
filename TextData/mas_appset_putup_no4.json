@@ -1,0 +1,70 @@
+{"userGroupList":[
+  {
+    "text": "文思海辉",
+    "href": "pactera",
+    "type": "公司",
+
+    "nodes": [
+      {
+        "text": "java部",
+        "href": "java",
+        "type": "部门",
+        "state": {
+          "expanded": true
+         },
+        "nodes": [
+          {
+            "text": "张三",
+            "href": "C#",
+            "type": "人员"
+          },
+          {
+            "text": "李四",
+            "href": "C#",
+            "type": "人员"
+          }
+        ]
+      },
+      {
+        "text": "C#",
+        "href": "C#",
+        "type": "部门",
+        "state": {
+          "expanded": false
+        }
+      }
+    ]
+  },
+
+  {
+    "text": "百度",
+    "href": "baidu",
+    "type": "公司",
+    "state": {
+      "expanded": false
+    },
+    "nodes": [
+      {
+        "text": "财务部",
+        "href": "finance",
+        "type": "部门"
+      }
+    ]
+  },
+
+  {
+    "text": "联想",
+    "href": "lenovo",
+    "type": "公司",
+    "state": {
+      "expanded": false
+    },
+    "nodes": [
+      {
+        "text": "技术部",
+        "href": "technical",
+        "type": "部门"
+      }
+    ]
+  }
+]}

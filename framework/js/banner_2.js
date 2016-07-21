@@ -1,0 +1,91 @@
+// JavaScript Document
+$(function () {
+    var $index = 0;
+    var $preIndex = 0;
+    $(".btn_2 span").mouseover(function () {
+        clearInterval(timer);
+        $index = $(this).index();
+        scrollPlay();
+        $preIndex = $index;
+    }).mouseout(function () {
+        auto();
+    })
+
+
+    $(".aRight_2").click(function () {
+        $index++;
+        if ($index > 2) {
+            $index = 0;
+            $qiandex = 2;
+        }
+        scrollPlay();
+        $preIndex = $index;
+        clearInterval(timer);
+        auto();
+    })
+
+
+    $(".aLeft_2").click(function () {
+        $index--;
+        if ($index < 0) {
+            $index = 2;
+            $preIndex = 0;
+        }
+        scrollPlay();
+        $preIndex = $index;
+        clearInterval(timer);
+        auto();
+    })
+    auto();
+    function auto() {
+        timer = setInterval(function () {
+            $index++;
+            if ($index > 2) {
+                $index = 0;
+                $preIndex = 2;
+            }
+            scrollPlay();
+            $preIndex = $index;
+        }, 3000)
+    }
+
+    function scrollPlay() {
+        $(".btn_2 span").eq($index).addClass("hover_2").siblings().removeClass("hover_2");
+        if ($index == 0 && $preIndex == 2) {
+            $(".scroll_2 div").eq($preIndex).stop(true, true).animate({
+                "left": "-100%"
+            });
+            $(".scroll_2 div").eq($index).css("left", "100%").stop(true, true).animate({
+                "left": "0"
+            });
+        } else if ($index == 2 && $preIndex == 0) {
+            $(".scroll_2 div").eq($preIndex).stop(true, true).animate({
+                "left": "100%"
+            });
+            $(".scroll_2 div").eq($index).css("left", "-100%").stop(true, true).animate({
+                "left": "0"
+            });
+        } else if ($index > $preIndex) { //左移
+            $(".scroll_2 div").eq($preIndex).stop(true, true).animate({
+                "left": "-100%"
+            });
+            $(".scroll_2 div").eq($index).css("left", "100%").stop(true, true).animate({
+                "left": "0"
+            });
+        } else if ($index < $preIndex) { //右移
+            $(".scroll_2 div").eq($preIndex).stop(true, true).animate({
+                "left": "100%"
+            });
+            $(".scroll_2 div").eq($index).css("left", "-100%").stop(true, true).animate({
+                "left": "0"
+            });
+        }
+    }
+
+    $(".middle_2").hover(function () {
+        $(".aLeft_2,.aRight_2").fadeIn(500);
+    }, function () {
+        $(".aLeft_2,.aRight_2").fadeOut(500);
+    })
+})
+

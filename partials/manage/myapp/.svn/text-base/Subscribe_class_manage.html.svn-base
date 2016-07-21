@@ -1,0 +1,31 @@
+<!--按开发商-->
+<div class="conRight_Con_Order_Child showDingyue">
+    <div class="conRight_Con_Order_gRChild" ng-repeat="byCla in apps">
+        <!--<p class="conRight_Con_Order_gRChild_tiltle"></p>-->
+
+        <div class="conRight_Con_Order_gRChild_bot conRight_Con_Order_gRChild_bot_update">
+            <div class="conRight_Collection_childConOrder " ng-repeat="appinfo in byCla.appInfos track by $index">
+                <img ng-src="{{appinfo.imageUrl}}"/>
+                <p>
+                    <span class="blackColor">{{appinfo.appName}}</span><br/>
+                    <span class="conRight_Collection_childConL_span">{{appinfo.Describe}}</span>
+                </p>
+            </div>
+        </div>
+
+        <p class="conRight_Con_Order_gRChild_botL">{{byCla.classID}}</p>
+
+        <div class="conRight_Con_Order_gRChild_botR">
+            <div class="conRight_Con_Order_gRChild_botR_child" ng-repeat="appinfo in byCla.appInfos track by $index">
+                <span>{{appinfo.Station}}：</span>
+                <img ng-if="appinfo.Station=='已订阅'" src="images/ydingyue.png" ng-click="unDo(appinfo.appId)">
+                <img ng-if="appinfo.Station=='取消中'" src="images/企业应用-2.png">
+                <em></em>
+                <span class="conRight_Con_Order_gRChild_botR_child_span">提问题</span>
+                <em></em>
+                <span class="conRight_Con_Order_gRChild_botR_child_span">评价</span>
+            </div>
+        </div>
+
+    </div>
+</div>

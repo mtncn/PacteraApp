@@ -1,0 +1,46 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til">我的任务/我的待办</h3>
+    <ul class="conRight_one  conRight_two">
+        <li ui-sref-active="selectColor_manage borderBottom"><a ui-sref="manage.todo({todoStatus:0})">我的待办</a></li>
+        <li ui-sref-active="selectColor_manage borderBottom"><a ui-sref="manage.todo({todoStatus:1})">我的已办</a></li>
+    </ul>
+    <div class="searchInput">
+        <input placeholder="日期/主题" ng-model="searchTitle" type="text"/>
+        <div class="ser_til" ng-click="operationSearch(searchTitle)">
+            <img src="images/company-6.png"/>
+        </div>
+    </div>
+    <ul  class="conRight_kind_til_daiban cb">
+        <li>日期</li>
+        <li class="todoTitle textLeft1">主题</li>
+        <li class="textLeft1">审请人</li>
+        <li>操作</li>
+    </ul>
+    <div class="con_kind_child_til">
+        <ul style="display:block" class="conRight_kind_child_til_daiban">
+            <ul ng-repeat="todo in todoMgs">
+                <li>{{todo.date}}</li>
+                <li title="{{todo.title}}" class="todoTitle textLeft1"><a ng-if="todoStatus==0" ui-sref="manage.todoDetail({flowId:todo.flowId,taskId:todo.taskId})" class="active">{{todo.title}}</a>
+                    <a ng-if="todoStatus==1" ui-sref="manage.doneDetail({flowId:todo.flowId,taskId:todo.taskId})" class="active">{{todo.title}}</a>
+                </li>
+                <li class="textLeft1">{{todo.approver}}</li>
+                <li><a ng-if="todoStatus==0" ui-sref="manage.todoDetail({flowId:todo.flowId,taskId:todo.taskId})" class="activeIcon" ><img ng-if="todoStatus==0"  class="oprIcon" src="images/approveIcon.png"/>审批</a><a ui-sref="manage.todoProcess({flowId:todo.flowId,taskId:todo.taskId,todoStatus:{{todoStatus}}})" class="activeIcon"><img class="oprIcon" src="images/process.png"/>流程图</a></li>
+            </ul>
+        </ul>
+        <ul class="conRight_kind_child_til_daiban">
+            1
+        </ul>
+    </div>
+    <ul class="fenye">
+        <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+        <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+        <li><a ng-click ="changePage(currentPage*1-1)">上一页</a></li>
+        <div ng-repeat="tPage in totalPas">
+            <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+        </div>
+        <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+    </ul>
+</div>
+
+
+</div>

@@ -1,0 +1,5782 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by vision on 16/1/17.
+	 */
+	//var login = require('./LoginModule');
+	var app = angular.module('app', ['ui.router','ngSanitize']);
+
+	//与服务器端的请求交互
+	var httpService = __webpack_require__(2);
+
+	//获取登陆服务Service
+	var loginservice = __webpack_require__(3);
+	var loginController = __webpack_require__(4);
+	var userStation = __webpack_require__(5);
+	var loginsession = __webpack_require__(6);
+
+	var ApplicationController = __webpack_require__(7);
+	var AuthInterceptor = __webpack_require__(8);
+
+	var MyController = __webpack_require__(9);
+	var MyService = __webpack_require__(10);
+	var MProController = __webpack_require__(11);
+	var MProService = __webpack_require__(12);
+	var BProController = __webpack_require__(13);
+	var BProService = __webpack_require__(14);
+	var DProController = __webpack_require__(15);
+	var DProService = __webpack_require__(16);
+	//add by Su-start
+	var MColController = __webpack_require__(17);
+	var MCollService = __webpack_require__(18);
+	var loginOutController = __webpack_require__(19);
+	var loginOutService = __webpack_require__(20);
+	//add by Su-end
+	//add by Hua-start
+	var MgService = __webpack_require__(21);
+	var MgController = __webpack_require__(22);
+	var applyMgService = __webpack_require__(23);
+	var applyMgController = __webpack_require__(24);
+	var applyDetailMgService = __webpack_require__(25);
+	var applyDetailMgController = __webpack_require__(26);
+	var applyProcessMgService = __webpack_require__(27);
+	var applyProcessMgController = __webpack_require__(28);
+	var todoMgService = __webpack_require__(29);
+	var todoMgController = __webpack_require__(30);
+	var todoDetailMgService = __webpack_require__(31);
+	var todoDetailMgController = __webpack_require__(32);
+	var doneDetailMgService = __webpack_require__(33);
+	var doneDetailMgController = __webpack_require__(34);
+	var todoProcessMgService = __webpack_require__(35);
+	var todoProcessMgController = __webpack_require__(36);
+	var accountMgController = __webpack_require__(37);
+	var accountMgService = __webpack_require__(38);
+	var collectionMgController = __webpack_require__(39);
+	var collectionMgService = __webpack_require__(40);
+	var classMgController = __webpack_require__(41);
+	var classMgService = __webpack_require__(42);
+	var AppclassMgController = __webpack_require__(43);
+	var AppclassMgService = __webpack_require__(44);
+	var AppclassMaintainMgController = __webpack_require__(45);
+	var AppclassMaintainMgService = __webpack_require__(46);
+	var businessInfoMgController = __webpack_require__(47);
+	var businessInfoMgService = __webpack_require__(48);
+	var businessInfoUserMgController = __webpack_require__(49);
+	var businessInfoUserMgService = __webpack_require__(50);
+	var businessInfoUserGroupMgController = __webpack_require__(51);
+	var businessInfoUserGroupMgService = __webpack_require__(52);
+	//add by Hua-end
+	//add by Ding-start
+	var PersonController = __webpack_require__(53);
+	var PersonService = __webpack_require__(54);
+	var MangbusAppController = __webpack_require__(55);
+	var MangbusAppServcie = __webpack_require__(56);
+	var newPutController = __webpack_require__(57);
+	var newPutServcie = __webpack_require__(58);
+	var newPut2Controller = __webpack_require__(59);
+	var newPut2Servcie = __webpack_require__(60);
+	var newPut3Controller = __webpack_require__(61);
+	var newPut3Servcie = __webpack_require__(62);
+	var newPut4Controller = __webpack_require__(63);
+	var newPut4Servcie = __webpack_require__(64);
+	var newPut5Controller = __webpack_require__(65);
+	var newPut5Servcie = __webpack_require__(66);
+
+	var fileModel = __webpack_require__(67);
+	var UploaderService = __webpack_require__(68);
+	//add by Ding-end
+
+	var HelpController = __webpack_require__(69);
+	var getdateservice = __webpack_require__(70);
+
+	//  交互路径
+	app.constant('httpservice',httpService);
+
+	app
+	    .controller('ApplicationController',ApplicationController)
+	    .factory('AuthInterceptor',AuthInterceptor);
+
+
+	app //  使用一个对象工厂函数定义服务
+	    .factory('loginService',loginservice)
+	    //  使用一个类构造函数定义服务
+	    .service('Session',loginsession)
+	    //  使用一个常量定义服务  用户状态
+	    .constant('AUTH_EVENTS', userStation.AUTH_EVENTS)
+	    //  使用一个常量定义服务  用户角色权限
+	    .constant('USER_ROLES', userStation.USER_ROLES);
+
+	app
+	    .factory('MProService',MProService)
+	    .factory('BProService',BProService)
+	    .factory('DProService',DProService)
+	    .factory('MyService',MyService)
+	    //add by Hua
+	    .factory('applyMgService',applyMgService)
+	    .factory('applyDetailMgService',applyDetailMgService)
+	    .factory('applyProcessMgService',applyProcessMgService)
+	    .factory('todoMgService',todoMgService)
+	    .factory('todoDetailMgService',todoDetailMgService)
+	    .factory('doneDetailMgService',doneDetailMgService)
+	    .factory('todoProcessMgService',todoProcessMgService)
+	    .factory('accountMgService',accountMgService)
+	    .factory('collectionMgService',collectionMgService)
+	    .factory('classMgService',classMgService)
+	    .factory('AppclassMgService',AppclassMgService)
+	    .factory('AppclassMaintainMgService',AppclassMaintainMgService)
+	    .factory('businessInfoMgService',businessInfoMgService)
+	    .factory('businessInfoUserMgService',businessInfoUserMgService)
+	    .factory('businessInfoUserGroupMgService',businessInfoUserGroupMgService)
+
+
+	    //add by Su
+	    .factory('MCollService',MCollService)
+	    .factory('loginOutService',loginOutService)
+	    //add by Ding
+	    //.factory('PersonController',PersonController)
+	    .factory('PersonService',PersonService)
+	    .factory('busAppService',MangbusAppServcie)
+	    .factory('newPutService',newPutServcie)
+	    .factory('newPut2Service',newPut2Servcie)
+	    .factory('newPut3Service',newPut3Servcie)
+	    .factory('newPut4Service',newPut4Servcie);
+
+	app
+	    .directive('fileModel',fileModel)
+	    .factory('fileReader',UploaderService);
+
+	app.factory('getdata', getdateservice);
+
+
+	app
+	    //.run(function ($rootScope, AUTH_EVENTS, loginService) {
+	    //    $rootScope.$on('$stateChangeStart', function (event, next) {
+	    //        var authorizedRoles = next.data.authorizedRoles;
+	    //        //console.log(loginService.isAuthenticated());
+	    //        //  如果用户ID和用户角色没有同时存在,则进入判断
+	    //        if (!loginService.isAuthorized(authorizedRoles)) {
+	    //            //  阻止模板解析的发生
+	    //            event.preventDefault();
+	    //            //  判断是否有用户ID
+	    //            if (loginService.isAuthenticated()) {
+	    //                // 用户不被允许(有用户ID登陆,没有权限)
+	    //                $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+	    //            } else {
+	    //                // 用户登录失败(无用户ID登陆)
+	    //                $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+	    //            }
+	    //        }
+	    //    });
+	    //})
+	    .config(["$httpProvider", function ($httpProvider) {
+	        $httpProvider.interceptors.push([
+	            '$injector',
+	            function ($injector) {
+	                return $injector.get('AuthInterceptor');
+	            }
+	        ]);
+	    }]);
+
+	app
+	    .config(["$stateProvider", "$urlRouterProvider", "USER_ROLES", function ($stateProvider, $urlRouterProvider ,USER_ROLES) {
+	        // 当找不到路由状态时自动跳转first状态
+	        $urlRouterProvider.otherwise("/index/first");
+	        //$urlRouterProvider.otherwise("/login");
+	        $urlRouterProvider.when("",'/login');
+	        //设置默认主页路由状态
+	        //$urlRouterProvider.when("/index",'/index/first');
+	        //设置路由地址
+	        $stateProvider
+	            //主页面
+	            .state('main', {
+	                url: "/main",
+	                templateUrl: "main.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            //首页
+	            .state('index', {
+	                url: "/index",
+	                abstract: true,
+	                templateUrl: "index.html",
+	                data: {
+	                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.cadmin, USER_ROLES.isv, USER_ROLES.user]
+	                }
+	            })
+	            //登陆页
+	            .state('login', {
+	                url: "/login",
+	                templateUrl: "login.html",
+	                controllerAs: "loginCon",
+	                controller: loginController
+	                //data: {
+	                //    authorizedRoles: [USER_ROLES.admin, USER_ROLES.cadmin, USER_ROLES.isv, USER_ROLES.user]
+	                //}
+	            })
+	            //退出注销
+	            .state('loginout', {
+	                url: "/loginout",
+	                templateUrl: "login.html",
+	                controllerAs: "loginOutCon",
+	                controller: loginOutController
+	                //data: {
+	                //    authorizedRoles: [USER_ROLES.admin, USER_ROLES.cadmin, USER_ROLES.isv, USER_ROLES.user]
+	                //}
+	            })
+	            //简介
+	            .state('first', {
+	                url: "/first",
+	                parent:"index",
+	                templateUrl: "partials/first/first.html",
+	                authorizedRoles: [USER_ROLES.admin, USER_ROLES.cadmin],
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            //我的应用
+	            .state('myapp', {
+	                url: "/myapp",
+	                parent:"index",
+	                abstract: true,
+	                templateUrl: "partials/myapp/myapp.html",
+	                controllerAs: "mycon",
+	                controller: MyController
+	            })
+	            //我的应用内容-update by Su
+	            .state('myapp.content', {
+	                url: "/{id}&/{page}&/{total}",
+	                views:{
+	                    '':
+	                    {
+	                        templateUrl: "partials/myapp/tubiao.html",
+	                        controllerAs: "mypro",
+	                        controller: MProController
+	                    },
+	                    'collection':
+	                    {
+	                        templateUrl:"partials/myapp/collection.html",
+	                        controllerAs:"mycollect",
+	                        controller:MColController
+	                    }
+	                }
+	            })
+	            .state('myapp.broswer', {
+	                url: "/broswer",
+	                templateUrl: "partials/myapp/tubiao/broswer.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            //企业应用
+	            .state('businessapp', {
+	                url: "/businessapp",
+	                parent:"index",
+	                abstract: true,
+	                templateUrl: "partials/businessapp/businessapp.html",
+	                controllerAs: "Bpro",
+	                controller: BProController
+	            })
+	            //企业应用内容
+	            .state('businessapp.content', {
+	                url: "/{id}&/{page}&/{total}&/{flag}&/{appId}&/{searchName}",
+	                templateUrl: "partials/businessapp/tubiao.html",
+	                controllerAs: "Bpro",
+	                controller: BProController
+	            })
+	            .state('details', {
+	                url: "/details",
+	                abstract: true,
+	                templateUrl: "partials/details/details.html",
+	                controllerAs: "Dpro",
+	                controller: DProController
+	            })
+	            //详情-update by Su
+	            .state('details.details', {
+	                url: "/details/{id}&/{appId}&/{flowId}",
+	                templateUrl: "partials/details/child/details.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            //评分与评论
+	            .state('details.comment', {
+	                url: "/comment/{id}",
+	                templateUrl: "partials/details/child/comment.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            //相关
+	            .state('details.correlation', {
+	                url: "/correlation/{id}",
+	                templateUrl: "partials/details/child/correlation.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            //帮助
+	            .state('help', {
+	                url: "/help",
+	                parent:"index",
+	                templateUrl: "partials/help/help.html",
+	                controllerAs: "help",
+	                controller: HelpController,
+	                authorizedRoles: [USER_ROLES.isv]
+	            })
+	            //
+	            .state('test', {
+	                url: "/test",
+	                templateUrl: "partials/myapp/tubiao/tubiao.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+
+	            //测试案例
+	            .state('app', {
+	                url: "/app",
+	                templateUrl: "partials/app.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            .state('app.left', {
+	                url: "/left",
+	                views: {
+	                    "": {template: "哈哈哈哈哈哈"},
+	                    "detail": {template: "我是详情"}
+	                }
+	            })
+	            .state('app.left2', {
+	                url: "/left2",
+	                views: {
+	                    "": {template: "哈哈哈呵呵呵呵呵呵呵哈哈哈"},
+	                    "detail": {template: "我是详情2"}
+	                }
+	            })
+	            //我的应用内容
+	            .state('myapp.fenye', {
+	                url: "/{id}&/{page}",
+	                templateUrl: "partials/myapp/tubiao.html",
+	                controllerAs: "mypro",
+	                controller: MProController
+	            })
+	            //管理页面-add by Hua
+	            .state('manage', {
+	                url: "/manage",
+	                parent:"index",
+	                abstract: true,
+	                templateUrl: "partials/manage/manage.html",
+	                controller: MgController
+	            })
+	            //管理页面-我的申请-add by Hua
+	            .state('manage.apply', {
+	                url:"/apply/{applyStatus}",
+	                templateUrl: "partials/manage/mywork/apply_manage.html",
+	                controllerAs: "applyMg",
+	                controller: applyMgController
+
+	            })
+	            //管理页面-我的待办详情-add by Hua
+	            .state('manage.applyDetail', {
+	                url:"/applyDetail/{applyStatus}/{flowId}/{taskId}",
+	                templateUrl: "partials/manage/mywork/apply_detail.html",
+	                controllerAs: "applyDetailMg",
+	                controller: applyDetailMgController
+
+	            })
+	            //管理页面-我的申请流程图-add by Hua
+	            .state('manage.applyProcess', {
+	                url:"/applyProcess/{applyStatus}/{flowId}/{taskId}",
+	                templateUrl: "partials/manage/mywork/apply_process.html",
+	                controllerAs: "applyProcessMg",
+	                controller: applyProcessMgController
+
+	            })
+	            //管理页面-我的待办-add by Hua
+	            .state('manage.todo', {
+	                url:"/todo/{todoStatus}",
+	                templateUrl: "partials/manage/mywork/todo_manage.html",
+	                controllerAs: "todoMg",
+	                controller: todoMgController
+
+	            })
+
+
+	            //管理页面-我的待办详情-add by Hua
+	            .state('manage.todoDetail', {
+	                url:"/todoDetail/{todoStatus}/{flowId}/{taskId}",
+	                templateUrl: "partials/manage/mywork/todo_detail.html",
+	                controllerAs: "todoDetailMg",
+	                controller: todoDetailMgController
+
+	            })
+	            //管理页面-我的待办详情-add by Hua
+	            .state('manage.doneDetail', {
+	                url:"/doneDetail/{todoStatus}/{flowId}/{taskId}",
+	                templateUrl: "partials/manage/mywork/todoDone_detail.html",
+	                controllerAs: "doneDetailMg",
+	                controller: doneDetailMgController
+
+	            })
+
+	            //管理页面-我的待办流程图-add by Hua
+	            .state('manage.todoProcess', {
+	                url:"/todoProcess/{todoStatus}/{flowId}/{taskId}",
+	                templateUrl: "partials/manage/mywork/todo_process.html",
+	                controllerAs: "todoProcessMg",
+	                controller: todoProcessMgController
+
+	            })
+	            //我的应用-我的分类
+	            //add by Darren(丁延超) 2016/03/08
+	            .state('manage.myclass', {
+	                url:"/myclass",
+	                templateUrl: "partials/manage/myapp/MyClass_manage.html",
+	                controller: classMgController
+	            })
+
+	            //我的应用-我的订阅
+	            //add by Darren(丁延超) 2016/03/09
+	            .state('manage.subscribe', {
+	                url:"/subscribe",
+	                templateUrl: "partials/manage/myapp/Subscribe_manage.html",
+	                controller: ["$scope", function ($scope) {
+
+	                }]
+	            })
+	            //我的应用-我的收藏
+	            //add by Sky(华润松) 2016/03/09
+	            .state('manage.collection', {
+	                url:"/collection",
+	                templateUrl: "partials/manage/myapp/Collection_manage.html",
+	                controller: collectionMgController
+	            })
+	            //企业应用-企业信息（基本信息）
+	            //add by Darren(丁延超) 2016/03/09
+	            .state('manage.businessinfo', {
+	                url:"/businessinfo",
+	                templateUrl: "partials/manage/BusinessApp/BusinessInfo_manage.html",
+	                controller: businessInfoMgController
+	            })
+	            //企业应用-企业信息（用户管理-用户）
+	            //add by Hua(华润松) 2016/03/29
+	            .state('manage.businessinfo_user', {
+	                url:"/businessinfo_user",
+	                templateUrl: "partials/manage/BusinessApp/BusinessInfo_manage_user.html",
+	                controller:businessInfoUserMgController
+	            })
+	            //企业应用-企业信息（用户管理-用户组）
+	            //add by Hua(华润松) 2016/03/29
+	            .state('manage.businessinfo_userGroup', {
+	                url:"/businessinfo_userGroup",
+	                templateUrl: "partials/manage/BusinessApp/BusinessInfo_manage_userGroup.html",
+	                controller: businessInfoUserGroupMgController
+	            })
+	            //企业应用-应用分类(应用分类)
+	            //add by Darren(丁延超) 2016/03/09
+	            .state('manage.appclass', {
+	                url:"/appclass",
+	                templateUrl: "partials/manage/BusinessApp/AppClass_manage.html",
+	                controller: AppclassMgController
+	            })
+	            //企业应用-应用分类(分类维护)
+	            //add by Hua
+	            .state('manage.appclassMaintain', {
+	                url:"/appclassMaintain",
+	                templateUrl: "partials/manage/BusinessApp/AppClassMaintain_manage.html",
+	                controller: AppclassMaintainMgController
+	            })
+	            //企业应用-企业应用
+	            //add by Darren(丁延超) 2016/03/09
+	            .state('manage.businessapp', {
+	                url:"/businessapp",
+	                templateUrl: "partials/manage/BusinessApp/BusinessApp_manage.html",
+	                controllerAs: "mangbusAppCon",
+	                controller: MangbusAppController
+	            })
+	            //应用设置-应用上架-No1(基本信息)
+	            //add by Darren(丁延超) 2016/03/09
+	            .state('manage.appadded', {
+	                url:"/appadded/{Status}",
+	                templateUrl: "partials/manage/appsettings/Appadded_manage_1.html",
+	                controllerAs: "newPutCon",
+	                controller: newPutController
+	            })
+	            //应用设置-应用上架-No2(应用详情)
+	            .state('manage.appadded2', {
+	                url:"/appadded2",
+	                templateUrl: "partials/manage/appsettings/Appadded_manage_2.html",
+	                controllerAs: "newPut2Con",
+	                controller: newPut2Controller
+	            })
+	            //应用设置-应用上架-No3(发布应用)
+	            .state('manage.appadded3', {
+	                url:"/appadded3",
+	                templateUrl: "partials/manage/appsettings/Appadded_manage_3.html",
+	                controllerAs: "newPut3Con",
+	                controller: newPut3Controller
+	            })
+	            //应用设置-应用上架-No4(发布范围)
+	            .state('manage.appadded4', {
+	                url:"/appadded4",
+	                templateUrl: "partials/manage/appsettings/Appadded_manage_4.html",
+	                controllerAs: "newPut4Con",
+	                controller: newPut4Controller
+	            })
+	            //应用设置-应用上架-No5(发布完成)
+	            .state('manage.appadded5', {
+	                url:"/appadded5",
+	                templateUrl: "partials/manage/appsettings/Appadded_manage_5.html",
+	                controllerAs: "newPut5Con",
+	                controller: newPut5Controller
+	            })
+	            //其他设置-个人信息
+	            //add by Darren(丁延超) 2016/03/09
+	            .state('manage.personalinfo', {
+	                url:"/personalinfo",
+	                templateUrl: "partials/manage/othersettings/PersonInfo_manage.html",
+	                controllerAs: "Percon",
+	                controller: PersonController
+	            })
+	            //其他设置-账号安全
+	            //add by Sky(华润松) 2016/03/09
+	            .state('manage.accountsecurity', {
+	                url:"/accountsecurity",
+	                templateUrl: "partials/manage/othersettings/AccountSecurity_manage.html",
+	                controller: accountMgController
+	            });
+	    }]);
+	////去掉angularjs针对每个页面的模板缓存问题
+	//app.run(function($rootScope, $templateCache) {
+	//    $rootScope.$on('$routeChangeStart', function(event, next, current) {
+	//        if (typeof(current) !== 'undefined'){
+	//            $templateCache.remove(current.templateUrl);
+	//        }
+	//    });
+	//});
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/29.
+	 */
+
+	//var urlWeb = 'http://ecms.chinacloudapp.cn:8000/cloudapps/jsonp/';
+	var urlWeb = './TextData/';
+	//var urlWeb = 'http://192.168.0.11:8080/cloudapps/jsonp/';
+	module.exports = {
+
+	    //  登陆
+	    // Loginurl:'http://192.168.0.11:8080/cloudapps/jsonp/Pactera-IntegralPlatform-app/loginsso.do',
+	    /* Loginurl:'http://192.168.0.11:8080/cloudapps/jsonp/Pactera-IntegralPlatform-app/loginsso.do',*/
+	    //Loginurl:'http://192.168.0.2:8080/cloudapps/jsonp/news/l',
+	    Loginurl:urlWeb+'login.json',
+	    /* Loginurl:'http://ecms.chinacloudapp.cn:8000/cloudapps/jsonp/Pactera-IntegralPlatform-app/loginsso.do',*/
+
+	    //Loginurl:urlWeb+'Pactera-IntegralPlatform-app/loginsso.do',
+	    //  企业应用 应用列表
+	    busproduct:urlWeb+'Bproduct.json',
+	    busproduct_like:urlWeb+'Bproduct_like.json',
+	    //  详情
+	    details:urlWeb+'details.json',
+
+	    //我的待办
+	    mytodo:urlWeb +'mytodo.json',
+
+	    //我的申请
+	    myapply:urlWeb +'myapplys.json',
+
+	    //  我的应用 应用列表
+	    myproduct:urlWeb+'Mproduct.json',
+	    //企业应用的订阅事件
+	    subscribe:urlWeb+'dingyue.json',
+
+	    //我的应用的点击收藏取消收藏事件--add by Su
+	    collection:urlWeb+'dingyue.json',
+
+	    //管理-我的任务-我的申请-add by Hua
+	    applyManage:urlWeb+'applyMgs.json',
+	    //applyManage:urlWeb+'apply/condition_apply.do',
+
+	    //管理-我的任务-我的申请详情内容-add by Hua
+	    applyDetail:urlWeb+'applyDetail.json',
+	    //applyDetail:urlWeb+'detail/myapply.do',
+
+	    //管理-我的任务-我的申请流程图内容-add by Hua
+	    applyProcess:urlWeb+'applyProcess.json',
+
+	    //管理-我的任务-我的待办-add by Hua
+	    todoManage:urlWeb+'todoMgs.json',
+	    //todoManage:urlWeb+'todo/todo_done.do',
+
+	    //管理-我的任务-我的代办详情内容-add by Hua
+	    todoDetail:urlWeb+'todoDetail.json',
+	    //todoDetail:urlWeb+'apply/detail/myapply.do',
+
+	    //管理-我的任务-我的待办流程图内容-add by Hua
+	    todoProcess:urlWeb+'todoProcess.json',
+
+	    //管理-其他设置-账号安全-add by Hua
+	    accountManage:urlWeb+'accountMgs.json',
+
+	    //管理-我的应用-我的收藏-add by Hua
+	    collectionManage:urlWeb+'collectionMgs.json',
+
+	    //管理-我的应用-我的分类菜单-add by Hua
+	    classMenuManage:urlWeb+'classMenuMgs.json',
+	    //classMenuManage:urlWeb+'sort/userSort.do',
+
+	    //管理-我的应用-我的分类应用列表-add by Hua
+	    classListManage:urlWeb+'classListMgs.json',
+
+	    //管理-我的应用-我的分类添加应用列表-add by Hua
+	    appListManage:urlWeb+'appListMgs.json',
+
+	    //管理-企业应用-我的分类菜单-add by Hua
+	    AppclassMenuManage:urlWeb+'AppclassMenuMgs.json',
+
+	    //管理-企业应用-我的分类应用列表-add by Hua
+	    AppclassListManage:urlWeb+'AppclassListMgs.json',
+
+	    //管理-企业应用-分类维护菜单-add by Hua
+	    AppMaintainclassMenuManage:urlWeb+'AppclassMenuMgs.json',
+
+	    //管理-企业应用-分类维护应用列表-add by Hua
+	    AppMaintainclassListManage:urlWeb+'AppclassListMgs.json',
+
+	    //管理-企业应用-分类维护添加应用列表-add by Hua
+	    AppappListManage:urlWeb+'AppappListMgs.json',
+
+	    //管理-企业应用-企业信息基本信息-add by Hua
+	    businessInfoManage:urlWeb+'businessInfo.json',
+
+	    //管理-企业应用-企业信息用户管理(查询用户)-add by Hua
+	    userManage:urlWeb+'userManage.json',
+
+	    //管理-企业应用-企业信息用户管理（上移，下移，删除用户）-add by Hua
+	    userOprManage:urlWeb+'userOprManage.json',
+
+	    //管理-企业应用-企业信息用户管理(批量删除用户)-add by Hua
+	    userDelManage:urlWeb+'userManage.json',
+
+	    //管理-企业应用-企业信息用户管理(导入用户查询)-add by Hua
+	    userImportManage:urlWeb+'userManage.json',
+
+	    //管理-企业应用-企业信息用户管理(导入用户提交)-add by Hua
+	    userImportAddManage:urlWeb+'userManage.json',
+
+	    //管理-企业应用-企业信息用户管理（查询tree用户组）-add by Hua
+	    userGroupManage:urlWeb+'userGroupManage.json',
+
+	    //管理-企业应用-企业信息用户管理（查询下拉框用户组）-add by Hua
+	    userGroupSelectManage:urlWeb+'userGroupSelectManage.json',
+
+	//管理-企业应用-企业信息用户管理（查询用户组列表）-add by Hua
+	    userGroupListManage:urlWeb+'userGroupListManage.json',
+
+	    //其他设置-个人信息-保存,--add by Ding
+	    person_manage_save:urlWeb+'person_manage_save.json',
+	    person_manage_select:urlWeb+'person_manage_save.json',
+
+	    //我的应用的点击收藏取消收藏事件--add by Su
+	    searchBussiness:urlWeb+'BSearchProduct.json',
+	    //历史查看 --add by Su
+	    historyBussiness:urlWeb+'history.json',
+	    //历史top查看 --add by Su
+	    thistoryBussiness:urlWeb+'Thistory.json',
+	    //菜单  --add by su
+	    menu:urlWeb+'menu.json',
+
+	    //管理页面-企业应用-企业应用(查询)--add by Ding
+	    select_manage_bus:urlWeb+'mas_bus_app.json',
+	    //管理_企业应用_企业应用_构建新版本(查询)--add by Ding
+	    select_createNew_manage_bus:urlWeb+'mas_bus_create.json',
+	    //管理_企业应用_企业应用_构建新版本(保存)--add by Ding
+	    save_createNew_manage_bus:'',
+
+	    //管理_应用设置_应用上架_基本信息(保存)--add by Ding
+	    manage_appset_putup_no1_save:'',
+	    //管理_应用设置_应用上架_应用详情(保存)--add by Ding
+	    manage_appset_putup_no2_save:'',
+	    //管理_应用设置_应用上架_发布应用(保存)--add by Ding
+	    manage_appset_putup_no3_save:'',
+	    //管理_应用设置_应用上架_发布范围(保存)--add by Ding
+	    manage_appset_putup_no4_save:'',
+	    manage_appset_putup_no4_left:urlWeb+'mas_appset_putup_no4.json',
+
+	    //我的应用每页显示条数--add by Su
+	    myEverPageNum:16,
+	    //企业应用每页显示条数--add by Su
+	    productEverPageNum:6
+
+	};
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/1/30.
+	 *
+	 * 登陆
+	 * @param $http
+	 * @param Session
+	 * @returns {{}}
+	 */
+	module.exports = function ($http,$location,$state,Session,httpservice) {
+	    var loginService = {};
+
+	    loginService.login = function (user) {
+	        $("#loginsubmit").val("正在登录...");
+	        $("#loginsubmit").css("background-color","#334961");
+	        $("#tipId").css("display","none");
+	        return $http({
+	                method: 'POST',
+	                url: httpservice.Loginurl,
+	                data:user
+	                //注释部分为修改post请求,解决发送数据为json服务器端无法解析的问题
+	                //url: '192.168.10.48:8080/cloudapps/Pactera-IntegralPlatform-app/loginsso.do',
+	                //data: $.param(user),
+	                //headers: {
+	                //    'Content-Type': 'application/x-www-form-urlencoded'
+	                //}
+	            }
+	        )
+	            //.post('./TextData/login.json', user)
+	            .then(function (response) {
+	                //判断登录成功是否
+	                if(response.data.station == true){
+	                    //  将返回的用户信息存入Session服务
+	                    Session.create(
+	                        response.data.id,        //id:sessionId
+	                        response.data.user.id,   //userId:userId
+	                        response.data.user.role, //userRole:userRole
+	                        response.data.station,    //station
+	                        response.data.companyId,    //companyId
+	                        response.data.user.name
+	                    );
+	                    //成功后跳转到我的应用页面
+	                    $state.go("myapp.content");
+	                    /*$state.go("login");*/
+	                    /*$("#errormsgId").html("登陆成功！");*/
+	                    $("#errormsgId").html("登陆成功！");
+	                    $("#loginsubmit").val("登录");
+
+	                    $("#tipId").css("display","block");
+	                    $("#loginsubmit").css("background-color","#516479");
+	                }else{//若其失败，返回失败信息
+	                    $("#errormsgId").html(response.data.msg);
+	                }
+	                return response.data.user;
+	            })
+	            .catch(function (response) {
+	                console.error('login error', response.status, response.data);
+	                $("#errormsgId").html("登录失败，失败原因："+response.status);
+	            })
+	            .finally(function () {
+	                //console.log("finally finished login");
+	                /*$("#errormsgId").html("网络链接失败！");*/
+	            });
+	    };
+
+	    //  用户ID存在ture 不存在false
+	    loginService.isAuthenticated = function () {
+	        //  如果Session.userId不为null或undefined 返回ture 否则返回false
+	        return !!Session.userId;
+	    };
+	    //  用户ID与角色是否均存在,均存在ture 其他false
+	    loginService.isAuthorized = function (authorizedRoles) {
+	        //  如果用户角色不是数组,既单角色
+	        if (!angular.isArray(authorizedRoles)) {
+	            //  将authorizedRoles转为数组
+	            authorizedRoles = [authorizedRoles];
+	        }
+	        //  authorizedRoles.indexOf(Session.userRole) 用户角色是否存在
+	        //  loginService.isAuthenticated()  用户ID是否存在
+	        //  用户ID和用户角色均存在返回ture
+	        //console.log(Session.userRole);
+	        return (loginService.isAuthenticated() && authorizedRoles.indexOf(Session.userRole) !== -1);
+	    };
+	    loginService.out = function (user) {
+	        console.log("rootuser.username1="+$rootScope.user.username);
+	        Session.destroy();
+	        console.log("rootuser.username2="+$rootScope.user.username);
+	        /*$rootScope.user = null;
+	         console.log("rootuser.username3="+$rootScope.user.username);*/
+	        $state.go("login");
+	    }
+
+	    return loginService;
+	};
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/1/30.
+	 *
+	 * @param $scope
+	 * @param $rootScope
+	 * @param AUTH_EVENTS   登录状态  ../src/login/userStation
+	 * @param loginservice  登录服务  ../src/login/loginservice
+	 */
+	module.exports = function ($scope, $rootScope, $state,AUTH_EVENTS, loginService) {
+	    //  Bingding the username and password
+	    //  绑定用户名密码
+	    $scope.user = {
+	        username: '',
+	        password: '',
+	        companyId:''
+	    };
+
+	    $scope.login = function (user) {
+	        //  The user as a parameter into the loggingservice
+	        //  将user作为参数传入登陆服务
+	        //获取到表单是否验证通过
+	        if(!$scope.loginForm.$valid){
+	            //判断哪个为空，设置对应属性
+	            if(user.companyId.trim() == null || user.companyId.trim() == ''){
+	                $scope.loginForm.companyId.$dirty = true;
+	                $scope.loginForm.companyId.$invalid = true;
+	            }
+	            if(user.username.trim() == null || user.username.trim() == ''){
+	                $scope.loginForm.username.$dirty = true;
+	                $scope.loginForm.username.$invalid = true;
+	            }
+	            if(user.password.trim() == null || user.password.trim() == ''){
+	                $scope.loginForm.password.$dirty = true;
+	                $scope.loginForm.password.$invalid = true;
+	            }
+	            return false;
+	        }
+	        loginService.login(user).then(function (data) {
+	            //  登陆成功
+	            //  $broadcast — dispatches the event downwards to all child scopes
+	            //  将事件向下传播到所有子作用域，包括自己
+	            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+	            //console.log(resuser);
+	            $scope.message = AUTH_EVENTS.loginSuccess;
+	            $scope.setCurrentUser(data);
+	            $rootScope.resuser = data;
+	        }, function () {
+	            //  登录失败
+	            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+	        });
+	        //  Print the user
+	        //  打印user
+	        //console.log($scope.user);
+	    };
+	    /*页面记住密码提示功能*/
+	    $scope.showTip = function(){
+	        var checkValue = $("#savepwd").is(":checked");
+	        if(checkValue){
+	            $("#showTipId").css("display","inline-block");
+	        }else{
+	            $("#showTipId").css("display","none");
+	        }
+	    }
+	};
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/2.
+	 */
+	module.exports = {
+	    AUTH_EVENTS: {
+	        loginSuccess: '用户登录成功',
+	        loginFailed: '用户登录失败',
+	        logoutSuccess: '用户登出成功',
+	        sessionTimeout: 'session超时',
+	        notAuthenticated: 'auth-not-authenticated',//未鉴定
+	        notAuthorized: 'auth-not-authorized'//没有授权
+	    },
+	    USER_ROLES: {
+	        //user     	普通用户
+	        //admin  	管理员
+	        //isv        	服务商
+	        //cadmin  	企业管理员
+
+	        //all: '*',
+	        //admin: 'admin',
+	        //editor: 'editor',
+	        //guest: 'guest'
+
+	        admin:'admin',      //超级管理员
+	        cadmin:'cadmin',    //企业管理员
+	        isv:'isv',          //服务商
+	        user:'user'         //普通用户
+
+	    }
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/1.
+	 */
+	module.exports = function () {
+	    this.create = function (sessionId, userId, userRole,station,companyId,name) {
+	        this.id = sessionId;
+	        this.userId = userId;
+	        this.userRole = userRole;
+	        this.station = station;
+	        this.companyId = companyId;
+	        this.name = name;
+	    };
+	    this.destroy = function () {
+	        this.id = null;
+	        this.userId = null;
+	        this.userRole = null;
+	        this.station = null;
+	        this.companyId = null;
+	        this.name = null;
+	    };
+	    return this;
+	};
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/29.
+	 */
+	module.exports = function($rootScope,$scope, USER_ROLES, loginService){
+	    //  存在登陆请求返回的用户ID和角色
+	    $scope.currentUser = null;
+	    //  将用户角色USER_ROLES赋值给userRoles
+	    $scope.userRoles = USER_ROLES;
+	    //  用户ID与用户角色是否全部存在   存在ture  不存在false
+	    $scope.isAuthorized = loginService.isAuthorized;
+
+	    $scope.setCurrentUser = function (user) {
+	        $scope.currentUser = user;
+	    };
+	    //add by HUA--start
+	    //设置弹出框遮罩
+	    $rootScope.fadeShow=false;
+	    //设置管理点击样式
+	    $rootScope.mgBtnShowCor='login_2';
+	    //add by HUA--end
+	};
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/29.
+	 */
+	module.exports = function($rootScope, $q, AUTH_EVENTS){
+	    return {
+	        responseError: function (response) {
+	            $rootScope.$broadcast({
+	                //401 Unauthorized — The user is not logged in
+	                401: AUTH_EVENTS.notAuthenticated,
+	                //403 Forbidden — The user is logged in but isn’t allowed access
+	                403: AUTH_EVENTS.notAuthorized,
+	                //419 Authentication Timeout (non standard) — Session has expired
+	                419: AUTH_EVENTS.sessionTimeout,
+	                //440 Login Timeout (Microsoft only) — Session has expired
+	                440: AUTH_EVENTS.sessionTimeout
+	            }[response.status], response);
+	            return $q.reject(response);
+	        }
+	    };
+	};
+
+
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/17.
+	 */
+	module.exports = function($rootScope,$scope,MyService){
+	    //add by HUA--start
+	    //设置管理点击样式
+	    $rootScope.mgBtnShowCor='login_2';
+	    //add by HUA--end
+	    $scope.todo={};
+	    $scope.applys={};
+	    $scope.menus = {};
+	    $scope.mhistory = {};
+
+	    //我的待办
+	    MyService.todo($scope.todo).then(function(data){
+	        $scope.todo = data.todo;
+	        $scope.success = data.success;
+
+	    },function(){
+	        console.log('Selectfaild  我的待办');
+	    });
+
+	    //我的申请
+	    MyService.apply($scope.applys).then(function(data){
+	        $scope.applys = data.applys;
+	        $scope.success2 = data.success;
+	    },function(){
+	        console.log('Selectfaild  我的申请');
+	    });
+
+	    //菜单兰
+	    MyService.getMenu($scope.menus).then(function(data){
+	        $scope.menus = data.menuList;
+	    },function(){
+	        console.log('Selectfaild  菜单栏');
+	    });
+	    //历史查询
+	    MyService.getHistory($scope.mhistory).then(function(data){
+	        $scope.mhistory = data.his;
+	    },function(){
+	        console.log('Selectfaild  历史查询');
+	    });
+
+	    $scope.showImg = function(appId){
+	        $('#'+appId+"-hsid").show();
+	    };
+
+	    $scope.hideImg = function(appId){
+	        $('#'+appId+"-hsid").hide();
+	    };
+
+	    $scope.showFunc = function(url){
+	        window.open(url);
+	    }
+	};
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/17.
+	 *
+	 * 我的应用主页(默认显示全部)
+	 *
+	 * @param $stateParams
+	 * @param $http
+	 * @param $q
+	 * @returns {{}}
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session){
+
+	    var MyService = {};
+
+	    MyService.todo = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.mytodo,
+	            params:{'appId':$stateParams.id,'sessionId':Session.id,'companyId':Session.companyId,'userId':Session.userId}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                deferred.reject(response.data);
+	            }
+
+	        );
+	        return deferred.promise;
+	    };
+	    MyService.apply = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.myapply,
+	            params:{'appId':$stateParams.id,'sessionId':Session.id,'companyId':Session.companyId,'userId':Session.userId}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                deferred.reject(response.data);
+	            }
+
+	        );
+	        return deferred.promise;
+	    };
+
+	    //菜单栏
+	    MyService.getMenu = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.menu,
+	            params:{'userId':Session.userId,'sessionId':Session.id,'clas':'m','companyId':Session.companyId,'appId':$stateParams.id}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    //历史查询
+	    MyService.getHistory = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.historyBussiness,
+	            params:{'userId':Session.userId,'sessionId':Session.id,'companyId':Session.companyId,'appId':$stateParams.id}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return MyService;
+	};
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/13.
+	 *
+	 *
+	 */
+	module.exports= function($scope,MProService){
+
+	    $scope.pros={};
+	    MProService.select($scope.pnames).then(function (data) {
+	        $scope.pros = data.pro;
+	        $scope.totalPage = data.totalPage;
+	        $scope.nowPage = data.nowPage;
+	        $scope.id = data.id;
+	        $scope.totalPas = data.totalPas;
+	        $scope.currentPage = data.page;
+	    }, function () {
+	        console.log('Selectfaild  我的应用');
+	    });
+
+	    //点击桃心收藏的时候触发事件
+	    //flag==0,表示已收藏，flag==1表示未收藏
+	    $scope.guanzhu = function(appId,sortId,flag){
+	        /*console.log("appId="+appId+",sortId="+sortId+",flag="+flag);*/
+	        //要转换的状态
+
+	        MProService.collect(appId,sortId,flag).then(function (data) {
+	            //如果返回值为true，表示操作成功
+	            //console.log(data.flag);
+	            if(data.flag==true){
+	                if(flag == 0){
+	                    for(var i=0;i<$scope.pros.length;i++){
+	                        if($scope.pros[i]['appId']==appId && $scope.pros[i]['sortId']==sortId){
+	                            $scope.pros[i]['flag']=1;
+	                        }
+	                    }
+	                }else{
+	                    for(var i=0;i<$scope.pros.length;i++){
+	                        if($scope.pros[i]['appId']==appId && $scope.pros[i]['sortId']==sortId){
+	                            $scope.pros[i]['flag']=0;
+	                        }
+	                    }
+	                }
+	            }else{//否则收藏失败
+	                console.log('收藏操作失败！返回值='+data.flag);
+	            }
+
+	        },function(){
+	            console.log('收藏状态更新失败！');
+	        });
+	    };
+	    //鼠标滑过事件，显示桃心按钮
+	    $scope.shoucangShow = function(appId,sortId){
+	        $("#"+appId+"-"+sortId+"-id").css("display","inline-block");
+	    };
+	    //鼠标滑过离开事件，隐藏桃心按钮
+	    $scope.shoucangHide = function(appId,sortId){
+	        $("#"+appId+"-"+sortId+"-id").css("display","none");
+	    };
+
+	    $scope.showFunc = function(url){
+	        window.open(url);
+	    }
+	};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/14.
+	 *
+	 * 我的应用菜单查询
+	 *
+	 * @param $stateParams
+	 * @param $http
+	 * @param $q
+	 * @returns {{}}
+	 */
+	module.exports = function ($stateParams,$http, $q,httpservice,Session) {
+	    //var menuid = $stateParams.id;
+	    //console.log("1   "+$stateParams.id);
+	    var MProService = {};
+	    MProService.select=function () {
+	        var deferred = $q.defer();
+	        //当前页
+	        var maxPage = $stateParams.page;
+
+	        if(maxPage === ""){
+	            maxPage = 1;
+	        }
+
+	        //总页数
+	        var total = $stateParams.total;
+	        //如果总页数为空，则表示第一次访问
+	        if(total != null){
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	        }
+	        //初次进入的时候，菜单id=null；默认赋值为0；
+	        var menuid = $stateParams.id;
+	        if(menuid == undefined || menuid==null || menuid==""){
+	            menuid = $stateParams.id = 0;
+	        }
+	        //每页显示条数
+	        var everpage = httpservice.myEverPageNum;
+	        $http({
+	            method: 'GET',
+	            url: httpservice.myproduct,
+	            //cache:'ture',
+	            params: {'appId':$stateParams.id,'clas':"m",'page':maxPage,'pageSize':everpage,'sessionId':Session.id,'companyId':Session.companyId,'userId':Session.userId}
+	        }).then(function successCallback(response) {
+	            // this callback will be called asynchronously
+	            // when the response is available
+	            var totalPas = {};
+	            //获取总页数
+	            var totalPage = response.data.total;
+
+	            for(var i=1;i<=totalPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage = totalPage;
+	            response.data.nowPage = maxPage+"/"+totalPage;
+	            response.data.totalPas = totalPas;
+	            response.data.currentPage = $stateParams.currentPage;
+	            response.data.id = $stateParams.id;
+	            response.data.page = maxPage;
+	            //console.log("aaa="+response.data.totalPage);
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            // called asynchronously if an error occurs
+	            // or server returns response with an error status.
+	            deferred.reject(response);
+	        });
+	        return deferred.promise;
+	    };
+
+	    //收藏和取消收藏
+	    MProService.collect = function(appId,sortId,flag){
+	        var deferred = $q.defer();
+	        var status = "a";
+	        //对状态status(0,1)更改,0:原来状态为收藏，1：原来状态为未收藏
+	        if(flag==0){
+	            status = "d";
+	        }
+
+	        $http({
+	            method: 'GET',
+	            //收藏获取取消收藏的状态转换
+	            url: httpservice.collection,
+	            //userId：用户id；appId：应用id；status：收藏状态
+	            params: {'userId':Session.userId,'appId':appId,'status':status,'sessionId':Session.id,'sortId':sortId,'companyId':Session.companyId}
+	            //params: {'appId':$stateParams.id,'':}
+	        }).then(function successCallback(response) {
+
+	            //console.log('3  '+$stateParams.id);
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+
+	            // called asynchronously if an error occurs
+	            // or server returns response with an error status.
+	            deferred.reject(response);
+	        });
+	        return deferred.promise;
+	    };
+	    return MProService;
+	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/16.
+	 */
+	module.exports = function($scope,BProService){
+	    //var vm=this;
+
+	    $scope.pros={};
+	    $scope.menus={};
+	    $scope.thistory = {};
+	    BProService.select($scope.pros,$scope.menus).then(function (data) {
+	        $scope.pros = data.pro;
+	        $scope.totalPage = data.totalPage;
+	        $scope.nowPage = data.nowPage;
+	        $scope.id = data.id;
+	        $scope.totalPas = data.totalPas;
+	        $scope.currentPage = data.page;
+	        $scope.searchName = data.searchName;
+	        //console.log('Selectsuccess');
+	    }, function () {
+	        console.log('Selectfaild  企业应用');
+	    });
+
+	    //订阅动态改变参数
+	    $scope.changeImg = function(appId,flowId,flag){
+	        //要转换的状态
+	        BProService.dingyue(appId,flowId,flag).then(function (data) {
+	            var dingYueStatus = data.flag;
+	            //返回值为true的时候，更新状态成功
+	            if(dingYueStatus==true){
+	                if(flag==1){
+	                    for(var i=0;i<$scope.pros.length;i++){
+	                        if($scope.pros[i]['appId']==appId ){
+	                            $scope.pros[i]['station']="订阅中";
+	                        }
+	                    }
+	                }else if(flag==2){
+	                    for(var i=0;i<$scope.pros.length;i++){
+	                        if($scope.pros[i]['appId']==appId){
+	                            $scope.pros[i]['station']="可订阅";
+	                        }
+	                    }
+	                }else{
+	                    for(var i=0;i<$scope.pros.length;i++){
+	                        if($scope.pros[i]['appId']==appId){
+	                            $scope.pros[i]['station']="可订阅";
+	                        }
+	                    }
+	                }
+	            }else{
+	                console.log('状态更新失败！返回值='+data.flag);
+	            }
+	        },function(){
+	            console.log('状态更新失败！');
+	        });
+	    };
+
+	    /**
+	     * 搜索按钮的功能
+	     * @param id
+	     */
+	    $scope.searchImg = function(){
+	        var searchName = $('#yyNameId').val();
+
+	        BProService.searchNameEvent(searchName).then(function (data) {
+	            $scope.pros = data.pro;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.id = data.id;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	            $scope.searchName = searchName;
+	            $('#yyNameId').val(searchName);
+	        },function(){
+	            console.log('我的应用查询失败！');
+	        });
+	    };
+	    //菜单栏
+	    BProService.getMenu($scope.menus).then(function(data){
+	        $scope.menus = data.menuList;
+	        //console.log( $scope.menus);
+	    },function(){
+	        console.log('Selectfaild  菜单栏');
+	    });
+
+	    //TOP10历史查询
+	    BProService.gettHistory($scope.thistory).then(function(data){
+	        $scope.thistory = data.his;
+	    },function(){
+	        console.log('Selectfaild  菜单栏');
+	    });
+
+	    $scope.showImg = function(appId){
+	        $('#'+appId+"-thsid").show();
+	        /* $('#'+sortId+"-"+useId+"-pid").css("line-height","14px");
+	         $('#'+sortId+"-"+useId+"-sid").css("margin-left","0px").css("margin-top","0px");*/
+	    };
+
+	    $scope.hideImg = function(appId){
+	        $('#'+appId+"-thsid").hide();
+	        /*  $('#'+sortId+"-"+useId+"-pid").css("line-height","39px");
+	         $('#'+sortId+"-"+useId+"-sid").css("margin-left","-20px").css("margin-top","-12px");*/
+
+	    };
+	};
+
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/16.
+	 *
+	 * 企业应用
+	 *
+	 * @param $stateParams
+	 * @param $http
+	 * @param $q
+	 * @returns {{}}
+	 */
+	module.exports = function ($stateParams,$http, $q,httpservice,Session) {
+	    //var menuid = $stateParams.id;
+	    var BProService = {};
+	    BProService.select=function () {
+	        var deferred = $q.defer();
+	        //当前页
+	        var maxPage = $stateParams.page;
+	        if(maxPage == ""){
+	            maxPage = 1;
+	        }
+	        //总页数
+	        var total = $stateParams.total;
+	        //如果总页数为空，则表示第一次访问
+	        if(total != null){
+	            //判断总页数和当前页数大小范围
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	        }
+	        //初次进入的时候，菜单id=null；默认赋值为0；
+	        var menuid = $stateParams.id;
+	        if(menuid == undefined || menuid==null || menuid==""){
+	            menuid = $stateParams.id = 0;
+	        }
+
+	        //搜索功能
+	        var searchName =  $stateParams.searchName;
+	        $('#yyNameId').val(searchName);
+
+	        //每页显示条数
+	        var everpage = httpservice.productEverPageNum;
+	        if($stateParams.sortId == "" || $stateParams.sortId==undefined || $stateParams.sortId==null){
+	            $stateParams.sortId = 0;
+	        }
+	        $http({
+	            method: 'GET',
+	            url: httpservice.busproduct,
+	            params: {'appId':$stateParams.id,'clas':"q",'page':maxPage,'pageSize':everpage,'sessionId':Session.id,'searchName':searchName,'companyId':Session.companyId,'userId':Session.userId,'sortId':$stateParams.sortId}
+	        }).then(function successCallback(response) {
+	            var totalPas = {};
+	            //获取总页数
+	            var totalPage = response.data.total;
+
+	            for(var i=1;i<=totalPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage = totalPage;
+	            response.data.nowPage = maxPage+"/"+totalPage;
+	            response.data.totalPas = totalPas;
+	            response.data.currentPage = $stateParams.currentPage;
+	            response.data.id = $stateParams.id;
+	            response.data.page = maxPage;
+	            response.data.searchName = $stateParams.searchName;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            // called asynchronously if an error occurs
+	            // or server returns response with an error status.
+	            deferred.reject(response);
+	        });
+	        return deferred.promise;
+	    };
+
+	    //订阅和取消订阅
+	    BProService.dingyue = function(appId,flowId,flag){
+	        var deferred = $q.defer();
+	        var status = 1;
+	        //对状态status(1,2,3)判断
+	        if(flag==2 || flag==3){
+	            status = 2;
+	        }
+	        //console.log("apId="+appId+",flowId="+flowId+",userId="+Session.userId);
+	        $http({
+	            method: 'GET',
+	            //订阅获取取消订阅的状态转换
+	            url: httpservice.subscribe,
+	            params: {'userId':Session.userId,'appId':appId,'status':status,'sessionId':Session.id,'companyId':Session.companyId,'flowId':flowId}
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response);
+	        });
+	        return deferred.promise;
+	    };
+	    //搜索查询事件
+	    BProService.searchNameEvent = function(searchName){
+	        var deferred = $q.defer();
+	        //将查询到的搜索内容存入到路由状态中，以便分页使用
+	        $stateParams.searchName = searchName;
+	        $http({
+	            method: 'GET',
+	            //搜索查询事件，带分页
+	            url: httpservice.busproduct_like,
+	            params: {'userId':Session.userId,'appId':$stateParams.appId,'searchName':searchName,'sessionId':Session.id,'companyId':Session.companyId,'sortId':$stateParams.sortId}
+
+	        }).then(function successCallback(response) {
+	            var currentPage = 1;
+	            var totalPas = {};
+	            //获取总页数
+	            var totalPage = response.data.total;
+	            for(var i=1;i<=totalPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage = totalPage;
+	            response.data.nowPage = currentPage+"/"+totalPage;
+	            response.data.totalPas = totalPas;
+	            response.data.currentPage = $stateParams.currentPage=currentPage;
+	            response.data.id = $stateParams.id;
+	            response.data.page = currentPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response);
+	        });
+	        return deferred.promise;
+	    };
+
+	    //菜单栏
+	    BProService.getMenu = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.menu,
+	            params:{'userId':Session.userId,'sessionId':Session.id,'clas':'q','companyId':Session.companyId}
+	        }).then(function successCallback(response){
+	                //console.log(response);
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    //历史查询
+	    BProService.gettHistory = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.thistoryBussiness,
+	            params:{'userId':Session.userId,'sessionId':Session.id,'companyId':Session.companyId,'appId':$stateParams.id}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return BProService;
+	};
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/13.
+	 */
+	module.exports= function($scope,DProService,BProService){
+
+	    $scope.pros={};
+
+	    DProService.select($scope.pros,$scope.menu).then(function (data) {
+	        $scope.pros = data.pro;
+
+	        //console.log($scope.pros);
+	        //console.log('Selectsuccess');
+	    }, function () {
+	        console.log('Selectfaild 产品详情');
+	    });
+	    $scope.dingyue = function(appId,flowId,flag){
+	        //要转换的状态
+	        BProService.dingyue(appId,flowId,flag).then(function (data) {
+	            var dingYueStatus = data;
+	            //返回值为true的时候，更新状态成功
+	            if(dingYueStatus==true){
+	                if(flag==1){
+	                    $scope.pros['station']="订阅中";
+	                }else if(flag==2){
+	                    $scope.pros['station']="可订阅";
+	                }else{
+	                    $scope.pros['station']="可订阅";
+	                }
+	            }else{
+	                console.log('状态更新失败！返回值='+data);
+	            }
+	        },function(){
+	            console.log('状态更新失败！');
+	        });
+	    };
+	};
+
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/14.
+	 *
+	 * 详情
+	 *
+	 * @param $stateParams
+	 * @param $http
+	 * @param $q
+	 * @returns {{}}
+	 */
+	module.exports = function ($stateParams,$http, $q,httpservice,Session) {
+
+	    var DProService = {};
+	    DProService.select=function () {
+	        var deferred = $q.defer();
+	        //console.log("id="+$stateParams.id+",appId="+$stateParams.appId+",flowId="+$stateParams.flowId);
+	        $http({
+	            method: 'GET',
+	            url: httpservice.details,
+	            params: {'id':$stateParams.id,'appId':$stateParams.appId,'userId':Session.userId,'sessionId':Session.id,'companyId':Session.companyId,'flowId':$stateParams.flowId}
+	        }).then(function successCallback(response) {
+	            // this callback will be called asynchronously
+	            // when the response is available
+	            // console.log('3  '+$stateParams.id);
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            // called asynchronously if an error occurs
+	            // or server returns response with an error status.
+	            deferred.reject(response);
+	        });
+
+	        return deferred.promise;
+	    };
+
+	    return DProService;
+	};
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 9/3/16.
+	 */
+	module.exports = function($scope,MCollService){
+	    $scope.pros={};
+	    MCollService.scloo($scope).then(function (data) {
+	        $scope.colls = data.pro;
+	    }, function () {
+	        console.log('Selectfaild  我的收藏');
+	    });
+	    $scope.showImg = function(appId){
+	        $('#'+appId+"-id").show();
+	        /* $('#'+appId+"-pid").css("line-height","14px");
+	         $('#'+appId+"-sid").css("margin-left","0px").css("margin-top","0px");*/
+	    };
+
+	    $scope.hideImg = function(appId){
+	        $('#'+appId+"-id").hide();
+	        /*  $('#'+appId+"-pid").css("line-height","39px");
+	         $('#'+appId+"-sid").css("margin-left","-20px").css("margin-top","-12px");*/
+	    };
+	    $scope.showFunc = function(url){
+	        window.open(url);
+	    }
+	}
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/2/16.
+	 *
+	 * 企业应用
+	 *
+	 * @param $stateParams
+	 * @param $http
+	 * @param $q
+	 * @returns {{}}
+	 */
+	module.exports = function ($stateParams,$http, $q,httpservice,Session) {
+
+	    var MCollService = {};
+	    MCollService.scloo=function () {
+	        var deferred = $q.defer();
+
+	        //初次进入的时候，菜单id=null；默认赋值为0；
+	        var menuid = $stateParams.id;
+	        if(menuid == undefined || menuid==null || menuid==""){
+	            menuid = $stateParams.id = 0;
+	        }
+
+	        $http({
+	            method: 'GET',
+	            url: './TextData/MCollection.json',
+	            //url: httpservice.busproduct,
+	            params: {'appId':$stateParams.id,'sessionId':Session.id,'userId':Session.userId,'companyId':Session.companyId}
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response);
+	        });
+	        return deferred.promise;
+	    };
+	    return MCollService;
+	};
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/1/30.
+	 *
+	 * @param $scope
+	 * @param $rootScope
+	 */
+	module.exports = function ($scope, $rootScope, loginOutService) {
+	        loginOutService.loginout().then(function () {
+	            //  退出成功
+	            $rootScope.resuser = null;
+	        },function(){
+
+	    });
+	    };
+
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/1/30.
+	 *
+	 * 登陆
+	 * @param $http
+	 * @param Session
+	 * @returns {{}}
+	 */
+	module.exports = function ($http,$location,$q,$state,Session,httpservice) {
+	    var loginOutService = {};
+
+	    loginOutService.loginout = function () {
+	        Session.destroy();
+	        $state.go("login");
+	    };
+	    return loginOutService;
+	};
+
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/8.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice){
+
+	};
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/8.
+	 */
+	module.exports=function($rootScope,$scope){
+	    //添加管理点击样式
+	    $rootScope.mgBtnShowCor='login_2 selectColor_manage';
+	    //add by HUA--end
+
+	};
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/8.
+	 */
+	module.exports = function ($stateParams, $http, $q, httpservice, Session) {
+	    var applyMgService = {};
+	    //获取我的申请列表数据
+	    applyMgService.apply = function (applyStatus,currentPage,searchTitle) {
+	        var deferred = $q.defer();
+	   /* $http.jsonp(httpservice.applyManage,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'status':applyStatus,'page':currentPage,'pageSize':8,'companyId':Session.companyId,'searchTitle':searchTitle }
+	        }).then(function successCallback(response) {*/
+	        $http({
+	            method: 'GET',
+	            url:httpservice.applyManage,
+	            params: {'sessionId': Session.id,'userId': Session.userId,'status':applyStatus,'page':currentPage,'pageSize':8,'companyId':Session.companyId,'searchTitle':searchTitle }
+	        }).then(function successCallback(response) {
+	                //当前页
+	                var maxPage = currentPage;
+	                if(maxPage === ""){
+	                    maxPage = 1;
+	                }
+	                //总页数
+	                var total = response.data.total;
+	                var startPage = response.data.startPage;
+	                var endPage = response.data.endPage;
+	                if(total <= maxPage){
+	                    maxPage = total;
+	                }
+	                if(maxPage<=0){
+	                    maxPage = 1;
+	                }
+	                var totalPas = {};
+
+	                for(var i=startPage;i<=endPage;i++){
+	                    totalPas[i-1] = i;
+	                }
+	                //设置当前页和总页数
+	                response.data.totalPage =total;
+	                response.data.nowPage = maxPage+"/"+total;
+	                response.data.totalPas = totalPas;
+	                response.data.page = maxPage;
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return applyMgService;
+	};
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/8.
+	 */
+	module.exports=function($scope,$stateParams,applyMgService){
+	    $scope.applyMgs={};
+	    $scope.applyStatus=$stateParams.applyStatus;
+	    $scope.currentPage=1;
+	    $scope.searchTitle='';
+	    if( $scope.applyStatus==0)
+	    {
+	        $scope.selectDisableCor='';
+	        $scope.selectStatus=false;
+	        $scope.statusList=[{'value':'0','name':'审批状态'},{'value':'1','name':'处理中'},{'value':'2','name':'已拒绝'},{'value':'3','name':'已完成'}];
+	        $scope.corShow1="colRed borderBottom";
+	    }
+	    else if( $scope.applyStatus==1)
+	    {
+	        $scope.selectDisableCor='selectDisableCor';
+	        $scope.selectStatus=true;
+	        $scope.statusList=[{'value':'1','name':'审批状态'}];
+	        $scope.corShow2="colRed borderBottom";
+	    }
+
+	    //获取我的申请列表数据
+	    $scope.getList=function(applyStatus,currentPage,searchTitle){
+	        applyMgService.apply(applyStatus,currentPage,searchTitle).then(function(data){
+	            $scope.applyMgs=data.data;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.id = data.id;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('applyController 管理_我的任务_我的申请:我的申请列表加载失败！');
+	        });
+	    };
+	    //初始化该页面调用全部数据
+	    $scope.getList($scope.applyStatus,$scope.currentPage,$scope.searchTitle);
+	    //点击改变页码
+	    $scope.changePage=function(currentPage){
+	        if(currentPage <= $scope.totalPage&&currentPage>0 )
+	        {
+	            $scope.getList($scope.applyStatus,currentPage,$scope.searchTitle);
+	        }
+	        else
+	        {
+	            console.log('applyController 管理_我的任务_我的申请:我的申请列表页码越界');
+	        }
+	    };
+	   /* //点击取消按钮事件
+	    $scope.operationCancel=function(flowId,taskId){
+	        applyMgService.operationCancel(flowId,taskId).then(function(data){
+	            $scope.applyMgs=data.data;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('applyController 管理_我的任务_我的申请:取消我的申请失败！');
+	        });
+	    };*/
+	    //点击搜索按钮事件
+	    $scope.operationSearch=function(searchTitle){
+	        var applyStatus=$scope.applyStatus;
+	        $scope.searchTitle=searchTitle;
+	        //获取我的申请列表
+	        $scope.getList( applyStatus,1,searchTitle);
+	    };
+	    //点击列表状态下拉菜单
+	    $scope.onChange=function(applyStatus){
+	        $scope.applyStatus=applyStatus;
+	        $scope.getList( applyStatus,1,$scope.searchTitle);
+	    };
+
+	};
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session) {
+	    var applyDetailMgService = {};
+	    //查看我的申请详情
+	    applyDetailMgService.openDetail = function () {
+	        var deferred = $q.defer();
+	       /* $http.jsonp( httpservice.applyDetail,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId }
+	        }).then(function successCallback(response) {*/
+	       $http({
+	            method: 'GET',
+	            url: httpservice.applyDetail,
+	            params: { 'sessionId': Session.id,'userId': Session.userId,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return applyDetailMgService;
+	};
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($scope,$stateParams,applyDetailMgService) {
+	    $scope.applyStatus=$stateParams.applyStatus;
+	    applyDetailMgService.openDetail().then(function (data) {
+	        $scope.applyDetail = data;
+	    }, function () {
+	        console.log('applyDetailController 管理_我的任务_我的申请:查看申请详情失败！');
+	    });
+	};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session) {
+	    var applyProcessMgService = {};
+	    //查看我的申请流程图
+	    applyProcessMgService.openImg = function () {
+	        var deferred = $q.defer();
+	       /* $http.jsonp(httpservice.applyProcess,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {*/
+	        $http({
+	                 method: 'GET',
+	                 url: httpservice.applyProcess,
+	                 params: { 'sessionId': Session.id,'userId': Session.userId,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	                 }).then(function successCallback(response) {
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return applyProcessMgService;
+	};
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($scope,$stateParams,applyProcessMgService) {
+	    /* $scope.detailsShow=true;*/
+	    /* $rootScope.fadeShow=true;*/
+	    $scope.applyStatus=$stateParams.applyStatus;
+	    applyProcessMgService.openImg().then(function (data) {
+	        $scope.imgUrl = data.imgUrl;
+	          }, function () {
+	        console.log('applyProcessController 管理_我的任务_我的申请:查看申请流程图失败！');
+	    });
+	};
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/8.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session){
+	    var todoMgService = {};
+	    todoMgService.todo = function (todoStatus,currentPage,searchTitle) {
+	        var deferred = $q.defer();
+	      /* $http.jsonp(httpservice.todoManage,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'todoStatus':todoStatus,'companyId':Session.companyId,'searchTitle':searchTitle,'page':currentPage,'pageSize':6}
+	        }).then(function successCallback(response) {*/
+	       $http({
+	            method: 'GET',
+	            url:httpservice.todoManage,
+	            params: {
+	            'sessionId': Session.id,'userId': Session.userId,'todoStatus':todoStatus,'companyId':Session.companyId,'searchTitle':searchTitle,'page':currentPage,'pageSize':6}
+	        }).then(function successCallback(response) {
+	                //当前页
+	                var maxPage = currentPage;
+	                if(maxPage === ""){
+	                    maxPage = 1;
+	                }
+	                //总页数
+	                var total = response.data.total;
+	               var startPage = response.data.startPage;
+	               var endPage = response.data.endPage;
+	               if(total <= maxPage){
+	                   maxPage = total;
+	               }
+	               if(maxPage<=0){
+	                   maxPage = 1;
+	               }
+	               var totalPas = {};
+
+	               for(var i=startPage;i<=endPage;i++){
+	                   totalPas[i-1] = i;
+	               }
+	                //设置当前页和总页数
+	                response.data.totalPage = total;
+	                response.data.nowPage = maxPage+"/"+total;
+	                response.data.totalPas = totalPas;
+	                response.data.currentPage = currentPage;
+	                response.data.page = maxPage;
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    //向后台发送搜索申请的request
+	    todoMgService.operationSearch = function (searchTitle,todoStatus) {
+	        var deferred = $q.defer();
+	       /* $http.jsonp( httpservice.todoManage,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'searchTitle':searchTitle,'todoStatus':todoStatus,'companyId':Session.companyId,'page':1,'pageSize':6}
+	        }).then(function successCallback(response) {*/
+	      $http({
+	            method: 'GET',
+	            url: httpservice.todoManage,
+	            params: {'sessionId': Session.id,'userId': Session.userId,'searchTitle':searchTitle,'todoStatus':todoStatus,'companyId':Session.companyId,'page':1,'pageSize':6}
+	        }).then(function successCallback(response) {
+	                //当前页
+	                var maxPage = 1;
+	                if(maxPage === ""){
+	                    maxPage = 1;
+	                }
+	                //总页数
+	                var total = response.data.total;
+	                var startPage = response.data.startPage;
+	                var endPage = response.data.endPage;
+	                if(total <= maxPage){
+	                    maxPage = total;
+	                }
+	                if(maxPage<=0){
+	                    maxPage = 1;
+	                }
+	                var totalPas = {};
+
+	                for(var i=startPage;i<=endPage;i++){
+	                    totalPas[i-1] = i;
+	                }
+	                //设置当前页和总页数
+	                response.data.totalPage =total;
+	                response.data.nowPage = maxPage+"/"+total;
+	                response.data.totalPas = totalPas;
+	                response.data.page = maxPage;
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    //点击标题获取编辑框数据
+	    todoMgService.openDetail = function (todoStatus,flowId,taskId) {
+	        var deferred = $q.defer();
+	      /*  $http.jsonp(httpservice.todoEdit,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'todoStatus':todoStatus,'companyId':Session.companyId,'flowId':flowId,'taskId':taskId}
+	        }).then(function successCallback(response) {*/
+	        $http({
+	            method: 'GET',
+	            url: httpservice.todoEdit,
+	            params: { 'sessionId': Session.id,'userId': Session.userId,'todoStatus':todoStatus,'companyId':Session.companyId,'flowId':flowId,'taskId':taskId}
+	        }).then(function successCallback(response) {
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return todoMgService;
+	};
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/8.
+	 */
+	module.exports=function($scope,$stateParams,todoMgService,$rootScope){
+	    $scope.todoMgs={};
+	    $scope.todoStatus=$stateParams.todoStatus;
+	    $scope.currentPage=1;
+	    $scope.todoDetail={};
+	    $scope.getList=function(todoStatus,currentPage,searchTitle) {
+	        todoMgService.todo(todoStatus,currentPage,searchTitle).then(function (data) {
+	            $scope.todoMgs = data.data;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        }, function () {
+	            console.log('todoController 管理_我的任务_我的待办:我的待办列表加载失败！');
+	        });
+	    };
+	    $scope.getList($scope.todoStatus,$scope.currentPage,$scope.searchTitle);
+	    //点击改变页码
+	    $scope.changePage=function(currentPage){
+	        if(currentPage <= $scope.totalPage&&currentPage>0 )
+	        {
+	            $scope.getList( $scope.todoStatus,currentPage,$scope.searchTitle);
+	        }
+	        else
+	        {
+	            console.log('todoController 管理_我的任务_我的待办:我的待办列表页码越界！');
+	        }
+	    };
+	    //点击搜索按钮事件
+	    $scope.operationSearch=function(searchTitle){
+	        $scope.searchTitle=searchTitle;
+	        var todoStatus=$scope.todoStatus;
+	       todoMgService.operationSearch(searchTitle,todoStatus).then(function(data){
+	            $scope.applyMgs=data.data;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('todoController 管理_我的任务_我的待办:搜索我的待办失败！');
+	        });
+	    };
+
+
+	};
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session) {
+	    var todoDetailMgService = {};
+	    //查看待办详情
+	    todoDetailMgService.openDetail = function (todoStatus) {
+	        var deferred = $q.defer();
+	       /* $http.jsonp(httpservice.todoDetail,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'todoStatus':todoStatus,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {*/
+	      $http({
+	            method: 'GET',
+	            url: httpservice.todoDetail,
+	            params: { 'sessionId': Session.id,'userId': Session.userId,'todoStatus':todoStatus,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    //同意或取消待办
+	    todoDetailMgService.operation = function (operation,comment) {
+	        var deferred = $q.defer();
+	       /* $http.jsonp(httpservice.todoDetail,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'flowId':$stateParams.flowId,'operation':operation,'comment':comment,'taskId':$stateParams.taskId,'companyId':Session.companyId}
+	        }).then(function successCallback(response) {*/
+	       $http({
+	            method: 'GET',
+	            url: httpservice.todoManage,
+	            params: {'sessionId': Session.id,'userId': Session.userId,'flowId':$stateParams.flowId,'operation':operation,'comment':comment,'taskId':$stateParams.taskId,'companyId':Session.companyId}
+	        }).then(function successCallback(response) {
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return todoDetailMgService;
+	};
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($scope,$state,todoDetailMgService) {
+	    $scope.comment='';
+	    todoDetailMgService.openDetail($scope.todoStatus).then(function (data) {
+	        $scope.todoEdit = data;
+	    },function () {
+	        console.log('todoDetailController 管理_我的任务_我的待办:查看我的待办详情加载失败！');
+	    });
+	    //同意或拒绝待办
+	    $scope.operation=function(operation){
+	        var comment=$scope.comment;
+	        todoDetailMgService.operation(operation,comment).then(function(data){
+	            $scope.todoMgs=data.data;
+	        },function(){
+	            console.log('todoDetailController 管理_我的任务_我的待办:审批我的待办加载失败！');
+	        });
+	        $state.go('manage.todo',{todoStatus:0});
+	    };
+	};
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session) {
+	    var doneDetailMgService = {};
+	    //打开已办详情
+	    doneDetailMgService.openDetail = function () {
+	        var deferred = $q.defer();
+	       /* $http.jsonp(httpservice.todoDetail,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {*/
+	        $http({
+	            method: 'GET',
+	            url: httpservice.todoDetail,
+	            params: { 'sessionId': Session.id,'userId': Session.userId,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return doneDetailMgService;
+	};
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($scope,$state,doneDetailMgService) {
+	    /* $scope.detailsShow=true;*/
+	    /* $rootScope.fadeShow=true;*/
+	    doneDetailMgService.openDetail().then(function (data) {
+	        $scope.todoEdit = data;
+	    }, function () {
+	        console.log('doneDetailController 管理_我的任务_我的已办:查看已办详情失败！');
+	    });
+	};
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session) {
+	    var todoProcessMgService = {};
+	    //查看我的待办流程图
+	    todoProcessMgService.openImg = function () {
+	        var deferred = $q.defer();
+	      /*  $http.jsonp(httpservice.todoProcess,{
+	            method: 'GET',
+	            params: { callback:"JSON_CALLBACK",
+	                'sessionId': Session.id,'userId': Session.userId,'todoStatus':$stateParams.todoStatus,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {*/
+	        $http({
+	            method: 'GET',
+	            url: httpservice.todoProcess,
+	            params: { 'sessionId': Session.id,'userId': Session.userId,'todoStatus':$stateParams.todoStatus,'companyId':Session.companyId,'flowId':$stateParams.flowId,'taskId':$stateParams.taskId}
+	        }).then(function successCallback(response) {
+	                deferred.resolve(response.data);
+	            }, function errorCallback(response) {
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return todoProcessMgService;
+	};
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/21.
+	 */
+	module.exports=function($scope,$stateParams,todoProcessMgService) {
+	    /* $scope.detailsShow=true;*/
+	    /* $rootScope.fadeShow=true;*/
+	    $scope.todoStatus=$stateParams.todoStatus;
+	    todoProcessMgService.openImg().then(function (data) {
+	        $scope.imgUrl = data.imgUrl;
+	          }, function () {
+	        console.log('todoProcessController 管理_我的任务_我的待办:查看我的待办流程图加载失败！');
+	    });
+	};
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/14.
+	 */
+	module.exports=function($scope,accountMgService){
+	    $scope.btnPwdSet='设置';
+	    $scope.btnPhoneSet='设置';
+	    $scope.btnEmailSet='设置';
+	    $scope.btnWarnSet='设置';
+	    $scope.pwdTitleShow=true;
+	    $scope.pwdContentShow=false;
+	    $scope.phoneTitleShow=true;
+	    $scope.phoneContentShow=false;
+	    $scope.emailTitleShow=true;
+	    $scope.emailContentShow=false;
+	    $scope.warnTitleShow=true;
+	    $scope.warnContentShow=false;
+	    $scope.userPwd='';
+	    $scope.userPhone='';
+	    $scope.userEmail='';
+	    $scope.userWarn='';
+
+	    //初始化时获取用户已绑定的信息
+	    accountMgService.getData().then(function(data){
+	        if(data.userPwd===''||data.userPwd===null||data.userPwd===undefined)
+	        {
+	            $scope.userPwdIcon='fa fa-exclamation-circle warnCor';
+	        }
+	        else
+	        {
+	            $scope.userPwdIcon='fa fa-check-circle successCor';
+	        }
+	        if(data.phone===''||data.phone===null||data.phone===undefined)
+	        {
+	            $scope.userPhoneIcon='fa fa-exclamation-circle warnCor';
+	            $scope.phoneTip='未绑定手机';
+	        }
+	        else
+	        {
+	            $scope.userPhoneIcon='fa fa-check-circle successCor';
+	            $scope.phoneTip=data.phone;
+	        }
+	        if(data.email===''||data.email===null||data.email===undefined)
+	        {
+	            $scope.userEmailIcon='fa fa-exclamation-circle warnCor';
+	            $scope.emailTip='未绑定邮箱';
+	        }
+	        else
+	        {
+	            $scope.userEmailIcon='fa fa-check-circle successCor';
+	            $scope.emailTip=data.email;
+	        }
+	        if(data.questions===''||data.questions===null||data.questions===undefined)
+	        {
+	            $scope.warnTip='未设置安全提醒';
+	            $scope.userWarnIcon='fa fa-exclamation-circle warnCor';
+	        }
+	        else
+	        {
+	            $scope.userWarnIcon='fa fa-check-circle successCor';
+	            $scope.warnTip='已设置安全提醒';
+	            $scope.warnContent=data.questions;
+	        }
+	        $scope.userPhone=data.phone;
+	        $scope.userEmail=data.email;
+	        $scope.userWarn=data.questions;
+
+	    });
+	    //保存Email设置
+	    $scope.saveEmail=function(){
+	        if($scope.email===''||$scope.email===undefined||$scope.email===null)
+	        {
+	            $scope.borderErrCor=true;
+	            console.log($scope.borderErrCor);
+	            $scope.btnDisableCor=true;
+	        }
+	        else
+	        {
+	            $scope.borderErrCor=false;
+	            $scope.btnDisableCor=false;
+	        }
+	    }
+	    //点击设置密码展开与折叠
+	    $scope.setPwd=function(){
+	        $scope.pwdTitleShow=!$scope.pwdTitleShow;
+	        $scope.pwdContentShow=!$scope.pwdContentShow;
+	        if($scope.btnPwdSet==='设置')
+	        {
+	            $scope.btnPwdSet='收起';
+	        }
+	        else
+	        {
+	            $scope.btnPwdSet='设置';
+	        }
+	    };
+	    //点击设置手机展开与折叠
+	    $scope.setPhone=function(){
+	        $scope.phoneTitleShow=!$scope.phoneTitleShow;
+	        $scope.phoneContentShow=!$scope.phoneContentShow;
+	        if($scope.btnPhoneSet==='设置')
+	        {
+	            $scope.btnPhoneSet='收起';
+	        }
+	        else
+	        {
+	            $scope.btnPhoneSet='设置';
+	        }
+	    };
+	    //点击设置邮箱展开与折叠
+	    $scope.setEmail=function(){
+	        $scope.emailTitleShow=!$scope.emailTitleShow;
+	        $scope.emailContentShow=!$scope.emailContentShow;
+	        if($scope.btnEmailSet==='设置')
+	        {
+	            $scope.btnEmailSet='收起';
+	        }
+	        else
+	        {
+	            $scope.btnEmailSet='设置';
+	        }
+	    };
+	    //点击设置安全提醒展开与折叠
+	    $scope.setWarn=function(){
+	        $scope.warnTitleShow=!$scope.warnTitleShow;
+	        $scope.warnContentShow=!$scope.warnContentShow;
+	        if($scope.btnWarnSet==='设置')
+	        {
+	            $scope.btnWarnSet='收起';
+	        }
+	        else
+	        {
+	            $scope.btnWarnSet='设置';
+	        }
+	    };
+	};
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/14.
+	 */
+	module.exports = function ($stateParams, $http, $q, httpservice, Session) {
+	    var accountMgService = {};
+	    accountMgService.getData = function () {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.accountManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	            }
+	        }).then(function successCallback(response){
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return accountMgService;
+	};
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/15.
+	 */
+	module.exports=function($scope,collectionMgService){
+	    /*//控制我的收藏列表和我的关注列表切换显示
+	    $scope.collectionListShow=true;*/
+	    //控制我的收藏菜单样式
+	    $scope.tabCor0='colRed borderBottom';
+	  /*  //我的收藏参数
+	    $scope.tabStatus=0;*/
+	    //分页当前页参数
+	    $scope.currentPage=1;
+	    $scope.searchTitle='';
+	    //默认获取我的收藏列表数据
+	    $scope.getList=function(currentPage,appId,orderId,sortId,operation,searchTitle){
+	        collectionMgService.getData(currentPage,appId,orderId,sortId,operation,searchTitle).then(function(data){
+	          $scope.collectionList=data.collectionList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('collectionMgController 管理_我的应用_我的收藏：收藏列表加载失败！');
+	        });
+	    };
+	    $scope.getList($scope.currentPage,'','','','','');
+	    //点击改变页码
+	    $scope.changePage=function(currentPage){
+	        var searchTitle= $scope.searchTitle;
+	        if(currentPage <= $scope.totalPage&&currentPage>0 )
+	        {
+	            $scope.getList(currentPage,'','','','',searchTitle);
+	        }
+	        else
+	        {
+	            console.log('collectionMgController 管理_我的应用_我的收藏：收藏列表页码越界！');
+	        }
+	    };
+	 /*   //点击标签切换我的申请列表
+	    $scope.tabChange=function(tabStatus) {
+	        $scope.tabStatus = tabStatus;
+	        if(tabStatus===0)
+	        {
+	            $scope.tabCor1='';
+	            $scope.tabCor0='colRed borderBottom';
+	            $scope.collectionListShow=true;
+	            $scope.collectionListShow1=false;
+	        }
+	        else if(tabStatus===1)
+	        {
+	            $scope.tabCor0='';
+	            $scope.collectionListShow=false;
+	            $scope.collectionListShow1=true;
+	            $scope.tabCor1='colRed borderBottom';
+	        }
+	        $scope.getList( $scope.tabStatus,1);
+	    };*/
+	    //点击我的收藏操作
+	    $scope.ChangeOperation=function(appId,orderId,sortId,operation){
+	        var searchTitle= $scope.searchTitle;
+	       $scope.getList($scope.currentPage,appId,orderId,sortId,operation,searchTitle);
+	    }
+	    //点击搜索按钮事件
+	    $scope.searchCollection=function(searchTitle){
+	        $scope.searchTitle=searchTitle;
+	        //获取我的申请列表
+	        $scope.getList(1,'','','','',searchTitle);
+	    };
+	    /*//点击我的关注操作
+	    $scope.AttendationOperation=function(appId,orderId,operation){
+	        $scope.getList($scope.tabStatus,$scope.currentPage,appId,orderId,operation);
+	    }*/
+	};
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/15.
+	 */
+	module.exports=function($stateParams, $http, $q, httpservice, Session) {
+	    var collectionMgService = {};
+	    //获取我的收藏列表数据
+	    collectionMgService.getData = function (currentPage,appId,orderId,sortId,operation,searchTitle) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.collectionManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'page':currentPage,
+	                'pageSize':6,
+	                'appId':appId,
+	                'orderId':orderId,
+	                'sortId':sortId,
+	                'Operation':operation,
+	                'searchTitle':searchTitle
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return collectionMgService;
+	};
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/22.
+	 */
+	module.exports=function($rootScope,$scope,$compile,classMgService){
+	    //分类菜单数据
+	    $scope.classMenuList={};
+	    //控制我的分类和分类维护tab点击样式
+	    $scope.tabCor0='classCor classBackCor';
+	    $scope.tabCor1='classSpan';
+	    //我的分类分类菜单选中样式
+	    $scope.menuClassSelected='selectBackCor_menu';
+	    //我的分类和分类维护tab切换参数，默认0是我的分类,1是分类维护
+	    $scope.tabStatus=0;
+	    //分页当前页参数，currentPage是应用列表当前页码，currentPageAdd是添加应用列表当前页码
+	    $scope.currentPage=1;
+	    $scope.currentPageAdd=1;
+	    //应用列表标题，默认显示为“全部”
+	    $scope.listTitle='全部';
+	    //分类菜单条目ID，默认0是全部
+	    $scope.menuSortId=0;
+	    //分类菜单点击后当前ID，默认是0
+	    $scope.currentId=0;
+	    //新增菜单名字
+	    $scope.menuItem='';
+	    //应用列表标题样式，mY_kind_divTil_Child_tilte是我的分类，mY_kind_divTil_Child_tilte1是分类维护
+	    $scope.listTitleClass='mY_kind_divTil_Child_tilte';
+	    //控制菜单编辑框显示和隐藏
+	    $scope.currentId1=0;
+	    $scope.readonly=true;
+	    //控制添加应用按钮显示
+	    $scope.addAppBtnShow=false;
+	    //控制添加应用弹出框显示
+	    $scope.addAppShow=false;
+	    //记录添加应用时所在的分类ID
+	    $scope.AddSortId=0;
+	    //添加应用列表搜索字段
+	    $scope.searchTitle='';
+	    $scope.sortStatus='';
+	    //加载分类菜单列表数据
+	    $scope.getMenu=function(menuSortId,indexId,menuName,operation){
+	        var sortStatus=$scope.sortStatus;
+	        classMgService.getMenu(menuSortId,indexId,menuName,operation,sortStatus).then(function(data){
+	            $scope.classMenuList=data.menuList;
+	            $scope.sortStatus=data.sortStatus;
+	        },function(){
+	            console.log('classMgController 管理_我的应用_我的分类：分类菜单加载失败！');
+	        });
+	    };
+	    //默认查询分类菜单列表数据
+	    $scope.getMenu(0,0,'','');
+	   //获取分类应用列表数据
+	    $scope.getList=function(currentPage,menuSortId,indexId,appId,operation){
+	        classMgService.getData(currentPage,menuSortId,indexId,appId,operation).then(function(data){
+	            $scope.classList=data.classList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('classMgController 管理_我的应用_我的分类：分类应用列表加载失败！');
+	        });
+	    };
+	    //默认获取全部分类的分类应用列表数据
+	    $scope.getList(1,0,'','','');
+	    //分类应用列表点击改变页码
+	    $scope.changePage=function(currentPage){
+	        if(currentPage <= $scope.totalPage&&currentPage>0 )
+	        {
+	            $scope.getList(currentPage,$scope.menuSortId,'','');
+	        }
+	        else
+	        {
+	            console.log('classMgController 管理_我的应用_我的分类：我的分类应用列表页码越界！');
+	        }
+	    };
+
+	    //点击标签切换我的分类和分类维护tab标签
+	    $scope.tabChange=function(tabStatus) {
+	        //点击新的菜单条目设置之前的编辑状态为不可编辑---如果上一个菜单点击编辑但是没有提交或取消
+	        //点击新的菜单条目清空之前的编辑值并设为初始值 ---如果上一个菜单点击编辑但是没有提交或取消
+	            $scope.readonly=true;
+	            var menuList=$scope.classMenuList;
+	            for(var i=0;i<menuList.length;i++){
+	                if(menuList[i].sortId==oldMenuSortId)
+	                {
+	                    menuList[i].sortName=oldMenuName;
+	                }
+	            }
+	            $scope.classMenuList=menuList;
+	        //设置分类菜单编辑为初始状态--不可编辑
+	        $scope.readonly=true;
+	        //记录我的分类或者分类列表哪个状态，0是我的分类，1是分类维护
+	        $scope.tabStatus = tabStatus;
+	        if(tabStatus===0)
+	        {
+	            //我的分类tab点中样式和分类维护未点中样式
+	            $scope.tabCor1='classSpan';
+	            $scope.tabCor0='classCor classBackCor';
+	            //我的分类---隐藏新增按钮和保存按钮
+	            $scope.addShow=false;
+	            $scope.saveShow=false;
+	            //我的分类---隐藏新增条目
+	            mobileDialogElement.remove();
+	            //我的分类---隐藏添加应用按钮
+	            $scope.addAppBtnShow=false;
+	            //我的分类---隐藏分类维护中显示，但是我的分类不需要显示的
+	            $scope.maintainAShow=false;
+	            //我的分类---初始化分类菜单为全部选中样式
+	            $scope.menuClassSelected='selectBackCor_menu';
+	            //我的分类---初始化应用标题为全部样式
+	            $scope.listTitleClass='mY_kind_divTil_Child_tilte';
+	            //我的分类---初始化分类菜单全部状态选中
+	            $scope.currentId=0;
+	            //我的分类---初始化应用标题变量为全部
+	            $scope.listTitle='全部';
+	            //初始化我的分类（应用列表）数据
+	            $scope.getList(1,0,'','','');
+	        }
+	        else if(tabStatus===1)
+	        {
+	            //分类维护tabCor1 tab点中样式和我的分类tabCor0未点中样式
+	            $scope.tabCor0='';
+	            $scope.tabCor1='classCor classBackCor classSpan';
+	            //我的分类和分类维护切换
+	            $scope.addShow=true;
+	            //分类维护---隐藏新增条目
+	            mobileDialogElement.remove();
+	            //分类维护---隐藏添加应用按钮
+	            $scope.addAppBtnShow=false;
+	            //分类维护---隐藏分类维护中显示，但是我的分类不需要显示的
+	            $scope.maintainAShow=false;
+	            //分类维护---初始化分类菜单为全部选中样式
+	            $scope.menuClassSelected='selectBackCor_menu1';
+	            //分类维护---初始化应用标题为全部样式
+	            $scope.listTitleClass='mY_kind_divTil_Child_tilte1';
+	            //分类维护---初始化分类菜单全部状态选中
+	            $scope.currentId=0;
+	            //分类维护---初始化应用标题变量为全部
+	            $scope.listTitle='全部';
+	            //初始化分类维护（应用列表）数据
+	            $scope.getList(1,0,'','','');
+	        }
+
+	    };
+	    //点击选中分类菜单条目
+	    $scope.classMenuChange=function(menuSortId,menuName)
+	    {
+	        //点击新的菜单条目设置之前的编辑状态为不可编辑---如果上一个菜单点击编辑但是没有提交或取消
+	        //点击新的菜单条目清空之前的编辑值并设为初始值 ---如果上一个菜单点击编辑但是没有提交或取消
+	        if(menuSortId!= $scope.currentId)
+	        {
+	            $scope.readonly=true;
+	            var menuList=$scope.classMenuList;
+	            for(var i=0;i<menuList.length;i++){
+	                if(menuList[i].sortId==oldMenuSortId)
+	                {
+	                    menuList[i].sortName=oldMenuName;
+	                }
+	            }
+	            $scope.classMenuList=menuList;
+
+	        }
+	        $scope.currentPage=1;
+	        $scope.menuSortId=menuSortId;
+	        //选中”全部“分类菜单
+	        if(menuSortId===0)
+	        {
+
+	            //隐藏添加应用按扭
+	            $scope.addAppBtnShow=false;
+	            //隐藏分类维护可操作的，仅作展示
+	            $scope.maintainAShow=false;
+	            if( $scope.tabStatus==0)
+	            {
+	                //我的分类tab时，“全部”菜单样式
+	                $scope.menuClassSelected='selectBackCor_menu';
+	            }
+	            else
+	            {
+	                //分类维护tab，“全部”菜单样式
+	                $scope.menuClassSelected='selectBackCor_menu1';
+	            }
+	            $scope.currentId=0;
+	            $scope.listTitle='全部';
+	        }
+	        else
+	        {
+	            //分类维护tab切非“全部”分类菜单
+	            if( $scope.tabStatus===1) {
+	                //设置添加应用按钮可显示
+	                $scope.addAppBtnShow=true;
+	                $scope.maintainAShow=true;
+	            }
+	            //清空全部分类菜单选中样式
+	            $scope.menuClassSelected='';
+	            //重置当前选中分类菜单Id
+	            $scope.currentId=menuSortId;
+	            //重置当前分类应用的标题--选中分类菜单
+	            $scope.listTitle=menuName;
+
+	        }
+	        //根据分类菜单的切换初始化应用列表数据
+	        $scope.getList(1,menuSortId,'','');
+
+	    };
+	    //点击应用列表维护上移下移删除操作
+	    $scope.ChangeOperation=function(appId,orderId,menuSortId,operation){
+	        $scope.getList($scope.currentPage,menuSortId,orderId,appId,operation);
+	    };
+	    //设置新增菜单变量
+	    var html="<input ng-model='menuItem' class='iptMenu' ng-click='test()'/><img class='removeAddMenu' ng-click='removeMenu()'  src='images/cancel.png'/>";
+	    var template = angular.element(html);
+	    var mobileDialogElement = $compile(template)($scope);
+	    //点击新建菜单
+	    $scope.addMenu=function(){
+	        $scope.menuItem='';
+	        mobileDialogElement = $compile(template)($scope);
+	        angular.element('#menuUl').append(mobileDialogElement);
+	        $scope.addShow=false;
+	        $scope.saveShow=true;
+
+	    };
+	    //点击删除新建菜单
+	    $scope.removeMenu=function(){
+	        mobileDialogElement.remove();
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+
+	    };
+	    //点击保存新建菜单
+	    $scope.saveMenu=function(){
+	        $scope.getMenu(0,0,$scope.menuItem,'add');
+	        mobileDialogElement.remove();
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    };
+	    //点击保存新建菜单
+	    $scope.updateMenu=function(menuId,indexId){
+	        var menuList=$scope.classMenuList;
+	        var newMenuName='';
+	        for(var i=0;i<menuList.length;i++){
+	            if(menuList[i].sortId==menuId)
+	            {
+	              newMenuName= menuList[i].sortName;
+	            }
+	        }
+	        $scope.readonly=true;
+	        $scope.getMenu(menuId,indexId,newMenuName,'update');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    };
+	    //点击删除新建菜单
+	    $scope.delMenu=function(menuId,indexId){
+	        $scope.getMenu(menuId,indexId,'','delete');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    };
+	    //点击上移新建菜单
+	    $scope.upMenu=function(menuId,indexId){
+	        $scope.getMenu(menuId,indexId,'','up');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    };
+	    //点击下移新建菜单
+	    $scope.downMenu=function(menuId,indexId){
+	        $scope.getMenu(menuId,indexId,'','down');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    };
+	    //记录编辑菜单提交前的选中菜单ID和Name值
+	    var oldMenuName='';
+	    var oldMenuSortId='';
+	   //点击编辑菜单
+	    $scope.editMenu=function(menuSortId,currentName){
+	        oldMenuName=currentName;
+	        oldMenuSortId=menuSortId;
+	        $scope.currentId1=menuSortId;
+	        $scope.readonly=false;
+	    };
+	    //点击取消更新菜单
+	    $scope.cancelMenu=function(){
+	        var menuList=$scope.classMenuList;
+	        for(var i=0;i<menuList.length;i++){
+	            if(menuList[i].sortId==oldMenuSortId)
+	            {
+	                menuList[i].sortName=oldMenuName;
+	            }
+	        }
+	        $scope.classMenuList=menuList;
+	        $scope.readonly=true;
+	    };
+	    //获取分类维护添加应用列表数据
+	    $scope.getAppList_nonSort=function(currentPage,searchTitle){
+	        classMgService.getAppList_nonSort(currentPage,searchTitle).then(function(data){
+	            $scope.appList=data.appList;
+	            $scope.totalPageAdd = data.totalPage;
+	            $scope.nowPageAdd = data.nowPage;
+	            $scope.totalPasAdd = data.totalPas;
+	            $scope.currentPageAdd = data.page;
+	        });
+	    };
+	    //点击分类维护添加应用的分页
+	    $scope.changePageAdd=function(currentPageAdd){
+	        if(currentPageAdd <= $scope.totalPageAdd&&currentPageAdd>0 )
+	        {
+	            $scope.getAppList_nonSort(currentPageAdd,$scope.searchTitle);
+	        }
+	        else
+	        {
+	            console.log('classMgController 管理_我的应用_我的分类：分类维护添加应用列表页码越界！');
+	        }
+	    };
+	   //点击加号图标添加应用
+	    $scope.addApp=function(sortId){
+	        $rootScope.fadeShow=true;
+	        $scope.addAppShow=true;
+	        $scope.getAppList_nonSort($scope.currentPageAdd,'');
+	    };
+	    //数组去重
+	    $scope.arrUnique=function unique(arr) {
+	        var result = [], hash = {};
+	        for (var i = 0, elem; (elem = arr[i]) != null; i++) {
+	            if (!hash[elem]) {
+	                result.push(elem);
+	                hash[elem] = true;
+	            }
+	        }
+	        return result;
+	    };
+	    //定义存储添加应用列表中选中值
+	    var appIdList=[];
+	    //添加应用弹出框点击选中一条分类应用
+	    $scope.checkApp=function(chk,appId){
+	        if(chk===false){
+	            for(var i=0;i<appIdList.length;i++)
+	            {
+	                if(appId===appIdList[i])
+	                {
+	                    appIdList.splice(i,1)
+	                }
+	            }
+	        }
+	        if(chk===true)
+	        {
+	            appIdList.push(appId);
+	        }
+	        var newArrApp=$scope.arrUnique([appIdList]);
+	    };
+	    //点击添加应用弹出框中点击确认
+	    $scope.addAppSave=function() {
+	        var sortId = $scope.menuSortId;
+	        classMgService.addApp(appIdList, sortId).then(function (data) {
+	        });
+	        $scope.getList(1,sortId,'','','');
+	        $scope.addAppShow=false;
+	        $rootScope.fadeShow=false;
+	    };
+	    //添加应用弹出框中点击关闭
+	    $scope.closeAddAppWindow=function(){
+	        $scope.addAppShow=false;
+	        $rootScope.fadeShow=false;
+	    };
+	    //搜索添加应用列表
+	    $scope.searchAddApp=function(){
+	        var searchTitle=$scope.searchTitle;
+	        getAppList_nonSort(1,searchTitle);
+	    };
+	    };
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/22.
+	 */
+	module.exports=function($stateParams, $http, $q, httpservice, Session) {
+	    var classMgService = {};
+	    //获取我的分类菜单列表数据
+	    classMgService.getMenu = function (menuId,indexId,menuName,operation,sortStatus) {
+	        var deferred = $q.defer();
+	       /* $http.jsonp(httpservice.classMenuManage,{
+	            method: 'GET',
+	            params: {
+	                callback: "JSON_CALLBACK",
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'sortId':menuId,
+	                'orderId':indexId,
+	                'sortName':menuName,
+	                'operation':operation,
+	                'sortStatus':sortStatus}
+	            }).then(function successCallback(response) {*/
+	       $http({
+	            method: 'GET',
+	            url: httpservice.classMenuManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'sortId':menuId,
+	                'orderId':indexId,
+	                'menuName':menuName,
+	                'operation':operation,
+	                'sortStatus':sortStatus
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取我的分类菜单列表数据
+	    classMgService.getData = function (currentPage,menuSortId,indexId,appId,operation) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.classListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'page': currentPage,
+	                'pageSize': 6,
+	                'sortId':menuSortId,
+	                'indexId':indexId,
+	                'appId':appId,
+	                'operation':operation
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取分类维护未分类的应用列表数据
+	    classMgService.getAppList_nonSort = function (currentPage,searchTitle) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.appListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'searchTitle':searchTitle,
+	                'page': currentPage,
+	                'pageSize': 6
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //保存添加的应用分类
+	    classMgService.addApp = function (appIdList,menuSortId) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.appListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'appIdList':appIdList,
+	                'sortId':menuSortId
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return classMgService;
+	};
+
+/***/ },
+/* 43 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/28.
+	 */
+	module.exports=function($scope,AppclassMgService) {
+	    //分类菜单数据
+	    $scope.classMenuList={};
+	    //我的分类分类菜单选中样式
+	    $scope.menuClassSelected='selectBackCor_menu';
+	    //分页当前页参数，currentPage是应用列表当前页码，currentPageAdd是添加应用列表当前页码
+	    $scope.currentPage=1;
+	    //应用列表标题，默认显示为“全部”
+	    $scope.listTitle='全部';
+	    //分类菜单条目ID，默认0是全部
+	    $scope.menuSortId=0;
+	    //分类菜单点击后当前ID，默认是0
+	    $scope.currentId=0;
+	    //加载分类菜单列表数据
+	    $scope.getMenu=function(){
+	        AppclassMgService.getMenu().then(function(data){
+	            $scope.classMenuList=data.menuList;
+	        },function(){
+	            console.log('AppclassMgController 管理_企业应用_企业分类：分类菜单加载失败！');
+	        });
+	    };
+	    //默认查询分类菜单列表数据
+	    $scope.getMenu();
+	    //获取分类应用列表数据
+	    $scope.getList=function(currentPage,menuSortId){
+	        AppclassMgService.getData(currentPage,menuSortId).then(function(data){
+	            $scope.classList=data.classList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('AppclassMgController 管理_企业应用_企业分类：分类应用列表加载失败！');
+	        });
+	    };
+	    //默认获取全部分类的分类应用列表数据
+	    $scope.getList(1,0);
+	    //分类应用列表点击改变页码
+	    $scope.changePage=function(currentPage){
+	        if(currentPage <= $scope.totalPage&&currentPage>0 )
+	        {
+	            $scope.getList(currentPage,1);
+	        }
+	        else
+	        {
+	            console.log('AppclassMgController 管理_企业应用_企业分类：分类应用列表页码越界！');
+	        }
+	    };
+	    //点击选中分类菜单条目
+	    $scope.classMenuChange=function(menuSortId,menuName)
+	    {
+	        $scope.menuSortId=menuSortId;
+	        //选中”全部“分类菜单
+	        if(menuSortId===0)
+	        {
+	            $scope.currentId=0;
+	            $scope.listTitle='全部';
+	        }
+	        else
+	        {
+	            //清空全部分类菜单选中样式
+	            $scope.menuClassSelected='';
+	            //重置当前选中分类菜单Id
+	            $scope.currentId=menuSortId;
+	            //重置当前分类应用的标题--选中分类菜单
+	            $scope.listTitle=menuName;
+
+	        }
+	        //根据分类菜单的切换初始化应用列表数据
+	        $scope.getList(1,menuSortId);
+	    };
+
+	}
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/28.
+	 */
+	module.exports=function($stateParams, $http, $q, httpservice, Session) {
+	    var AppclassMgService = {};
+	    //获取我的分类菜单列表数据
+	    AppclassMgService.getMenu = function () {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.AppclassMenuManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取我的分类菜单列表数据
+	    AppclassMgService.getData = function (currentPage,menuSortId,indexId,appId,operation) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.AppclassListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'page': currentPage,
+	                'pageSize': 6,
+	                'sortId':menuSortId,
+	                'indexId':indexId,
+	                'appId':appId,
+	                'operation':operation
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return AppclassMgService;
+	}
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/28.
+	 */
+	module.exports=function($rootScope,$scope,$compile,AppclassMaintainMgService) {
+	    //分类菜单数据
+	    $scope.classMenuList={};
+	    //我的分类分类菜单选中样式
+	    $scope.menuClassSelected='selectBackCor_menu1';
+	    //分页当前页参数，currentPage是应用列表当前页码，currentPageAdd是添加应用列表当前页码
+	    $scope.currentPage=1;
+	    $scope.currentPageAdd=1;
+	    //应用列表标题，默认显示为“全部”
+	    $scope.listTitle='全部';
+	    //分类菜单条目ID，默认0是全部
+	    $scope.sortId=0;
+	    //分类菜单点击后当前ID，默认是0
+	    $scope.currentId=0;
+	    //控制添加应用是否显示弹出框
+	    $scope.addAppShow=false;
+	    //控制添加应用按钮图标是否显示
+	    $scope.addAppBtnShow=false;
+	    //添加按钮显示，保存按钮隐藏
+	    $scope.addShow=true;
+	    $scope.sortStatus='';
+	    //控制菜单编辑框显示和隐藏
+	    $scope.currentId1=0;
+	    //加载分类菜单列表数据
+	    $scope.getMenu=function(sortId,orderId,menuName,operation){
+	        var sortStatus= $scope.sortStatus;
+	        AppclassMaintainMgService.getMenu(sortId,orderId,menuName,operation,sortStatus).then(function(data){
+	            $scope.classMenuList=data.menuList;
+	            $scope.sortStatus=data.sortStatus;
+	        },function(){
+	            console.log('AppclassMaintainMgController 管理_企业应用_企业分类：分类维护分类菜单加载失败！');
+	        });
+	    };
+	    //默认查询分类菜单列表数据
+	    $scope.getMenu('','','','');
+	    //获取分类应用列表数据
+	    $scope.getList=function(currentPage,sortId,orderId,appId,operation){
+	        AppclassMaintainMgService.getData(currentPage,sortId,orderId,appId,operation).then(function(data){
+	            $scope.classList=data.classList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('AppclassMaintainMgController 管理_企业应用_企业分类：分类维护分类应用列表加载失败！');
+	        });
+	    };
+	    //默认获取全部分类的分类应用列表数据
+	    $scope.getList(1,0,'','','');
+	    //分类应用列表点击改变页码
+	    $scope.changePage=function(currentPage){
+	        if(currentPage <= $scope.totalPage&&currentPage>0 )
+	        {
+	            $scope.getList(currentPage,1);
+	        }
+	        else
+	        {
+	            console.log('AppclassMaintainMgController 管理_企业应用_企业分类：分类维护分类应用列表页码越界!');
+	        }
+	    };
+	    //点击选中分类菜单条目
+	    $scope.classMenuChange=function(sortId,menuName)
+	    {
+	        //点击新的菜单条目设置之前的编辑状态为不可编辑---如果上一个菜单点击编辑但是没有提交或取消
+	        //点击新的菜单条目清空之前的编辑值并设为初始值 ---如果上一个菜单点击编辑但是没有提交或取消
+	        if(sortId!= $scope.currentId)
+	        {
+	            $scope.readonly=true;
+	            var menuList=$scope.classMenuList;
+	            for(var i=0;i<menuList.length;i++){
+	                if(menuList[i].sortId==oldMenuSortId)
+	                {
+	                    menuList[i].sortName=oldMenuName;
+	                }
+	            }
+	            $scope.classMenuList=menuList;
+
+	        }
+	        $scope.currentPage=1;
+	        $scope.sortId=sortId;
+	        //选中”全部“分类菜单
+	        if(sortId===0)
+	        {
+
+	            //隐藏添加应用按扭
+	            $scope.addAppBtnShow=false;
+	            $scope.currentId=0;
+	            $scope.listTitle='全部';
+	        }
+	        else
+	        {
+	            $scope.addAppBtnShow=true;
+	            //清空全部分类菜单选中样式
+	            $scope.menuClassSelected='';
+	            //重置当前选中分类菜单Id
+	            $scope.currentId=sortId;
+	            //重置当前分类应用的标题--选中分类菜单
+	            $scope.listTitle=menuName;
+
+	        }
+	        //根据分类菜单的切换初始化应用列表数据
+	        $scope.getList(1,sortId,'','');
+
+	    };
+	    //点击应用列表维护上移下移删除操作
+	    $scope.ChangeOperation=function(appId,orderId,sortId,operation){
+	        $scope.getList($scope.currentPage,sortId,orderId,appId,operation);
+	    }
+	    //设置新增菜单变量
+	    var html="<input ng-model='menuItem' class='iptMenu' ng-click='test()'/><img class='removeAddMenu' ng-click='removeMenu()'  src='images/cancel.png'/>";
+	    var template = angular.element(html);
+	    var mobileDialogElement = $compile(template)($scope);
+	    //点击新建菜单
+	    $scope.addMenu=function(){
+	        $scope.menuItem='';
+	        mobileDialogElement = $compile(template)($scope);
+	        angular.element('#menuUl').append(mobileDialogElement);
+	        $scope.addShow=false;
+	        $scope.saveShow=true;
+
+	    }
+	    //点击删除新建菜单
+	    $scope.removeMenu=function(){
+	        mobileDialogElement.remove();
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+
+	    }
+	    //点击保存新建菜单
+	    $scope.saveMenu=function(){
+	        $scope.getMenu('','',$scope.menuItem,'add');
+	        mobileDialogElement.remove();
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    }
+	    //点击保存新建菜单
+	    $scope.updateMenu=function(sortId,orderId){
+	        var menuList=$scope.classMenuList;
+	        var newMenuName='';
+	        for(var i=0;i<menuList.length;i++){
+	            if(menuList[i].sortId==sortId)
+	            {
+	                newMenuName= menuList[i].sortName;
+	            }
+	        }
+	        $scope.readonly=true;
+	        $scope.getMenu(sortId,orderId,newMenuName,'update');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    }
+	    //点击删除新建菜单
+	    $scope.delMenu=function(sortId,orderId){
+	        $scope.getMenu(sortId,orderId,'','delete');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    }
+	    //点击上移新建菜单
+	    $scope.upMenu=function(sortId,orderId){
+	        $scope.getMenu(sortId,orderId,'','up');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    }
+	    //点击下移新建菜单
+	    $scope.downMenu=function(sortId,orderId){
+	        $scope.getMenu(sortId,orderId,'','down');
+	        $scope.menuClassSelected='selectBackCor_menu1';
+	        $scope.currentId=0;
+	        $scope.listTitle='全部';
+	        $scope.getList(1,0,'','','');
+	        $scope.addShow=true;
+	        $scope.saveShow=false;
+	    }
+	    //记录编辑菜单提交前的选中菜单ID和Name值
+	    var oldMenuName='';
+	    var oldMenuSortId='';
+	    //点击编辑菜单
+	    $scope.editMenu=function(sortId,currentName){
+	        oldMenuName=currentName;
+	        oldMenuSortId=sortId;
+	        $scope.currentId1=sortId;
+	        $scope.readonly=false;
+	    }
+	    //点击取消更新菜单
+	    $scope.cancelMenu=function(){
+	        var menuList=$scope.classMenuList;
+	        for(var i=0;i<menuList.length;i++){
+	            if(menuList[i].sortId==oldMenuSortId)
+	            {
+	                menuList[i].sortName=oldMenuName;
+	            }
+	        }
+	        $scope.classMenuList=menuList;
+	        $scope.readonly=true;
+	    }
+	    //获取分类维护添加应用列表数据
+	    $scope.getAppList_nonSort=function(currentPage,searchTitle){
+	        AppclassMaintainMgService.getAppList_nonSort(currentPage,searchTitle).then(function(data){
+	            $scope.appList=data.appList;
+	            $scope.totalPageAdd = data.totalPage;
+	            $scope.nowPageAdd = data.nowPage;
+	            $scope.totalPasAdd = data.totalPas;
+	            $scope.currentPageAdd = data.page;
+	        });
+	    }
+	    //点击分类维护添加应用的分页
+	    $scope.changePageAdd=function(currentPageAdd){
+	        if(currentPageAdd <= $scope.totalPageAdd&&currentPageAdd>0 )
+	        {
+	            $scope.getAppList_nonSort(currentPageAdd,$scope.searchTitle);
+	        }
+	        else
+	        {
+	            console.log('AppclassMaintainMgController 管理_企业应用_企业分类：分类维护添加分类应用列表页码越界！');
+	        }
+	    };
+	    //点击加号图标添加应用
+	    $scope.addApp=function(sortId){
+	        $rootScope.fadeShow=true;
+	        $scope.addAppShow=true;
+	        $scope.getAppList_nonSort($scope.currentPageAdd,'');
+	    }
+	    //数组去重
+	    $scope.arrUnique=function unique(arr) {
+	        var result = [], hash = {};
+	        for (var i = 0, elem; (elem = arr[i]) != null; i++) {
+	            if (!hash[elem]) {
+	                result.push(elem);
+	                hash[elem] = true;
+	            }
+	        }
+	        return result;
+	    }
+	    //定义存储添加应用列表中选中值
+	    var appIdList=[];
+	    //添加应用弹出框点击选中一条分类应用
+	    $scope.checkApp=function(chk,appId){
+	        if(chk===false){
+	            for(var i=0;i<appIdList.length;i++)
+	            {
+	                if(appId===appIdList[i])
+	                {
+	                    appIdList.splice(i,1)
+	                }
+	            }
+	        }
+	        if(chk===true)
+	        {
+	            appIdList.push(appId);
+	        }
+	        var newArrApp=$scope.arrUnique([appIdList]);
+	    }
+	    //点击添加应用弹出框中点击确认
+	    $scope.addAppSave=function() {
+	        var sortId = $scope.sortId;
+	        AppclassMaintainMgService.addApp(appIdList, sortId).then(function (data) {
+	        });
+	        $scope.getList(1,sortId,'','','');
+	        $scope.addAppShow=false;
+	        $rootScope.fadeShow=false;
+	    }
+	    //添加应用弹出框中点击关闭
+	    $scope.closeAddAppWindow=function(){
+	        $scope.addAppShow=false;
+	        $rootScope.fadeShow=false;
+	    }
+	    //搜索添加应用列表
+	    $scope.searchAddApp=function(){
+	        var searchTitle=$scope.searchTitle;
+	        getAppList_nonSort(1,searchTitle);
+	    }
+	}
+
+/***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/28.
+	 */
+	module.exports=function($stateParams, $http, $q, httpservice, Session) {
+	    var AppclassMaintainMgService = {};
+	    //获取我的分类菜单列表数据
+	    AppclassMaintainMgService.getMenu = function (menuId,orderId,menuName,operation,sortStatus) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.AppMaintainclassMenuManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'sortId':menuId,
+	                'orderId':orderId,
+	                'sortName':menuName,
+	                'operation':operation,
+	                'sortStatus':sortStatus
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取我的分类菜单列表数据
+	    AppclassMaintainMgService.getData = function (currentPage,menuSortId,orderId,appId,operation) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.AppMaintainclassListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'page': currentPage,
+	                'pageSize': 6,
+	                'sortId':menuSortId,
+	                'orderId':orderId,
+	                'appId':appId,
+	                'operation':operation
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取分类维护未分类的应用列表数据
+	    AppclassMaintainMgService.getAppList_nonSort = function (currentPage,searchTitle) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.AppappListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'searchTitle':searchTitle,
+	                'page': currentPage,
+	                'pageSize': 6
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //保存添加的应用分类
+	    AppclassMaintainMgService.addApp = function (appIdList,menuSortId) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.appListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'appIdList':appIdList,
+	                'sortId':menuSortId
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return AppclassMaintainMgService;
+	}
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/30.
+	 */
+	module.exports=function($rootScope,$scope,fileReader,businessInfoMgService) {
+	    //应用简介图片
+	    $scope.images = [];
+	    // 组装表单数据
+	    var postData = {
+	        fileName: $scope.imageSrc
+	    };
+	    //调用了fileReader service中的readAsDataUrl方法，此方法中生成了图片的地址url
+	    $scope.getFile = function () {
+	        //console.log($scope.file);
+	        fileReader.readAsDataUrl($scope.file, $scope)
+	            .then(function(result) {
+	                console.log(result);
+	                $scope.imageSrc = result;
+	            });
+	    };
+	    //服务器验证弹出框
+	    $scope.serverShow=false;
+	    //企业基本信息
+	    $scope.businessInfo={
+	        companyName:"",
+	        companyAddress:"",
+	        companyWebSet:"",
+	        phone:"",
+	        fax:"",
+	        serverInfo:''
+	    };
+	    //默认选中第一个服务器地址
+	    $scope.serverSelected=0;
+	    //点击列表状态下拉菜单
+	    $scope.onChange=function(serverSelected){
+	        $scope.serverSelected=serverSelected;
+	    };
+	    //获取企业基本信息
+	    $scope.getBusinessInfo=function(){
+	        businessInfoMgService.getBusinessInfo().then(function(data){
+	            $scope.businessInfo=data.businessInfo;
+	        },function(){
+	            console.log('businessInfoMgController 管理_企业应用_企业信息：获取基本信息保存失败！');
+	        });
+	    };
+	    $scope.getBusinessInfo();
+	    //点击保存企业基本信息
+	    $scope.saveBusinessInfo=function(businessInfo){
+	        businessInfoMgService.saveBusinessInfo(businessInfo).then(function(data){
+	            $scope.businessInfo=data.businessInfo;
+	        },function(){
+	            console.log('businessInfoMgController 管理_企业应用_企业信息：保存基本信息失败！');
+	        });
+	    };
+	    //点击更新企业基本信息
+	    $scope.updateBusinessInfo=function(businessInfo){
+	        businessInfoMgService.updateBusinessInfo(businessInfo).then(function(data){
+	            $scope.businessInfo=data.businessInfo;
+	        },function(){
+	            console.log('businessInfoMgController 管理_企业应用_企业信息：更新基本信息失败！');
+	        });
+	    };
+	    //点击取消服务器弹出框
+	    $scope.closeServer=function(){
+	        $scope.serverShow=false;
+	        $rootScope.fadeShow=false;
+	    }
+	    //点击服务器选择
+	    $scope.onChange=function(server){
+	        $scope.serverShow=true;
+	        $rootScope.fadeShow=true;
+
+	    }
+	};
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/30.
+	 */
+	module.exports=function($stateParams, $http, $q, httpservice, Session) {
+	    var businessInfoMgService = {};
+	    //保存企业基本信息
+	    businessInfoMgService.saveBusinessInfo= function (businessInfo) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'POST',
+	            url: httpservice.businessInfoManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'businessInfo':businessInfo,
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取企业基本信息
+	    businessInfoMgService.getBusinessInfo= function () {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.businessInfoManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'businessInfo':'',
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取企业基本信息
+	    businessInfoMgService.updateBusinessInfo= function (businessInfo) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.businessInfoManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'businessInfo':businessInfo,
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return businessInfoMgService;
+
+	}
+
+/***/ },
+/* 49 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/30.
+	 */
+	module.exports=function($rootScope,$scope,businessInfoUserMgService) {
+	    //默认新建和编辑用户弹出框，用户组弹出框，导入弹出框均为隐藏
+	    $scope.userShow=false;
+	    $scope.userGroupShow=false;
+	    $scope.userImportShow=false;
+	    $scope.searchTitle_user='';
+	    $scope.user={
+	        "userId":'',
+	        "userName": '',
+	        "userPhone": '',
+	        "userEmail": '',
+	        "userGroup":'',
+	        "orderId":''
+	    };
+	    $scope.userGroupList={};
+	    $scope.userGroup='all';
+	    $scope.currentPage=1;
+	    $scope.currentPageImport=1;
+
+	    //获取用户组下拉框列表数据
+	    businessInfoUserMgService.getUserGroup_select().then(function(data){
+	        $scope.userGroupList_select=data.userGroupList;
+	    },function(){
+	        console.log('businessInfoUserController 管理_企业应用_企业信息（用户）：用户组菜单加载失败！');
+	    });
+	    //获取左侧tree用户组列表
+	  function getUserGroup(){
+	    businessInfoUserMgService.getUserGroup().then(function(data){
+	        $scope.userGroupList=data.userGroupList;
+	       //绑定tree数据
+	        $scope.treeBind( $scope.userGroupList);
+	    },function(){
+	        console.log('businessInfoUserController 管理_企业应用_企业信息（用户）：用户组菜单加载失败！');
+	    });
+	    };
+	    getUserGroup();
+	    //tree列表绑定数据
+	    $scope.treeBind=function(treeData) {
+	        $('#treeUserGroup').treeview({
+	            expandIcon: 'fa fa-plus-square',
+	            collapseIcon: 'fa fa-minus-square',
+	            nodeIcon: "fa fa-users usersGroup",
+	            data: $scope.userGroupList,
+	           onNodeSelected: function (event, data) {
+	               getUsers(data.groupId,$scope.searchTitle_user,1);
+	               $scope.userGroup=data.groupId;
+	             }
+	        });
+	    };
+
+	    //定义存储添加用户
+	    var str="";//
+	    $scope.choseArr=[];//定义数组用于存放前端显示
+	    var flag='';//是否点击了全选，是为a
+	    $scope.chk=false;//默认未选中
+
+	    //选中全部用户
+	    $scope.checkUserAll= function (checkAll,user) {//全选
+	        if(checkAll==true){
+	            $scope.chk=true;
+	            var arrUser=new Array();
+	            for(var i=0;i<user.length;i++)
+	            {
+	                arrUser.push(user[i].userId);
+	            }
+	            $scope.choseArr=arrUser;
+	        }else{
+	            $scope.chk=false;
+	            $scope.choseArr=[];
+	        }
+	        flag='a';
+	    };
+	    //选中用户
+	    $scope.checkUser= function (chk,userId) {//单选或者多选
+	        if(flag=='a') {//在全选的基础上操作
+	            str = $scope.choseArr.join(',') + ',';
+	        }
+	        if (chk == true) {//选中
+	            str = str + userId + ',';
+	        } else {
+	            str = str.replace(userId + ',', '');//取消选中
+	        }
+	        $scope.choseArr=(str.substr(0,str.length-1)).split(',');
+	    };
+	    //定义存储添加用户
+	    var strImport="";//
+	    $scope.userImportIdList=[];//定义数组用于存放前端显示
+	    var flagImport='';//是否点击了全选，是为a
+	    $scope.chkImport=false;//默认未选中
+	    //选中全部导入用户
+	    $scope.checkUserImportAll= function (checkAllImport,user) {//全选
+	        if(checkAllImport==true){
+	            $scope.chkImport=true;
+	            $scope.choseArrImport=user;
+	        }else{
+	            $scope.chkImport=false;
+	            $scope.choseArrImport=[];
+	        }
+	        flagImport='a';
+	    };
+	    //选中导入用户
+	    $scope.checkUserImport= function (chkImport,user) {//单选或者多选
+	        if(flagImport=='a') {//在全选的基础上操作
+	            strImport = $scope.choseArrImport.join(',') + ',';
+	        }
+	        if (chkImport == true) {//选中
+	            strImport = strImport + user + ',';
+	        } else {
+	            strImport = strImport.replace(user + ',', '');//取消选中
+	        }
+	        $scope.choseArrImport=(strImport.substr(0,strImport.length-1)).split(',');
+	    };
+	    //点击导入用户窗口确认
+	    $scope.saveImportUsers=function(){
+	        var choseArrImport= $scope.choseArrImport;
+	        businessInfoUserMgService.saveImportUsers(choseArrImport).then(function(data){
+	            $scope.userList=data.userList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+
+	            $scope.userImportShow=false;
+	            $rootScope.fadeShow=false;
+	        },function(){
+	            console.log('businessInfoUserController 管理_企业应用_企业信息（用户）：导入用户失败！');
+	        });
+
+	    };
+	    //点击批量删除
+	    $scope.deleteAll= function () {// 操作CURD
+	        var userGroup=$scope.userGroup;
+	        var searchTitle=$scope.searchTitle;
+	        if($scope.choseArr[0]==""||$scope.choseArr.length==0){//没有选择一个的时候提示
+	            alert("请至少选中一条数据再操作！")
+	            return;
+	        };
+	        var userIdList=$scope.choseArr;
+	        /*for(var i=0;i<$scope.choseArr.length;i++){
+	            console.log($scope.choseArr[i]);//遍历选中的id
+	        }*/
+	        businessInfoUserMgService.deleteUsers(userGroup,searchTitle,userIdList,1).then(function(data){
+	            $scope.userList=data.userList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('businessInfoUserController 管理_企业应用_企业信息（用户）：用户批量删除失败！');
+	        });
+	    };
+	    //获取所有用户
+	   function  getUsers(userGroup,searchTitle,currentPage){
+	        businessInfoUserMgService.getUsers(userGroup,searchTitle,currentPage).then(function(data){
+	            $scope.userList=data.userList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('businessInfoUserController 管理_企业应用_企业信息（用户）：获取用户数据失败！');
+	        });
+	    };
+	   //默认获取所有用户
+	    getUsers('all','',1);
+	    //点击改变页码
+	    $scope.changePage=function(currentPage){
+	        var userGroup=$scope.userGroup;
+	        var searchTitle=$scope.searchTitle_user;
+	        if(currentPage <= $scope.totalPage&&currentPage>0)
+	        {
+	            getUsers(userGroup,searchTitle,currentPage);
+	        }
+	        else
+	        {
+	            console.log('businessInfoUserController 管理_我的任务_我的申请:我的申请列表页码越界');
+	        }
+	    };
+	    //点击新建用户
+	    $scope.addUser=function(){
+	        $rootScope.fadeShow=true;
+	        $scope.userShow=true;
+	        $scope.user={
+	            "userId":'',
+	            "userName": '',
+	            "userPhone": '',
+	            "userEmail": '',
+	            "userGroup":'',
+	            "orderId":''
+	        }
+	        $scope.userGroupSelected=-1;
+	    };
+	    //点击导入用户
+	    $scope.importUser=function(){
+	        $rootScope.fadeShow=true;
+	        $scope.userImportShow=true;
+	    };
+	    //点击关闭导入用户窗口
+	    $scope.closeImportUser=function(){
+	        $scope.userImportShow=false;
+	        $rootScope.fadeShow=false;
+	    };
+	    //导入用户搜索条件
+	    $scope.importUserTitle='';
+	    $scope.importUserGroup='';
+	    //点击导入用户搜索
+	    $scope.importUserSearch=function(importUserTitle,importUserGroup,currentPageImport){
+	        businessInfoUserMgService.importUserSearch(importUserTitle,importUserGroup,currentPageImport).then(function(data){
+	            $scope.userImportList=data.userList;
+	            $scope.totalPageImport = data.totalPage;
+	            $scope.nowPageImport = data.nowPage;
+	            $scope.totalPasImport = data.totalPas;
+	            $scope.currentPageImport = data.page;
+	        },function(){
+	            console.log('businessInfoUserController 管理_企业应用_企业信息（用户）：导入用户查询失败！');
+	        });
+	    };
+	    //点击改变页码
+	    $scope.changePageImport=function(currentPageImport){
+	        if(currentPageImport <= $scope.totalPage&&currentPageImport>0 )
+	        {
+	            $scope.importUserSearch($scope.importUserTitle,$scope.importUserGroup,currentPageImport);
+	        }
+	        else
+	        {
+	            console.log('businessInfoUserController 管理_企业应用_企业信息（用户）:用户导入列表页码越界');
+	        }
+	    };
+	    //点击关闭新建或编辑用户窗口
+	    $scope.closeUser=function(){
+	        $rootScope.fadeShow=false;
+	        $scope.userShow=false;
+	    };
+	    //上移，下移，删除用户
+	    $scope.userOperation=function(userId,orderId,userGroup,operation){
+	        var searchTitle=$scope.searchTitle_user;
+	        businessInfoUserMgService.userOperation(userId,orderId,userGroup,searchTitle,operation,1).then(function(data){
+	            $scope.userList=data.userList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('businessInfoUserController 管理_企业应用_企业信息（用户）：用户操作失败！');
+	        });
+	    };
+	    //点击编辑用户
+	    $scope.editUser=function(user){
+	        $scope.userShow=true;
+	        $rootScope.fadeShow=true;
+	        $scope.user=user;
+	        $scope.userGroupSelected=user.userGroup;
+	    };
+	    //点击确认新建或编辑用户窗口
+	    $scope.saveUser=function(user){
+	      console.log(user);
+	    };
+	    //点击搜素用户
+	    $scope.searchUser=function(searchTitle){
+	       getUsers($scope.userGroup,searchTitle,$scope.currentPage);
+	    };
+	};
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/3/30.
+	 */
+	module.exports=function($stateParams, $http, $q, httpservice, Session) {
+	    var businessInfoUserMgService = {};
+	    //获取下拉框用户组数据
+	    businessInfoUserMgService.getUserGroup_select=function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userGroupSelectManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取tree用户组数据
+	    businessInfoUserMgService.getUserGroup=function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userGroupManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //查询用户列表
+	    businessInfoUserMgService.getUsers=function(userGroup,searchTitle,currentPage){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'userGroup':userGroup,
+	                'currentPage':currentPage,
+	                'pageSize':10,
+	                'searchTitle':searchTitle
+	        }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //上移，下移，删除用户后获取用户列表
+	    businessInfoUserMgService.userOperation=function(userId,orderId,userGroup,searchTitle,operation,currentPage){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userOprManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'userGroup':userGroup,
+	                'userId':userId,
+	                'orderId':orderId,
+	                'searchTitle':searchTitle,
+	                'operation':operation,
+	                'currentPage':currentPage,
+	                'pageSize':10
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //批量删除用户
+	    businessInfoUserMgService.deleteUsers=function(userGroup,searchTitle,userIdList,currentPage){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userDelManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'userGroup':userGroup,
+	                'userIdList':userIdList,
+	                'searchTitle':searchTitle,
+	                'currentPage':currentPage,
+	                'pageSize':10
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //点击查询导入用户
+	    businessInfoUserMgService.importUserSearch=function(importUserTitle,importUserGroup,currentPageImport){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userImportAddManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'importUserTitle':importUserTitle,
+	                'importUserGroup':importUserGroup,
+	                'currentPage':currentPageImport,
+	                'pageSize':5
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPageImport;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //点击查询导入用户
+	    businessInfoUserMgService.saveImportUsers=function(choseArrImport){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userImportManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'userList':choseArrImport,
+	                'currentPage':1,
+	                'pageSize':10
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return businessInfoUserMgService;
+	};
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/4/5.
+	 */
+	module.exports=function($rootScope,$scope,businessInfoUserGroupMgService) {
+	    $scope.currentPage=1;
+	    $scope.GroupId='all';
+	    $scope.userGroupShow=false;
+	    $scope.userGroup1={};
+	   var oldUserGroup=null;
+	    var oldUserGroupList=null;
+	    var oldIndex=0;
+	    $scope.searchTitle_userGroup='';
+	    //获取左侧tree用户组菜单
+	   function getUserGroup(){
+	        businessInfoUserGroupMgService.getUserGroupTree().then(function(data){
+	            $scope.userGroupTree=data.userGroupList;
+	            //绑定tree数据
+	            treeBind();
+	        },function(){
+	            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组加载失败！');
+	        });
+	    };
+	    getUserGroup();
+	    //用户组左侧菜单tree列表绑定数据
+	    function treeBind() {
+	        $('#treeUserGroup').treeview({
+	            expandIcon: 'fa fa-plus-square',
+	            collapseIcon: 'fa fa-minus-square',
+	            nodeIcon: "fa fa-users usersGroup",
+	            data:$scope.userGroupTree,
+	            onNodeSelected: function (event, data) {
+	                getUserGroupList(data.groupId,1);
+	            }
+	        });
+	    };
+	    //获取用户组列表菜单
+	   function getUserGroupList(GroupId,currentPage){
+	       var searchTitle=$scope.searchTitle_userGroup;
+	        businessInfoUserGroupMgService.getUserGroupList(GroupId,searchTitle,currentPage).then(function(data){
+	            $scope.userGroupList=data.userGroupList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组列表加载失败！');
+	        });
+	    };
+	    getUserGroupList('all',1);
+	    //用户组列表点击页码
+	     $scope.changePage=function(currentPage){
+	        var GroupId=$scope.GroupId;
+	        if(currentPage <= $scope.totalPage&&currentPage>0)
+	        {
+	            getUserGroupList(GroupId,currentPage);
+	        }
+	        else
+	        {
+	            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组列表页码越界');
+	        }
+	    };
+
+	    //点击新建用户组
+	    $scope.createUserGroup=function(){
+	        $scope.userGroup1={};
+	        $rootScope.fadeShow=true;
+	        $scope.userGroupShow=true;
+	    };
+	    //点击关闭用户组弹出框
+	    $scope.closeUserGroup=function(){
+	        $scope.userGroup1=oldUserGroup;
+	        $scope.userGroupList=oldUserGroupList;
+	        $rootScope.fadeShow=false;
+	        $scope.userGroupShow=false;
+	    };
+	    //点击编辑用户组
+	    $scope.editUserGroup=function(index,userGroup,userGroupList){
+	        if(oldUserGroup==null||oldIndex!=index)
+	        {
+	            oldUserGroup=angular.copy(userGroup);
+	            oldUserGroupList=angular.copy(userGroupList);
+	            oldIndex=index;
+	            $scope.userGroup1=userGroup;
+	        }
+	        else
+	        {
+	            $scope.userGroup1=oldUserGroup;
+	        }
+	        $rootScope.fadeShow=true;
+	        $scope.userGroupShow=true;
+	    };
+	    //点击确认用户组新建或编辑
+	    $scope.saveUserGroup=function(userGroup1){
+	        oldUserGroup=null;
+	        oldIndex=0;
+	        $rootScope.fadeShow=false;
+	        $scope.userGroupShow=false;
+	        businessInfoUserGroupMgService.saveUserGroup(userGroup1,1).then(function(data){
+	            $scope.userGroupList=data.userGroupList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：编辑用户组失败！');
+	        });
+	    }
+	    //点击上移，下移，删除用户组
+	    $scope.userGroupOperation=function(groupId,orderId,operation){
+	        var searchTitle=$scope.searchTitle_userGroup;
+	        businessInfoUserGroupMgService.userGroupOperation(groupId,orderId,searchTitle,operation,1).then(function(data){
+	            $scope.userGroupList=data.userGroupList;
+	            $scope.totalPage = data.totalPage;
+	            $scope.nowPage = data.nowPage;
+	            $scope.totalPas = data.totalPas;
+	            $scope.currentPage = data.page;
+	        },function(){
+	            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组列表加载失败！');
+	        });
+	    }
+	    //点击搜索
+	    $scope.searchUserGroup=function(groupName){
+	        $scope.searchTitle_userGroup=groupName;
+	        getUserGroupList($scope.GroupId,1);
+	    }
+	};
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Sky on 2016/4/5.
+	 */
+	module.exports=function($stateParams, $http, $q, httpservice, Session) {
+	    var businessInfoUserGroupMgService = {};
+	    //获取tree用户组数据
+	    businessInfoUserGroupMgService.getUserGroupTree=function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userGroupManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId
+	            }
+	        }).then(function successCallback(response) {
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //获取列表用户组数据
+	    businessInfoUserGroupMgService.getUserGroupList=function(GroupId,searchTitle,currentPage){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userGroupListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'groupId':GroupId,
+	                'searchTitle':searchTitle,
+	                'page':currentPage,
+	                'pageSize':10
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //上移，下移，删除后获取用户组列表数据
+	    businessInfoUserGroupMgService.userGroupOperation=function(groupId,orderId,searchTitle,operation,currentPage){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userGroupListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'groupId':groupId,
+	                'orderId':orderId,
+	                'searchTitle':searchTitle,
+	                'operation':operation,
+	                'page':currentPage,
+	                'pageSize':10
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    //编辑保存用户组列表数据
+	    businessInfoUserGroupMgService.saveUserGroup=function(userGroup,currentPage){
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: httpservice.userGroupListManage,
+	            params: {
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'companyId':Session.companyId,
+	                'userGroup':userGroup,
+	                'page':currentPage,
+	                'pageSize':10
+	            }
+	        }).then(function successCallback(response) {
+	            //当前页
+	            var maxPage = currentPage;
+	            if(maxPage === ""){
+	                maxPage = 1;
+	            }
+	            //总页数
+	            var total = response.data.total;
+	            var startPage = response.data.startPage;
+	            var endPage = response.data.endPage;
+	            if(total <= maxPage){
+	                maxPage = total;
+	            }
+	            if(maxPage<=0){
+	                maxPage = 1;
+	            }
+	            var totalPas = {};
+
+	            for(var i=startPage;i<=endPage;i++){
+	                totalPas[i-1] = i;
+	            }
+	            //设置当前页和总页数
+	            response.data.totalPage =total;
+	            response.data.nowPage = maxPage+"/"+total;
+	            response.data.totalPas = totalPas;
+	            response.data.page = maxPage;
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            deferred.reject(response.data);
+	        });
+	        return deferred.promise;
+	    };
+	    return businessInfoUserGroupMgService;
+	};
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/10.
+	 */
+	module.exports = function($scope,$stateParams,PersonService){
+
+	    $scope.p = {
+	        person : {
+	            English:"",//名字
+	            Nickname:"",//昵称
+	            Name:"",//姓名
+	            Sex:""
+	        },
+	        //公司信息
+	        companyinfo:{
+	            Jobnumber:""//员工ID
+	        },
+	        //工作地址
+	        workaddress:{
+	            Company:"",//公司名称
+	            Street:"",//街道
+	            City:"",//城市
+	            Provinces:"",//省份
+	            Postcode:"",//邮政编码
+	            Country:""//国家
+	        },
+	        //家庭住址
+	        homeaddress:{
+	            Street:"",//街道
+	            City:"",//城市
+	            Provinces:"",//省份
+	            Postcode:"",//邮政编码
+	            Country:""//国家
+	        },
+	        //联系电话
+	        phone:{
+	            Workphone:"",//工作电话
+	            Extension:"",//工作分机
+	            Workfax:"",//工作传真
+	            Otherworkphone:"",//其他工作电话
+	            Homephone:"",//家庭电话
+	            Pagers:"",//传呼机
+	            Otherphone:"",//其他电话
+	            Mobilephone:""//移动电话
+	        },
+	        //电子邮件地址
+	        email:{
+	            Address:""//邮件地址
+	        },
+	        //紧急联系信息
+	        Emergency:{
+	            Name:"",//名称
+	            Address:"",//地址
+	            Phone:"",//电话
+	            Relation:""
+	        }
+	    };
+
+	    //称谓
+	    $scope.sexs = [
+	        {key:'1',sex:'先生',station:true},
+	        {key:'2',sex:'女士',station:true},
+	        {key:'3',sex:'保密',station:true}
+	    ];
+	    //国家
+	    $scope.countrys = [
+	        {key:'1',country:'中华人民共和国',station:true},
+	        {key:'2',country:'美帝',station:true},
+	        {key:'3',country:'古罗马',station:true},
+	        {key:'4',country:'希腊',station:true}
+	    ];
+	    //关系
+	    $scope.relations = [
+	        {key:'1',relation:"家人",station:true},
+	        {key:'2',relation:"朋友",station:true},
+	        {key:'3',relation:"其他",station:true}
+	    ];
+
+	    var mode = $stateParams.mode;
+
+	    PersonService.select().then(function(data){
+	        //console.log("111111");
+	        $scope.p = data;
+	        mode = "1";
+	    });
+
+	    $scope.Save = function(p){
+	        //console.log("222222");
+	        PersonService.save(p).then(function(data){
+	            $scope.p = data;
+	        })
+	    };
+
+
+	};
+
+/***/ },
+/* 54 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/10.
+	 */
+	module.exports=function($stateParams,$http,$q,httpservice,Session) {
+
+	    var PersonService = {};
+
+	    PersonService.save = function(p){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'POST',
+	            url:httpservice.person_manage_save,
+	            params:{'personinfo':p,'sessionId': Session.id,'userId': Session.userId}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("SaveFaild    个人信息保存失败");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    PersonService.select = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.person_manage_select,
+	            params:{'sessionId': Session.id,'userId': Session.userId}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("SelectFaild");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+	    return PersonService;
+	};
+
+/***/ },
+/* 55 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/23.
+	 */
+	module.exports=function($scope,busAppService){
+	    //默认构建新应用弹出框为隐藏 ng-show=false
+	    $scope.showcreat = false;
+	    //企业应用
+	    $scope.buss={};
+	    //企业应用新版本信息展示
+	    $scope.appnewinfo={};
+
+	    //关闭构建新应用弹出页
+	    $scope.closeCreate = function(){
+	        $scope.showcreat = false;
+	    };
+
+	    //查询企业应用内容
+	    busAppService.select($scope.buss).then(function(data){
+	        $scope.buss = data.bus;
+	    },function(){
+	        console.log("busAppController   管理_企业应用_企业应用:查询企业应用失败");
+	    });
+
+	    //创建新应用
+	    $scope.createNew = function(appId){
+	        busAppService.selectinfo($scope.appnewinfo,appId).then(function(data){
+	            $scope.appnewinfo=data.info;
+
+	            //console.log("查询成功");
+	        },function(){
+	            console.log("busAppController   管理_企业应用_企业应用:构建新应用查询失败");
+	        });
+	        //构建新应用弹出框为显示 ng-show=true
+	        $scope.showcreat = true;
+	    };
+
+	    //选择发布范围
+	    $scope.createConfines = function(appId){
+	        busAppService.getConfines(appId).then(function(data){
+	            $scope.userGroupList=data.userGroupList;
+	            //绑定tree数据
+	            $scope.treeBind();
+	        },function(){
+	            console.log("busAppController  管理_企业应用_企业应用: 发布范围");
+	        });
+	        $scope.showconfines = true;
+	    };
+
+	    //tree列表绑定数据
+	    $scope.treeBind=function() {
+	        $('#treeList').treeview({
+	            expandIcon: 'fa fa-plus-square',//折叠加号图标
+	            collapseIcon: 'fa fa-minus-square',//展开减号图标
+	            nodeIcon: "fa fa-users usersGroup",//节点图标
+	            data: $scope.userGroupList,
+	            onNodeSelected: function (event, data) {
+	                //$('#treeService').treeview('unselectNode', [data.nodeId, {silent: true}]);
+	                //$scope.getUsers(data.href);
+	                //$scope.userUp=data.href;
+	                $scope.userdata = data;
+	            }
+	        });
+	    };
+
+	    //关闭发布范围弹出框
+	    $scope.closeConfines = function(){
+	        $scope.showconfines = false;
+	    };
+
+	    $scope.saveNew = function(appnewinfo){
+	        busAppService.save(appnewinfo).then(function () {
+	            $scope.closeCreate();
+	        },function(){
+	            console.log("busAppController   管理_企业应用_企业应用:构建新应用失败");
+	        })
+	    };
+
+	};
+
+/***/ },
+/* 56 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/23.
+	 */
+	module.exports = function($http,$q,httpservice,Session){
+	    var busAppService = {};
+
+	    //查询企业应用
+	    busAppService.select = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.select_manage_bus,
+	            params:{'sessionId': Session.id,'userId': Session.userId}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("busAppService  管理_企业应用_企业应用:查询企业应用失败");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    //根据应用ID查询详细内容
+	    busAppService.selectinfo = function(appId){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.select_createNew_manage_bus,
+	            params:{'sessionId': Session.id,'userId': Session.userId,"appId" : appId}
+	        }).then(function successCallback(response){
+	                //console.log(response.data);
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("管理_企业应用_企业应用_构建新版本:根据应用ID查询版本详情失败");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    //保存新版本
+	    busAppService.save = function(p){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'POST',
+	            url:httpservice.save_createNew_manage_bus,
+	            params:{'personinfo':p,'sessionId': Session.id,'userId': Session.userId}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("管理_企业应用_企业应用_构建新版本:构建新版本保存失败");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    busAppService.getConfines = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.manage_appset_putup_no4_left,
+	            params:{
+	                'sessionId': Session.id,
+	                'userId': Session.userId
+	            }
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("busAppServcie  管理_企业应用_企业应用_构建新版本:获取左侧Tree ");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    return busAppService;
+	};
+
+/***/ },
+/* 57 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/25.
+	 */
+	module.exports = function($scope,$stateParams,newPutService){
+	    $scope.putup={};
+
+	    $scope.station = $stateParams.Status;
+	    //console.log($scope.station);
+
+	    //语言
+	    $scope.languages = [
+	        {key:'1',language:'中文',station:true},
+	        {key:'2',language:'英语',station:true},
+	        {key:'3',language:'法语',station:true},
+	        {key:'4',language:'俄语',station:true}
+	    ];
+
+	    //类别
+	    $scope.types = [
+	        {key:'1',type:'音乐',station:true},
+	        {key:'2',type:'视频',station:true},
+	        {key:'3',type:'娱乐',station:true},
+	        {key:'4',type:'运动',station:true}
+	    ];
+
+	    $scope.Save_No1= function(putup){
+	        newPutService.save_no1(putup).then(function (data){
+	            alert("保存成功");
+	        },function(){
+	            console.log("newPutController  管理_应用设置_应用上架:发布新应用 第一步(基本信息)");
+	        });
+	    };
+
+	};
+
+/***/ },
+/* 58 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/25.
+	 */
+	module.exports = function($stateParams,$http,$q,httpservice,Session){
+	    var newPutService = {};
+
+	    newPutService.save_no1 = function(putup){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'POST',
+	            url:httpservice.manage_appset_putup_no1_save,
+	            params:{'info_No1':putup,'sessionId': Session.id,'userId': Session.userId}
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("newPutServcie  管理_应用设置_应用上架:发布新应用 第一步(基本信息)");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    return newPutService
+	};
+
+/***/ },
+/* 59 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function($scope,newPut2Service,fileReader){
+	    //发送到服务器端的数据
+	    $scope.putup2={};
+
+	    //Logo图标
+	    $scope.logoImage;
+
+	    //应用简介图片
+	    $scope.showImages = [];
+	    //是否显示上传框(应用简介图片)
+	    $scope.showupimages = "showupimages_show";
+
+	    // 组装表单数据
+	    var postData;
+
+	    //上传Logo图片
+	    //调用了fileReader service中的readAsDataUrl方法，此方法中生成了图片的地址url
+	    $scope.upLogoImage = function(){
+	        fileReader.readAsDataUrl($scope.file, $scope)
+	            .then(function(result) {
+	                $scope.logoImage = result;
+	            });
+	    };
+
+	    //上传简介图片
+	    $scope.upShowImages = function(){
+	        fileReader.readAsDataUrl($scope.file, $scope)
+	            .then(function(result) {
+	                $scope.showImages.push(result);
+	                //如果图片超过5张,隐藏上传框
+	                if($scope.showImages.length===5){
+	                    $scope.showupimages = "showupimages_hidden";
+	                }
+	            });
+	    };
+
+	    //保存应用详情内容到服务器端数据库
+	    $scope.Save_No2 = function(){
+	        //console.log(putup3);
+	        postData = postMultipart();
+
+	        newPut2Service.save_no2(postData).then(function (data){
+	            alert("保存成功");
+	        },function(){
+	            console.log("newPut2Controller  管理_应用设置_应用上架:发布新应用 第二步(应用详情)");
+	        });
+	    };
+
+	    //移除简介图片数组中指定图片
+	    $scope.delectimage = function($index,image){
+	        //console.log($index);
+	        //console.log(image);
+	        $scope.showImages.splice($scope.showImages.indexOf(image),1);
+	        //$scope.showImages.splice($index,1);
+	        //如果图片少于5张,显示上传框
+	        if($scope.showImages.length<5){
+	            $scope.showupimages = "showupimages_show";
+	        }
+
+	    };
+
+	    //调用了fileReader service中的readAsDataUrl方法，此方法中生成了图片的地址url
+	    $scope.getFile = function () {
+	        //console.log($scope.file);
+	        fileReader.readAsDataUrl($scope.file, $scope)
+	            .then(function(result) {
+	                $scope.logoImage = result;
+	            });
+	    };
+
+	    //发送请求的数据封装
+	    function postMultipart() {
+	        //通过FormData保存需要发送的数据
+	        var fd = new FormData();
+	        fd.append("logoImage",$scope.logoImage);
+	        angular.forEach($scope.showImages, function(val, key) {
+	            fd.append(key, val);
+	        });
+
+	        return fd;
+	    }
+
+	};
+
+/***/ },
+/* 60 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function($stateParams,$http,$q,httpservice,Session){
+	    var newPut2Service = {};
+
+	    newPut2Service.save_no2 = function(postData){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'POST',
+	            url:httpservice.manage_appset_putup_no2_save,
+	            params:{'sessionId': Session.id,'userId': Session.userId},
+	            headers: {'Content-Type': undefined},
+	            data:postData
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("newPut2Servcie  管理_应用设置_应用上架:发布新应用 第二步(应用详情)");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    return newPut2Service;
+	};
+
+/***/ },
+/* 61 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function($scope,newPut3Service){
+	    $scope.putup3={};
+
+	    //授权协议
+	    $scope.Licenses = [
+	        {key:'1',Lice:'OAuth2.0 Server-side',station:true},
+	        {key:'2',Lice:'OAuth3.0 Server-side',station:true},
+	        {key:'3',Lice:'OAuth4.0 Server-side',station:true},
+	        {key:'4',Lice:'OAuth5.0 Server-side',station:true}
+	    ];
+
+	    $scope.Save_No3= function(putup3){
+	        console.log(putup3);
+	        newPut3Service.save_no3(putup3).then(function (data){
+	            alert("保存成功");
+	        },function(){
+	            console.log("newPut3Controller  管理_应用设置_应用上架:发布新应用 第三步(发布应用)");
+	        });
+	    };
+	};
+
+/***/ },
+/* 62 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function($stateParams,$http,$q,httpservice,Session){
+
+	    var newPut3Service = {};
+
+	    newPut3Service.save_no3 = function(putup3){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'POST',
+	            url:httpservice.manage_appset_putup_no3_save,
+	            params:{
+	                'info_No3':putup3,
+	                'sessionId': Session.id,
+	                'userId': Session.userId
+	            }
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("newPut3Servcie  管理_应用设置_应用上架:发布新应用 第三步(发布应用)");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    return newPut3Service
+	};
+
+/***/ },
+/* 63 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function($scope,newPut4Service){
+
+	    //从服务器获取到的Tree列表数据
+	    $scope.userGroupList = {};
+	    //右侧需要发送到服务器的数据
+	    $scope.userUp = [];
+	    //左侧当前选中数据
+	    $scope.userdata = {};
+	    //右侧需要删除数据列表位置
+	    $scope.toDeleteUser = {};
+
+
+	    //添加数组中数据
+	    $scope.addUser = function(){
+	        $scope.userUp.push($scope.userdata);
+	    };
+	    //确认右侧需要删除数据所在列表位置
+	    $scope.deleteUserUp = function(us){
+	        $scope.toDeleteUser = $scope.userUp.indexOf(us);
+	    };
+	    //删除右侧数组中数据
+	    $scope.deleteUser = function(){
+	        $scope.userUp.splice($scope.toDeleteUser,1);
+	    };
+	    //获取左侧tree用户组列表
+	    $scope.getUserGroup=function(){
+	        newPut4Service.getUserGroup().then(function(data){
+	            $scope.userGroupList=data.userGroupList;
+	            //绑定tree数据
+	            $scope.treeBind();
+	        },function(){
+	            console.log("newPut4Controller  管理_应用设置_应用上架:发布新应用 第四步(发布范围)");
+	        });
+	    };
+	    //tree列表绑定数据
+	    $scope.treeBind=function() {
+	        $('#treeList').treeview({
+	            expandIcon: 'fa fa-plus-square',//折叠加号图标
+	            collapseIcon: 'fa fa-minus-square',//展开减号图标
+	            nodeIcon: "fa fa-users usersGroup",//节点图标
+	            data: $scope.userGroupList,
+	            onNodeSelected: function (event, data) {
+	                //$('#treeService').treeview('unselectNode', [data.nodeId, {silent: true}]);
+	                //$scope.getUsers(data.href);
+	                //$scope.userUp=data.href;
+	                $scope.userdata = data;
+	            }
+	        });
+	    };
+
+	    $scope.Save_No4= function(){
+	        newPut4Service.save_no4($scope.userUp).then(function (data){
+	            alert("提交成功");
+	        },function(){
+	            console.log("newPut4Controller  管理_应用设置_应用上架:发布新应用 第四步(发布范围)");
+	        });
+	    };
+
+	    $scope.getUserGroup();
+	};
+
+/***/ },
+/* 64 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function($stateParams,$http,$q,httpservice,Session){
+	    var newPut4Service = {};
+
+	    newPut4Service.save_no4 = function(userUp){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'POST',
+	            url:httpservice.manage_appset_putup_no4_save,
+	            params:{
+	                'sessionId': Session.id,
+	                'userId': Session.userId,
+	                'userUp': userUp
+	            }
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("newPut4Servcie  管理_应用设置_应用上架:发布新应用 第四步(发布范围)");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    newPut4Service.getUserGroup = function(){
+	        var deferred = $q.defer();
+	        $http({
+	            method:'GET',
+	            url:httpservice.manage_appset_putup_no4_left,
+	            params:{
+	                'sessionId': Session.id,
+	                'userId': Session.userId
+	            }
+	        }).then(function successCallback(response){
+	                deferred.resolve(response.data);
+	            },function errorCallback(response){
+	                console.log("newPut4Servcie  管理_应用设置_应用上架:发布新应用 第四步(发布范围) 获取左侧Tree ");
+	                deferred.reject(response.data);
+	            }
+	        );
+	        return deferred.promise;
+	    };
+
+	    return newPut4Service;
+	};
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function(){
+
+	};
+
+
+/***/ },
+/* 66 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/28.
+	 */
+	module.exports = function(){
+
+	};
+
+/***/ },
+/* 67 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/30.
+	 */
+	module.exports = function($parse){
+	    return {
+	        restrict: 'AE',
+	        template:'<input type="file" />',
+	        replace:true,
+	        link: function(scope, element, attrs, ngModel) {
+	            //var model = $parse(attrs.fileModel);
+	            //var modelSetter = model.assign;
+	            element.bind('change', function(event){
+	                //scope.$apply(function(){
+	                //    modelSetter(scope, element[0].files[0]);
+	                //});
+	                //附件预览
+	                scope.file = (event.srcElement || event.target).files[0];
+	                scope.$apply(attrs.fileModel);
+	                //console.log(attrs.fileModel);
+	                //scope.getFile();
+	            });
+	        }
+	    };
+	};
+
+/***/ },
+/* 68 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/3/30.
+	 */
+	module.exports = function($q){
+	    var onLoad = function(reader, deferred, scope) {
+	        return function () {
+	            scope.$apply(function () {
+	                deferred.resolve(reader.result);
+	            });
+	        };
+	    };
+	    var onError = function (reader, deferred, scope) {
+	        return function () {
+	            scope.$apply(function () {
+	                deferred.reject(reader.result);
+	            });
+	        };
+	    };
+	    var getReader = function(deferred, scope) {
+	        var reader = new FileReader();
+	        reader.onload = onLoad(reader, deferred, scope);
+	        reader.onerror = onError(reader, deferred, scope);
+	        return reader;
+	    };
+	    var readAsDataURL = function (file, scope) {
+	        var deferred = $q.defer();
+	        var reader = getReader(deferred, scope);
+	        reader.readAsDataURL(file);
+	        return deferred.promise;
+	    };
+	    return {
+	        readAsDataUrl: readAsDataURL
+	    };
+	};
+
+/***/ },
+/* 69 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/1/17.
+	 */
+	module.exports= function ($rootScope,$state) {
+	    //add by HUA--start
+	    //设置管理点击样式
+	    $rootScope.mgBtnShowCor='login_2';
+	    //add by HUA--end
+	    var vm=this;
+	    vm.text="我来自HelpContrller";
+	    console.log(vm.text);
+	    vm.persons=[{"name":"wangming"},{"name":"dingyanchao"}];
+	    vm.btnclick= function () {
+	        vm.persons.push({"name":"hahahhahaha"});
+	        vm.persons.push({"name":"hehehhe"});
+	        vm.persons.push({"name":"hehhehehehehehe"});
+	        vm.persons.push({"name":"hahahhaxhhxhshxhaha"});
+
+	        //vm.text="我被button点击了";
+	        //$state.go('myapp.tubiao');
+	        //getdata(vm.text).then(function (data) {
+	        //    vm.text=data.name;
+	        //}, function (error) {
+	        //
+	        //});
+	    };
+	};
+
+/***/ },
+/* 70 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by vision on 16/1/19.
+	 */
+	module.exports = function ($http, $q) {
+	    var func1=function (data) {
+	        var deferred = $q.defer();
+	        $http({
+	            method: 'GET',
+	            url: './src/data.json?data='+data
+	        }).then(function successCallback(response) {
+	            // this callback will be called asynchronously
+	            // when the response is available
+	            deferred.resolve(response.data);
+	        }, function errorCallback(response) {
+	            // called asynchronously if an error occurs
+	            // or server returns response with an error status.
+	            deferred.reject(response);
+	        });
+	        return deferred.promise;
+	    };
+
+	    return {
+	        query: func1
+	    }
+	};
+
+/***/ }
+/******/ ]);

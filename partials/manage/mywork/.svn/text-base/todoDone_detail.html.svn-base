@@ -1,0 +1,46 @@
+<div class="pop_form" >
+    <h4 ng-click="closeDetail()">
+        <span><a ui-sref="manage.todo({todoStatus:1})" class="active">我的任务</a>/<a ui-sref="manage.todo({todoStatus:1})" class="active">我的已办</a>/已办详情</span>
+    </h4>
+    <p class="daibanxiangqing_til">
+        <i class="titleBold">标题：</i><{{todoEdit.approveTitle.approver}}>关于<{{todoEdit.approveTitle.application}}>的订阅详情
+    </p>
+    <div class="application daibanxiangqing_app">
+        <span class="shenqingneirong titleBold">申请内容：</span><br><br>
+        <dl class="application_left">
+            <dt>
+                <img src="{{todoEdit.applicationDetail.imgURL}}"/>
+            </dt>
+            <dd>
+                <p class="appTitle">{{todoEdit.applicationDetail.appTitle}}</p>
+                <p class="p1">{{todoEdit.applicationDetail.appDetail}}</p>
+                <br>
+                <br>
+                <p>核心功能</p>
+                <p class="p1" ng-repeat="func in todoEdit.applicationDetail.functions">
+                    <span>{{$index + 1}}.</span>{{func.funcTitle}}<br>
+                    {{func.funcContent}}
+
+                </p>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="application daibanxiangqing_app daibanxiangqing_appNone">
+        <span class="shenqingneirong titleBold">审批历史：</span>
+        <p class="his_dat">
+            <span>节点</span>
+            <span>操作人</span>
+            <span class="his_time">操作时间</span>
+            <span>审批意见</span>
+        </p>
+        <p class="his_dat noback" ng-repeat="history in todoEdit.approveHistory">
+            <span>{{history.approveNode}}</span>
+            <span>{{history.approver}}</span>
+            <span class="his_time">{{history.updateTime}}</span>
+            <span>{{history.advices}}</span>
+        </p>
+    </div>
+
+</div>
+

@@ -1,0 +1,223 @@
+/**
+ * Created by Sky on 2016/4/5.
+ */
+module.exports=function($rootScope,$scope,businessInfoUserGroupMgService) {
+    $scope.currentPage=1;
+    $scope.GroupId='all';
+    $scope.userGroupShow=false;
+    $scope.userGroup1={
+        "groupId":'',
+        "groupName": ''
+    };
+    $scope.userGroupList={};
+    var oldUserGroup=null;
+    var oldUserGroupList=null;
+    var oldIndex=0;
+    $scope.searchTitle_userGroup='';
+    $scope.oprFlag='create';
+    $scope.msgBoxShow_oprUserGroup=false;
+    $scope.editUserGroupName=false;
+    //获取左侧tree用户组菜单
+   function getUserGroup(){
+        businessInfoUserGroupMgService.getUserGroupTree().then(function(data){
+            $scope.userGroupTree=data.userGroupList;
+            //绑定tree数据
+            treeBind();
+        },function(){
+            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组加载失败！');
+        });
+    };
+    getUserGroup();
+    //用户组左侧菜单tree列表绑定数据
+    function treeBind() {
+        $('#treeUserGroup').treeview({
+            expandIcon: 'fa fa-plus-square',
+            collapseIcon: 'fa fa-minus-square',
+            nodeIcon: "fa fa-users usersGroup",
+            data:$scope.userGroupTree,
+            onNodeSelected: function (event, data) {
+                getUserGroupList(data.groupId,1);
+            }
+        });
+    };
+
+    //关闭删除错误提示框
+    $scope.closeMsgBox_oprUserGroup=function(){
+        $scope.msgBoxShow_oprUserGroup=false;
+    };
+    //获取用户组下拉框列表数据
+    businessInfoUserGroupMgService.getUserGroup_select().then(function(data){
+        $scope.userGroupList_select=data.userGroupList;
+    },function(){
+        console.log('businessInfoUserGroupController 管理_企业应用_企业信息（用户组）：用户组下拉菜单加载失败！');
+    });
+    //获取用户组列表菜单
+   function getUserGroupList(GroupId,currentPage){
+       var searchTitle=$scope.searchTitle_userGroup;
+        businessInfoUserGroupMgService.getUserGroupList(GroupId,searchTitle,currentPage).then(function(data){
+            $scope.userGroupList=data.userGroupList;
+            $scope.totalPage = data.totalPage;
+            $scope.nowPage = data.nowPage;
+            $scope.totalPas = data.totalPas;
+            $scope.currentPage = data.page;
+        },function(){
+            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组列表加载失败！');
+        });
+    };
+    getUserGroupList('all',1);
+    //用户组列表点击页码
+     $scope.changePage=function(currentPage){
+        var GroupId=$scope.GroupId;
+        if(currentPage <= $scope.totalPage&&currentPage>0)
+        {
+            getUserGroupList(GroupId,currentPage);
+        }
+        else
+        {
+            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组列表页码越界');
+        }
+    };
+
+    //点击新建用户组
+    $scope.createUserGroup=function(){
+        $scope.editUserGroupName=false;
+        $scope.oprFlag='create';
+        $scope.userGroup1={};
+        $scope.userGroup1.lastUserGroup=0;
+        $rootScope.fadeShow=true;
+        $scope.userGroupShow=true;
+    };
+    //点击关闭用户组弹出框
+    $scope.closeUserGroup=function(userGroup1){
+        $scope.createUserGroupShow=false;
+        $rootScope.fadeShow=false;
+        $scope.userGroupShow=false;
+        var groupId=userGroup1.groupId;
+        if((groupId!=null)&&(groupId!='')&&(groupId!=undefined)||groupId==0)
+        {
+            $scope.userGroup1=oldUserGroup;
+            $scope.userGroupList=oldUserGroupList;
+        }
+        oldUserGroup = null;
+    };
+    //点击编辑用户组
+    $scope.editUserGroup=function(index,userGroup,userGroupList){
+        $scope.createUserGroupShow=true;
+        $scope.oprFlag='edit';
+        if(oldUserGroup==null||oldIndex!=index)
+        {
+            oldUserGroup=angular.copy(userGroup);
+            oldUserGroupList=angular.copy(userGroupList);
+            oldIndex=index;
+            $scope.userGroup1=userGroup;
+        }
+        $rootScope.fadeShow=true;
+        $scope.userGroupShow=true;
+    };
+    //点击确认用户组新建或编辑
+    $scope.saveUserGroup=function(userGroup1){
+        if(userGroup1.groupName==''||userGroup1.groupName==null||userGroup1.groupName==undefined)
+        {
+            $scope.editUserGroupName=true;
+        }
+        if(userGroup1.groupName!=''&&userGroup1.groupName!=null&&userGroup1.groupName!=undefined)
+        {
+            businessInfoUserGroupMgService.saveUserGroup(userGroup1,1).then(function(data){
+                $scope.msgBoxShow_oprUserGroup=true;
+                if( $scope.oprFlag=='edit')
+                {
+                    if(data.flag===true)
+                    {
+                        /*
+                         getUserGroup();
+                         oldUserGroup=null;
+                         oldIndex=0;
+                         oldUserGroup=angular.copy($scope.userGroup1);
+                         oldUserGroupList=angular.copy($scope.userGroupList);*/
+                        getUserGroup();
+                        getUserGroupList($scope.userGroup,1);
+                        $scope.userGroup1 =angular.copy(oldUserGroup);
+                        $scope.userGroupList=angular.copy(oldUserGroupList);
+                        $scope.oprErrMsg='修改成功！';
+                    }
+                    else
+                    {
+                        $scope.userGroup1=angular.copy(oldUserGroup);
+                        $scope.userGroupList=angular.copy(oldUserGroupList);
+                        $scope.oprErrMsg='修改失败！';
+                    }
+                }
+                else
+                {
+                    if(data.flag===true)
+                    {
+                        getUserGroup();
+                        getUserGroupList($scope.userGroup,1);
+                        $scope.userGroup1 =angular.copy(oldUserGroup);
+                        $scope.userGroupList=angular.copy(oldUserGroupList);
+                        $scope.oprErrMsg='保存成功！';
+                    }
+                    else
+                    {
+                        $scope.userGroup1={};
+                        $scope.oprErrMsg='保存失败！';
+                    }
+                }
+            },function(){
+                console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：编辑用户组失败！');
+            });
+            $rootScope.fadeShow=false;
+            $scope.userGroupShow=false;
+        }
+
+
+    }
+    //点击上移，下移，删除用户组
+    $scope.userGroupOperation=function(groupId,orderId,operation){
+        var searchTitle=$scope.searchTitle_userGroup;
+        businessInfoUserGroupMgService.userGroupOperation(groupId,orderId,searchTitle,operation,1).then(function(data){
+            $scope.msgBoxShow_oprUserGroup=true;
+            if(operation=='up'){
+                if(data.flag==true)
+                {
+                    getUserGroupList($scope.GroupId,1);
+                    $scope.oprErrMsg='上移成功！';
+                }
+                else
+                {
+                    $scope.oprErrMsg='上移失败！';
+                }
+            }
+            else  if(operation=='down'){
+                if(data.flag==true)
+                {
+                    getUserGroupList($scope.GroupId,1);
+                    $scope.oprErrMsg='下移成功！';
+                }
+                else
+                {
+                    $scope.oprErrMsg='下移失败！';
+                }
+            }
+            else  if(operation=='delete'){
+                if(data.flag==true)
+                {
+                    getUserGroupList($scope.GroupId,1);
+                    $scope.oprErrMsg='删除成功！';
+                }
+                else
+                {
+                    $scope.oprErrMsg='删除失败！';
+                }
+            }
+        },function(){
+            $scope.msgBoxShow_delUserGroup=true;
+            console.log('businessInfoUserGroupMgController 管理_企业应用_企业信息（用户组）：用户组列表加载失败！');
+        });
+    }
+    //点击搜索
+    $scope.searchUserGroup=function(groupName){
+        $scope.searchTitle_userGroup=groupName;
+        getUserGroupList($scope.GroupId,1);
+    }
+};

@@ -1,0 +1,175 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til"><a ui-sref="manage.personalinfo" class="active">管理</a>/个人信息</h3>
+    <span class="conRight_main_span">基本信息</span>
+    <div class="conRight_user">
+        <div class="conRight_user_peo">
+            <img class="personImge" onerror="this.src='images/tupianError.jpg'" ng-src="{{personImage}}"/>
+        </div>
+        <a class="conRight_update personImageInput" href="javascript:;">
+            <fileModel file-model="personImages()" class="hidden_upload"></fileModel>
+            更改图片
+        </a>
+        <!--<a class="conRight_update" href="####">更改图片</a>-->
+        <div class="conRight_name conRight_sex">
+            <span>称谓</span><br/>
+            <select id="conRight_sex_select" ng-model="p.person.Sex" ng-options="x.key as x.sex for x in sexs"/>
+            <!--<select ng-model="person_sex" ng-options="x.key as x.sex for x in sexs"/>-->
+        </div>
+        <div class="conRight_name">
+            <span>姓</span><br/><input disabled="disabled" readonly ng-model="p.person.Name" type="text"/>
+        </div>
+        <div class="conRight_name">
+            <span>名</span><br/><input disabled="disabled" readonly ng-model="p.person.English" type="text"/>
+        </div>
+        <div class="conRight_name">
+            <span>昵称</span><br/><input ng-model="p.person.Nickname" type="text"/>
+        </div>
+    </div>
+    <div class="conRight_company">
+        <p class="conRight_company_til">公司信息</p>
+        <div class="conRight_name">
+            <span>账户</span><br/><input ng-model="p.companyinfo.Account" disabled="disabled" type="text"/>
+        </div>
+    </div>
+    <div  class="conRight_work">
+        <p class="conRight_company_til">工作地址</p>
+        <div class="conRight_com">
+            <span>公司名称</span><br/><input class="inp-WIDTH" ng-model="p.workaddress.Company" disabled="disabled" type="text"/>
+        </div>
+        <div class="conRight_com">
+            <span>街道</span><br/><input class="inp-WIDTH_street" ng-model="p.workaddress.Street" type="text"/>
+        </div>
+        <div>
+            <div class="conRight_name">
+                <!--<span>州/省/地区</span><br/><input ng-model="p.workaddress.Provinces" type="text"/>-->
+                <span>州/省/地区</span><br/>
+                <select  id="conRight_sex_select_2" class="inp-WIDTH" ng-change="select_cities_workaddress()" ng-model="p.workaddress.Provinces" ng-options="x.key as x.Province for x in Provinces"/>
+            </div>
+            <div class="conRight_name">
+                <!--<span>城市</span><br/><input ng-model="p.workaddress.City" type="text"/>-->
+                <span>城市</span><br/>
+                <select id="conRight_sex_select_1" class="inp-WIDTH" ng-model="p.workaddress.City" ng-options="x.key as x.city for x in cities_workaddress"/>
+            </div>
+        </div>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>邮政编码</span><br/><input ng-model="p.workaddress.Postcode" type="text"/>
+            </div>
+            <div class="conRight_name">
+                <span>国家/地区</span><br/>
+                <!--<select class="inp-WIDTH" ng-model="p.workaddress.Country" ng-options="x.key as x.country for x in countrys"/>-->
+                <input disabled="disabled" readonly value="中国" type="text"/>
+            </div>
+        </div>
+    </div>
+    <div  class="conRight_work">
+        <p class="conRight_company_til">家庭地址</p>
+        <div class="conRight_com">
+            <span>街道</span><br/><input class="inp-WIDTH_street" ng-model="p.homeaddress.Street" type="text"/>
+        </div>
+        <div>
+            <div class="conRight_name">
+                <!--<span>州/省/地区</span><br/><input ng-model="p.homeaddress.Provinces" type="text"/>-->
+                <span>州/省/地区</span><br/>
+                <select id="conRight_sex_select_4" class="inp-WIDTH" ng-change="select_cities_homeaddress()" ng-model="p.homeaddress.Provinces" ng-options="x.key as x.Province for x in Provinces"/>
+            </div>
+            <div class="conRight_name">
+                <!--<span>城市</span><br/><input ng-model="p.homeaddress.City" type="text"/>-->
+                <span>城市</span><br/>
+                <select id="conRight_sex_select_3" class="inp-WIDTH" ng-model="p.homeaddress.City" ng-options="x.key as x.city for x in cities_homeaddress"/>
+            </div>
+        </div>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>邮政编码</span><br/><input ng-model="p.homeaddress.Postcode" type="text"/>
+            </div>
+            <div class="conRight_name">
+                <span>国家/地区</span><br/>
+                <!--<select class="inp-WIDTH" ng-model="p.homeaddress.Country" ng-options="x.key as x.country for x in countrys"/>-->
+                <input disabled="disabled" readonly value="中国" type="text"/>
+            </div>
+        </div>
+    </div>
+    <div  class="conRight_work">
+        <p class="conRight_company_til">联系电话</p>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>工作电话</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Workphone" type="text"/>
+            </div>
+            <div class="conRight_name">
+                <span>工作分机</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Extension" type="text"/>
+            </div>
+            <div class="conRight_name">
+                <span>工作传真</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Workfax" type="text"/>
+            </div>
+            <div class="conRight_name">
+                <span>其他工作电话/远程办公室</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Otherworkphone" type="text"/>
+            </div>
+        </div>
+        <div class="conRight_com">
+            <span>家庭电话</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Homephone" type="text"/>
+        </div>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>传呼机</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Pagers" type="text"/>
+            </div>
+            <div class="conRight_name">
+                <span>其他电话</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Otherphone" type="text"/>
+            </div>
+        </div>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>移动电话</span><br/><input class="inp-WIDTH-phone" ng-model="p.phone.Mobilephone" type="text"/>
+            </div>
+        </div>
+    </div>
+    <div  class="conRight_work">
+        <p class="conRight_company_til">电子邮件地址</p>
+        <div class="cb">
+            <ul class="conRight_email_ul cb">
+                <div class="conRight_name">
+                    <input class="inp-WIDTH-phone" id="inp-WIDTH-phone" ng-model="p.email.Address" disabled="disabled" type="text"/>
+                </div>
+                <li style="margin-left: 30px;" class="font_Class">{{iYanZheng}}</li>
+                <li style="margin-left: 50px;"><span  ng-click="emailFa()">发送</span><span ng-click="edit()">编辑</span></li>
+            </ul>
+        </div>
+    </div>
+    <div  class="newAppAlert" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu_2]">
+        <button type="button" class="close" ng-click="closeMsgBox_saveBu_2()"
+                aria-hidden="true">
+            &times;
+        </button>
+        {{testBuResult_2}}
+    </div>
+    <div  class="conRight_work">
+        <p class="conRight_company_til">紧急联系信息</p>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>名称</span><br/><input class="inp-WIDTH-phone" ng-model="p.emergency.Name" type="text"/>
+            </div>
+            <div class="conRight_name conRight_sex">
+                <span>关系</span><br/>
+                <select id="conRight_sex_select_5" class="input_conRight_sex" ng-model="p.emergency.Relation" ng-options="x.key as x.relation for x in relations"/>
+            </div>
+        </div>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>地址</span><br/><input class="inp-WIDTH-phone" ng-model="p.emergency.Address" type="text"/>
+            </div>
+        </div>
+        <div class="cb">
+            <div class="conRight_name">
+                <span>电话</span><br/><input class="inp-WIDTH-phone" ng-model="p.emergency.Phone" type="text"/>
+            </div>
+        </div>
+    </div>
+    <div  class="newAppAlert" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu]">
+        <button type="button" class="close" ng-click="closeMsgBox_saveBu()"
+                aria-hidden="true">
+            &times;
+        </button>
+        {{testBuResult}}
+    </div>
+    <input class="btn_Sub" type="button" value="保存" ng-click="Save(p)"/>
+</div>

@@ -1,0 +1,332 @@
+﻿html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+	margin: 0;
+	padding: 0;
+}
+header, footer, section, article, aside, nav, hgroup, address, figure, figcaption, menu, details {
+	display: block;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th {
+	text-align: left;
+	font-weight: normal;
+}
+html, body, fieldset, img, iframe, abbr {
+	border: 0;
+}
+i, cite, em, var, address, dfn {
+	font-style: normal;
+}
+[hidefocus], summary {
+outline:0;
+}
+li {
+	list-style: none;
+}
+h1, h2, h3, h4, h5, h6, small {
+	font-size: 100%;
+	font-weight: normal;
+}
+sup, sub {
+	font-size: 83%;
+}
+pre, code, kbd, samp {
+	font-family: inherit;
+}
+q:before, q:after {
+	content: none;
+}
+textarea {
+	overflow: auto;
+	resize: none;
+}
+label, summary {
+	cursor: default;
+}
+a, button {
+	cursor: pointer;
+}
+del, ins, u, s, a, a:hover {
+	text-decoration: none;
+}
+body, textarea, input, button, select, keygen, legend {
+	font: 14px/1.5 "Microsoft YaHei", "微软雅黑", Helvetica, Arial, sans-serif;
+	color: #333;
+	outline: 0;
+}
+body {
+	margin:0 auto;
+	background: #fff;
+	min-width: 1024px;
+	max-width:100%;
+}
+a, a:hover {
+	color: #333;
+	text-decoration: none;
+}
+button {
+	border: none;
+}
+/*菜单样式*/
+.logo {
+	height: 85px;
+	width: 100px;
+	color: #fff;
+	font-weight: bold;
+	line-height: 85px;
+	font-size: 17px;
+	text-align: center;
+	letter-spacing: 2px;
+	position: absolute;
+	top: 0;
+	left: 10%;
+}
+.line_header {
+	height: 15px;
+	background: #334860;
+}
+.menu {
+	height: 70px;
+	line-height: 70px;
+	position: relative;
+}
+.login {
+	float: right;
+	height: 70px;
+	line-height: 70px;
+	/*text-align: center;*/
+	font-size: 15px;
+	position: absolute;
+	right: -5%;
+	top: 0px;
+	width: 21%;
+	margin-right: 5%;
+}
+.login_2 {
+    float: right;
+    /*height: 70px;*/
+    line-height: 70px;
+    text-align: center;
+    font-size: 15px;
+    width: 20%;
+    position: absolute;
+    right: -8%;
+    top: 0px;
+    margin-right:11%;
+    /*margin-left:10px;*/
+}
+.login_3 {
+    float: right;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 15px;
+    width: 10%;
+    position: absolute;
+    right: 100px;
+    top: 0px;
+    margin-right:200px;
+    margin-left:10px;
+}
+.logo{
+	position: absolute;
+	top: 0px;
+	height: 70px;
+	line-height: 70px;
+	width: 10%;
+}
+
+.jiushinide{
+	display:inline-block;
+/*	margin-top:10px;----update by Hua*/
+}
+section {
+	min-height: 570px;
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+.line_footer {
+	height: 10px;
+	background: #334860;
+}
+.menu ul {
+	width: 400px;
+	text-align: left;
+	margin-left:350px;
+	height: 70px;
+	line-height: 70px;
+
+}
+.menu ul > li {
+	height: 66px;
+	line-height: 66px;
+	display: inline-block;
+}
+.menu ul > li a {
+	padding: 5px 10px;
+	letter-spacing: 2px;
+	font-size: 16px;
+	font-weight:500;
+	color:#000000;
+	text-decoration: none;
+	vertical-align: middle;/*add by Hua*/
+}
+.borderColor {
+	border-bottom: 2px solid #E34D3C;
+	border-top: 2px solid #E34D3C;
+}
+
+
+.borderColor .we{
+	width: 0;
+	height: 0;
+    /*update by su*/
+/*	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;*/
+	border-bottom: 8px solid #E34D3C;
+	margin: 0 auto;
+	margin-top: -6px;
+}
+
+.borderColor .we a {
+    color: red;
+}
+
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-bottom: 8px solid #E34D3C;
+	margin: 0 auto;
+	margin-top: -6px;
+}
+.img_user{
+	display:inline-block;
+	margin-right:5px;
+	vertical-align:middle;
+	margin-bottom:3px;
+	cursor: pointer;
+}
+/*update by su*/
+.img_shu{
+	/* display:inline-block;*/
+	/* margin-left:24%;*/
+	/*margin-right:20px;*/
+	/*vertical-align:middle*/;
+	margin-bottom:3px;
+	/* cursor: pointer;*/
+}
+/*add by su*/
+.img_shu1{
+	display:inline-block;
+	margin-left:4px;
+	/*margin-right:20px;*/
+	vertical-align:middle;
+	margin-bottom:3px;
+	/*cursor: pointer;*/
+}
+.p_1{
+	margin:80px auto 0 auto;
+	font-size:28px;
+	width:600px;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	color:#ffffff;
+	font-weight:500;
+}
+.p_1 span{
+ color:red;
+}
+.p_2{
+	margin:30px auto 0 auto;
+	font-size:20px;
+	width:600px;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	color:#ffffff;
+	font-weight:500;
+}
+.p_2 span{
+ color:red;
+}
+.p_div{
+	margin:50px auto 0 auto;
+	width:500px;
+	padding-left:120px;
+}
+.p_div img{
+	display:inline-block;
+	margin-left:35px;
+}
+/*add by Hua--start*/
+.selectColor_manage{
+	color: red;
+}
+.login_2 a span{
+	font-size: 28px;
+	vertical-align: bottom;
+}
+.login_2 a.aSpan{
+	height:30px;
+	display: inline-block;
+	line-height: 30px;
+}
+.selectDisableCor{
+	background-color:#CCCCCC;
+}
+.corCollection{
+	color: #0086b3;
+}
+.corCollection:hover{
+	color: #333;
+}
+
+.errorBackCor{
+	background-color: #CCCCCC;
+	display:inline-block;
+	border:none;
+	width:100px;
+	height:38px;
+	text-align:center;
+	color:#ffffff;
+	margin-top:15px;
+	margin-left:13%;
+	cursor:pointer;
+}
+.fade{
+	left: 0px;
+	top: 0px;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background-color: black;
+	z-index: 1;
+	-moz-opacity: 0.2;
+	opacity: .20;
+	filter: alpha(opacity=20);
+}
+/*add by Hua--end*/
+#title{
+	display: none;
+}
+
+
+.img_style{
+	width: 22px;
+	height: 20px;
+}
+
+a.bordStyle{
+	margin-left: 8px;
+	margin-right: 8px;
+	text-decoration: none;
+}
+.menu ul > li.borderColor a{
+	color: #e34d3c;
+}

@@ -1,0 +1,56 @@
+<div class="conRight_main">
+    <div class="pop_form">
+        <h4 class="noback">
+            <span>发布新应用</span>
+        </h4>
+        <div class="step_til">
+            <p>
+                <a href="###" class="jibenxinxi">基本信息</a>
+                <a href="###">应用详情</a>
+                <a href="###">发布应用</a>
+                <a href="###">发布范围</a>
+                <a href="###" class="over">发布完成</a>
+            </p>
+        </div>
+        <div class="step_til_p1">
+            <p class="step_til_p1L">
+                <span>应用名称</span><br>
+                <input type="text"/>
+            </p>
+            <p>
+                <span>版本号</span><br>
+                <input type="text"/>
+            </p>
+        </div>
+        <div class="step_til_p1">
+            <p class="step_til_p1L">
+                <span>语言</span><br>
+                <select>
+                    <option>中文</option>
+                    <option>英语</option>
+                    <option>法语</option>
+                    <option>俄语</option>
+                </select>
+            </p>
+            <p>
+                <span>类别</span><br>
+                <select>
+                    <option>音乐</option>
+                    <option>视频</option>
+                    <option>娱乐</option>
+                    <option>运动</option>
+                </select>
+            </p>
+        </div>
+
+        <div class="step_til_p1">
+            <span>描述</span><br>
+            <textarea>应用描述，40字以内</textarea>
+        </div><br>
+        <p class="his_dat_last">
+
+            <button>保存</button>
+            <button class="his_dat_last_btn">下一步</button>
+        </p>
+    </div>
+</div>

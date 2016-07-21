@@ -1,0 +1,207 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til">企业信息／企业信息</h3>
+    <ul class="conRight_one conRight_one_hua">
+        <li>
+            <a  ui-sref="manage.businessinfo" >
+                基本信息
+            </a>
+        </li>
+        <li class="">
+            <a ui-sref="manage.businessinfo_user" class="selectColor_manage borderBottom ">
+                用户管理
+            </a>
+        </li>
+    </ul>
+    <div class="conRight_kind_til cb">
+        <div class="info_user info_user_hua">
+            <h4>
+                <a ui-sref="manage.businessinfo_user" class="classCor classBackCor">用户</a>
+                <a ui-sref="manage.businessinfo_userGroup" >用户组</a>
+            </h4>
+        </div>
+    </div>
+    <!--用户-->
+    <div class="info_user_til info_user_til_hua">
+        <div class="pp01">
+            <span ng-click="importUser()">
+                <img src="images/icon/10.png"> 
+                导入
+            </span>
+            <span ng-show="groupId=='all'"  ng-click="deleteAll()">
+                <img  src="images/icon/11.png">
+                批量删除
+            </span>
+             <span ng-show="groupId!='all'"  ng-click="removeAll()">
+                <img  src="images/icon/11.png">
+                批量移除
+            </span>
+            <span ng-click="addUser()">
+                <img src="images/icon/12.png"> 
+                新增用户
+            </span>
+        </div>
+        <input type="text" ng-model="searchTitle_user" class="searchBusiness searchBusiness_hua"/><img ng-click="searchUser(searchTitle_user)" src="images/sousuo.png"/>
+    </div>
+
+    <div class="step_fabufanwei_til step_fabufanwei_til_hua"><span class="userTreeTitle">请选择该应用的发布范围</span>
+    <div   ng-class="{true:'alert alert-danger alert-dismissable showMsg userMsg',false:'alert alert-danger alert-dismissable hideMsg userMsg'}[msgBoxShow_oprUser]">
+        <button type="button" class="close" ng-click="closeMsgBox_oprUser()"
+                aria-hidden="true">
+            &times;
+        </button>
+      {{oprErrMsg}}
+    </div>
+    </div>
+
+    <div class="step_fabufanwei step_fabufanwei_hua">
+        <div class="step_fabufanwei_left step_fabufanwei_left_hua">
+            <div id="treeUserGroup"></div>
+        </div>
+
+       <div class="user_right01 user_right01_hua" id="userList">
+        <ul  class="conRight_kind_til cb userList_hua">
+          <li   class="chkCol">
+              <input  style="margin-top: 10px;margin-left: 35%;" class="chkUserList" type="checkbox" ng-model="chkAll" ng-click="checkUserAll(chkAll,userList)"/>
+          </li>
+            <li class="textLeft1">姓名</li>
+            <li class="textLeft1">电话</li>
+            <li class="textLeft1">邮箱</li>
+            <li >操作</li>
+        </ul>
+        <div class="con_kind_child_til">
+            <ul style="display:block" class="conRight_kind_child_til repeatRowCor" >
+                <ul   style=" display: inline-block;
+                        width: 100%;height:100%"  ng-repeat="user in userList" class="userList_hua">
+                    <li class="chkCol">   <input  style="margin-top: 10px;margin-left: 35%;"
+                                                  class="chkUserList"
+                                                  type="checkbox" ng-model="chk" ng-checked="chkAll"  ng-click="checkUser(chk,user.userId)"/>
+                    </li>
+                    <li class="textLeft1" title="{{user.userName}}">{{user.userName}}</li>
+                    <li class="textLeft1" title="{{user.userPhone}}">{{user.userPhone}}</li>
+                    <li class="textLeft1" title="{{user.userEmail}}">{{user.userEmail}}</li>
+                    <li>
+                        <img ng-show="user.userStatus=='Y'" ng-click="userOperation(user.userId,user.groupId,'Y')" src="images/icon/14.png">
+                        <img ng-show="user.userStatus=='N'" ng-click="userOperation(user.userId,user.groupId,'N')" src="images/icon/15.png">
+                        <img ng-click="editUser($index,user)" src="images/icon/16.png">
+                        <img ng-show="groupId=='all'" ng-click="userDel(user.userId,'delete')" src="images/icon/20.png">
+                        <img ng-show="groupId!='all'" ng-click="userOperation(user.userId,user.groupId,'remove')" src="images/icon/remove.png">
+                    </li>
+                </ul>
+            </ul>
+        </div>
+            <ul class="fenye">
+                <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+                <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+                <li><a ng-click="changePage(currentPage*1-1)">上一页</a></li>
+                <div ng-repeat="tPage in totalPas">
+                    <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+                </div>
+                <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <!--用户结束-->
+    <!--用户编辑弹框-->
+    <form name="editUserForm" ng-submit="saveUser(user)" novalidate>
+    <div class="friend_told edit userWindow" ng-show="userShow">
+        <h4>
+            <span>姓名</span><input type="text" ng-model="user.userName" name="userName" class="inp01" required />
+               <i style="color:red" ng-class="{true: 'userName_show', false: 'userName_hidden'}
+                                [editUserForm.userName.$dirty && editUserForm.userName.$invalid || editUserName]">
+                                <i ng-class="{true: 'userName_show', false: 'userName_hidden'}
+                                [editUserForm.userName.$dirty && editUserForm.userName.$invalid || editUserName]">请填写名称</i>
+                            </i>
+        </h4>
+        <h4>
+            <span>电话</span><input type="text" ng-model="user.userPhone" name="userPhone" required/>
+              <i style="color:red" ng-class="{true: 'userPhone_show', false: 'userPhone_hidden'}
+                                [editUserForm.userPhone.$dirty && editUserForm.userPhone.$invalid || editUserPhone]">
+                                <i ng-class="{true: 'userPhone_show', false: 'userPhone_hidden'}
+                                [editUserForm.userPhone.$dirty && editUserForm.userPhone.$invalid || editUserPhone]">请填写电话</i>
+                            </i>
+        </h4>
+
+        <h4>
+            <span>邮箱</span><input type="email" ng-model="user.userEmail" name="userEmail" class="inp01" required />
+              <i style="color:red" ng-class="{true: 'userEmail_show', false: 'userEmail_hidden'}
+                                [editUserForm.userEmail.$dirty && editUserForm.userEmail.$invalid || editUserEmail]">
+                  <i  ng-show="editUserForm.userEmail.$error.required">邮箱是必须的。</i>
+                  <i ng-show="editUserForm.userEmail.$error.email">非法的邮箱地址。</i>
+            </i>
+        </h4>
+        <h4>
+            <span>用户组</span>
+            <select  ng-model="user.groupId" ng-change="onChange(user.groupId)" ng-options="userGroup.value as userGroup.name for userGroup in userGroupList_select">
+            </select>
+        </h4>
+        <p class="his_dat_last btnGroupBottom">
+            <button type="submit"  ng-disabled="editUserForm.userName.$dirty && editUserForm.userName.$invalid ||
+                               editUserForm.userEmail.$dirty && editUserForm.userEmail.$invalid|| editUserForm.userPhone.$dirty && editUserForm.userPhone.$invalid">确认</button>
+            <button type="button" class="his_dat_last_btn" ng-click="closeUser(user)">关闭</button>
+        </p>
+    </div>
+        </form>
+    <!--用户编辑弹框结束-->
+    <!--用户组编辑弹框-->
+   <!-- <div class="friend_told edit edit2 userGroupWindow"  ng-show="userGroupShow">
+        <h4><span>用户组名称</span><input type="text" class="inp01" placeholder="用户组名称"/></h4>
+        <h4>
+            <span>选择上级目录</span>
+            <select>
+                <option>一级目录</option>
+                <option>二级目录</option>
+                <option>三级目录</option>
+                <option>四级目录</option>
+            </select>
+        </h4>
+        <p class="his_dat_last">
+            <button>确认</button>
+            <button class="his_dat_last_btn">关闭</button>
+        </p>
+    </div>-->
+    <!--用户组编辑弹框结束-->
+
+    <!--信息用户导入开始-->
+    <div class="friend_told userinfo importUser" ng-show="userImportShow">
+        <h4>
+            <span>请选择用户组</span>
+            <select   ng-model="importUserGroup" ng-change="onChange(importUserGroup)" ng-options="userGroup.value as userGroup.name for userGroup in userGroupList_select">
+            </select>
+        </h4>
+        <input type="text" class="inp02"  ng-model="importUserTitle" placeholder="用户组名称"/><img ng-click="importUserSearch(importUserTitle,importUserGroup,1)" class="importUserSearch" src="images/sousuo.png"/>
+
+        <div class="user_right01 userinfo01">
+            <p >
+                <span><input  class="chkUserImport"  type="checkbox" ng-model="chkAllImport" ng-click="checkUserImportAll(chkAllImport,userList)"/></span>
+                <span>姓名</span>
+                <span class="span03">电话</span>
+                <span class="span03">邮箱</span>
+            </p>
+            <p ng-repeat="user in userImportList">
+                <span> <input  class="chkUserImport" type="checkbox" ng-model="chkImport" ng-checked="chkAllImport" ng-click="checkUserImport(chkImport,user)"/></span>
+                <span>{{user.userName}}</span>
+                <span class="span03">{{user.userPhone}}</span>
+                <span class="span03">{{user.userEmail}}</span>
+            </p>
+
+        </div>
+        <ul class="fenye">
+            <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPageImport}}</font>&nbsp;&nbsp;页</li>
+            <li>当前页&nbsp;{{nowPageImport}}&nbsp;</li>
+            <li><a ng-click="changePageImport(currentPageImport*1-1)">上一页</a></li>
+            <div ng-repeat="tPageImport in totalPasImport">
+                <li><a ng-click="changePageImport(tPageImport)" ng-class="{selected:tPageImport==currentPageImport}">{{tPageImport}}</a></li>
+            </div>
+            <li><a ng-click="changePageImport(currentPageImport*1+1)">下一页</a></li>
+        </ul>
+
+        <p class="his_dat_last">
+            <button ng-click="saveImportUsers()">确认</button>
+            <button class="his_dat_last_btn" ng-click="closeImportUser()">关闭</button>
+        </p>
+    </div>
+    <!--信息用户导入结束-->
+
+
+</div>

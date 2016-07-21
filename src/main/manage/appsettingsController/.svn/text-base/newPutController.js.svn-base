@@ -1,0 +1,78 @@
+/**
+ * Created by vision on 16/3/25.
+ */
+module.exports = function($scope,$stateParams,newPutService,Appsession){
+    $scope.putup={};
+
+
+    $scope.station = $stateParams.Status;
+    //console.log($scope.station);
+
+    var appId;
+    if(Appsession.appId !==null && Appsession.appId !== undefined){
+        appId = Appsession.appId;
+    }else if($stateParams.appId !== null && $stateParams.appId !== undefined){
+        //consol.length
+        Appsession.appId = $stateParams.appId;
+        appId = Appsession.appId;
+    }
+
+
+    //语言
+    $scope.languages = [
+        {key:'1',language:'中文'},
+        {key:'2',language:'英语'},
+        {key:'3',language:'法语'},
+        {key:'4',language:'俄语'}
+    ];
+
+    //类别
+    //$scope.types = [
+    //    {key:'1',type:'音乐'},
+    //    {key:'2',type:'视频'},
+    //    {key:'3',type:'娱乐'},
+    //    {key:'4',type:'运动'}
+    //];
+    $scope.types = [];
+    var mm = [];
+
+    //保存
+    $scope.Save_No1= function(putup){
+        newPutService.save_no1(putup).then(function (data){
+            alert("保存成功");
+        },function(){
+            console.log("newPutController  保存 管理_应用设置_应用上架:发布新应用 第一步(基本信息)");
+        });
+    };
+
+    //查询
+    var Select_No1= function(appId){
+        //console.log(appId);
+        //console.log("1111 "+appId);
+        newPutService.Select_No1(appId).then(function (data){
+            //$scope.putup=data.putup;
+            if(data.putup != undefined){
+                $scope.types = data.putup.types;
+
+                $scope.putup.Language = data.putup.Language;
+                $scope.putup.Type = data.putup.Type;
+                $scope.putup.AppName = data.putup.AppName;
+                $scope.putup.Version = data.putup.Version;
+                $scope.putup.Describe = data.putup.Describe;
+
+                //console.log(data.putup.Type);
+            }
+            //console.log($scope.putup);
+        },function(){
+            console.log("newPutController  查询 管理_应用设置_应用上架:发布新应用 第一步(基本信息)");
+        });
+    };
+
+    //下一步
+    $scope.Next= function(putup){
+        //$scope.Select_No1(appId);
+        $scope.Save_No1(putup);
+    };
+
+    Select_No1(appId);
+};

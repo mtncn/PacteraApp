@@ -1,0 +1,49 @@
+<div class="content cb">
+    <div class="conLeft">
+        <div class="conLeft_Bg">
+            <ul class="conLeft_Bg_font">
+                <!--<li ng-repeat="item in navItems" class="conLeft_Bg_til" ui-sref-active="selectColor_manage">
+                    <a ng-if="item.leaf==false">{{item.title}}</a>
+                    <a ng-if="item.leaf==true" ui-sref="manage.apply">{{item.title}}</a>
+                </li>-->
+
+                <li ng-show="isRoleValidateShow" class="conLeft_Bg_til">我的任务</li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==1}">
+                    <a  ui-sref="manage.apply({applyStatus:0})" ng-click="itemClick(3,1)">我的申请</a>
+                </li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==2}">
+                    <a  ui-sref="manage.todo" ng-click="itemClick(3,2)">我的待办</a>
+                </li>
+
+                <li ng-show="isRoleValidateShow" class="conLeft_Bg_til">我的服务</li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==3}">
+                    <a   ui-sref="manage.myclass" ng-click="itemClick(3,3)">我的分类</a>
+                </li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==4}">
+                    <a   ui-sref="manage.subscribe.company({selectType:0})" ng-click="itemClick(3,4)">我的订阅</a>
+                </li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==5}">
+                    <a   ui-sref="manage.collection" ng-click="itemClick(3,5)">我的收藏</a>
+                </li>
+
+                <li ng-show="isRoleValidateShow" class="conLeft_Bg_til">企业应用</li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==6}" ><a  ui-sref="manage.businessinfo" ng-click="itemClick(3,6)">企业信息</a></li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==7}"><a    ui-sref="manage.appclass" ng-click="itemClick(3,7)">应用分类</a></li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==8}"><a  ui-sref="manage.businessapp" ng-click="itemClick(3,8)">企业应用</a></li>
+
+                <li ng-show="isRoleValidateShow" class="conLeft_Bg_til">应用设置</li>
+                <li ng-show="isRoleValidateShow" ng-class="{selectColor_manage:selectedChildNavItemId==9}">
+                    <a   ui-sref="manage.appadded({Status:0,BiaoShi:'应用上架'})" ng-click="itemClick(3,9)">应用上架</a>
+                </li>
+
+                <li class="conLeft_Bg_til">其他设置</li>
+                <li ng-class="{selectColor_manage:selectedChildNavItemId==10}"><a  ui-sref="manage.personalinfo" ng-click="itemClick(4,10)">个人信息</a></li>
+                <!--<li ui-sref-active="selectColor_manage"><a  ui-sref="manage.accountsecurity" ng-click="itemClick(3)">账号安全</a></li>-->
+            </ul>
+        </div>
+    </div>
+
+    <div class="conRight">
+        <div class="conRight_cont" ui-view=""></div>
+    </div>
+</div>

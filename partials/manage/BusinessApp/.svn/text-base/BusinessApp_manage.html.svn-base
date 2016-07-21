@@ -1,0 +1,152 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til">企业应用/企业应用</h3>
+
+    <div class="application_state_manbusapp" ng-repeat="bus in buss">
+        <h4>
+            <span>{{bus.time1}}</span><span>{{bus.time2}}</span>
+            <b>状态：{{bus.station}}</b>
+        </h4>
+
+        <div class="application_manbusapp">
+            <dl class="application_left_manbusapp">
+                <dt>
+                    <img ng-src="{{bus.imageurl}}" />
+                </dt>
+                <dd>
+                    <p>{{bus.name}}</p>
+                    <p class="p1">{{bus.dre}}</p>
+                </dd>
+            </dl>
+            <div class="application_right_manbusapp">
+    			<span class="span1_manbusapp">版本信息
+    				<img src="images/jiantou.png">
+    			</span>
+                <button ng-click="createNew(bus.appId,bus.todo)">{{bus.todo}}</button>
+                <span>应用发布范围：</span>
+                <button ng-click="createConfines(bus.appId)">选择</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<div class="new_friend_told new_version" ng-show="showcreat">-->
+    <!--<h4>-->
+        <!--<span>构建新版本</span>-->
+        <!--&lt;!&ndash;<img ng-click="showcreat=!showcreat" src="images/17.png">&ndash;&gt;-->
+        <!--<img ng-click="closeCreate()" src="images/17.png">-->
+    <!--</h4>-->
+    <!--<div class="new_version_hid">-->
+        <!--<div class="new_version_L">-->
+            <!--<p>应用图标</p>-->
+            <!--<img ng-src="{{appnewinfo.Imageurl}}">-->
+            <!--<p>版本</p>-->
+            <!--&lt;!&ndash;<span>1.0</span>&ndash;&gt;-->
+            <!--<input type="text" class="inp01" ng-model="appnewinfo.Version" placeholder="请输入版本"/>-->
+        <!--</div>-->
+        <!--<div class="new_version_R">-->
+            <!--<span>版权</span><br>-->
+            <!--<input type="text" class="inp01" placeholder="广州酷狗科技有限公司" disabled="disabled"/><br><br>-->
+            <!--<span>联系人信息</span><br>-->
+            <!--<input type="text" ng-model="appnewinfo.Lastname" placeholder="姓氏"/>-->
+            <!--<input type="text" ng-model="appnewinfo.Firstname" placeholder="名字"/>-->
+            <!--<select>-->
+                <!--<option>China</option>-->
+            <!--</select>-->
+            <!--<input type="text" ng-model="appnewinfo.Postcode" placeholder="邮政编码"/>-->
+            <!--<input type="text" ng-model="appnewinfo.Provinces" placeholder="省"/>-->
+            <!--<input type="text" ng-model="appnewinfo.City" placeholder="市"/>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<button class="new_version_btn" ng-click="saveNew(appnewinfo)">确认</button>-->
+<!--</div>-->
+
+<!--构建新版本-->
+<div class="goujianxinbanben new_friend_told new_version" ng-show="showcreat">
+    <p>企业应用／构建新版本</p>
+    <p>
+        <span>应用名称</span>
+        <span>版本号</span>
+    </p>
+    <p>
+        <span><input type="text" value="酷狗音乐"/></span>
+        <span><input type="text" value="V1.0"/></span>
+    </p>
+    <p>
+        <span>语言</span>
+        <span>类别</span>
+    </p>
+    <p>
+            <span>
+                <select>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                </select>
+            </span>
+            <span>
+                <select>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                </select>
+            </span>
+    </p>
+    <p>描述</p>
+    <textarea>描述</textarea>
+    <p>应用图标</p>
+    <dl>
+        <dt>
+            <img src="images/13.png">
+        </dt>
+        <dd>
+            <input type="file"/>
+            <p>尺寸：80*80，大小：不超过50k，格式：JPG或png，系统会自动加上圆角</p>
+        </dd>
+    </dl>
+    <p>应用视频预览和屏幕快照</p>
+    <ul>
+        <li class="li01"><img src="images/6.png"></li>
+        <li class="li02"><img class="upimages" src="images/xiangqing/1-6.png"></li>
+        <li class="li03"><img class="upimages" src="images/xiangqing/1-7.png"></li>
+    </ul>
+    <p>授权协议</p>
+    <select class="shouquan">
+        <option>OAuth2.0 Server-side</option>
+        <option>OAuth2.0 Server-side</option>
+        <option>OAuth2.0 Server-side</option>
+        <option>OAuth2.0 Server-side</option>
+    </select>
+    <p>URL地址</p>
+    <input type="text" value="http://www.baidu.com" class="dizhi"/>
+    <button>保存</button>
+</div>
+
+
+<div class="new_friend_told new_version updatefont" ng-show="showconfines">
+    <div class="step_fabufanwei">
+        <div class="step_fabufanwei_left updateleft">
+            <div id="treeList"></div>
+        </div>
+
+        <div class="step_fabufanwei_mid">
+            <img ng-click="addUser()" src="images/2.png">
+            <img ng-click="deleteUser()" src="images/1.png"><br>
+        </div>
+
+        <div class="step_fabufanwei_right step_fabufanwei_left update_right">
+            <p ng-repeat="us in userUp" ng-click="deleteUserUp(us)" class="step_fabufanwei_leftp1">
+                <span class="fa fa-users usersGroup"></span>
+                <span>{{us.text}}</span>
+                <span>{{us.type}}</span>
+            </p>
+        </div>
+    </div>
+    <p class="his_dat_last his_dat_last_three updatebutton">
+        <button ng-click="saveConfines()">保存</button>
+        <button ng-click="closeConfines()">取消</button>
+    </p>
+</div>

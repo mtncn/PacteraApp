@@ -1,0 +1,12 @@
+{"businessInfo":{
+  "companyName": "北京文思海辉技术有限公司",
+  "companyAddress": "环洋大厦",
+  "companyWebSet": "hub.pactera.com",
+  "phone": "6666666",
+  "fax":88888,
+  "serverInfo":[{"value":0,"name":"00000"},{"value":1,"name":"11111"}],
+  "selectId":0,
+  "imageSrc":"images/logo.png"
+},
+  "flag":true
+}

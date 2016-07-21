@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>模板</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+</head>
+<body>
+<header>
+  <div class="logo">服务市场</div>
+  <div class="line_header"></div>
+  <div class="menu">
+    <ul>
+      <li><a href="#">首页</a>
+        <div ></div>
+      </li>
+      <li><a href="#">关于我们</a>
+        <div ></div>
+      </li>
+      <li><a href="#">产品中心</a>
+        <div ></div>
+      </li>
+      <li ><a href="#">最佳实践</a>
+        <div ></div>
+      </li>
+      <li ><a href="#">使用分析</a>
+        <div ></div>
+      </li>
+      <li ><a href="#">联系我们</a>
+        <div ></div>
+      </li>
+    </ul>
+    <div class="login"><a>LOGIN</a></div>
+  </div>
+</header>
+<section> <!-- TemplateBeginEditable name="EditRegion3" --><!-- TemplateEndEditable --> </section>
+<footer>
+  <div class="line_footer"></div>
+</footer>
+</body>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script>
+$(document).ready(function () { 
+      $(".menu ul li").bind("click", function () {
+            var index = $(this).index();
+            $(this).parent().children("li").attr("class", "");//将所有选项置为未选中
+			  $(this).parent().children("li").children("div").attr("class", "");
+            $(this).attr("class", "borderColor"); //设置当前选中项为选中样式
+			$(this).children("div").attr("class", "triangle-up");
+			
+        });
+    });
+</script>
+</html>

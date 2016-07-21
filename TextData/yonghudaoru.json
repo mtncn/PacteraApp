@@ -1,0 +1,25 @@
+{
+    "pro": [
+        {
+            "uid": "zhaoyouming",
+            "givenName": "姓",
+            "sn": "名",
+            "displayName":"全称",
+            "fullName": "uid=zhaoyouming,ou=Pactera,dc=chinacloudapp,dc=cn"
+        },
+        {
+            "uid": "zhaoyouming",
+            "givenName": "姓",
+            "sn": "名",
+            "displayName":"全称",
+            "fullName": "uid=zhaoyouming,ou=Pactera,dc=chinacloudapp,dc=cn"
+        },
+        {
+            "uid": "zhaoyouming",
+            "givenName": "姓",
+            "sn": "名",
+            "displayName":"全称",
+            "fullName": "uid=zhaoyouming,ou=Pactera,dc=chinacloudapp,dc=cn"
+        }
+    ]
+}

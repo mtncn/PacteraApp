@@ -1,0 +1,41 @@
+/**
+ * Created by vision on 16/3/28.
+ */
+module.exports = function($scope,newPut3Service,Appsession){
+    $scope.putup3={
+        lice:"1"
+    };
+
+    var appId = Appsession.appId;
+
+    //授权协议
+    $scope.Licenses = [
+        {key:'1',Lice:'OAuth2.0 Server-side'}
+    ];
+    $scope.Save_No3= function(){
+
+        newPut3Service.save_no3($scope.putup3).then(function (data){
+            alert("保存成功");
+        },function(){
+            console.log("newPut3Controller  管理_应用设置_应用上架:发布新应用 第三步(发布应用)");
+        });
+    };
+
+    $scope.Select_No3 = function(appId){
+        newPut3Service.Select_No3(appId).then(function (data){
+            if(data.putup3 != undefined){
+                $scope.putup3 = data.putup3;
+            }
+        },function(){
+            console.log("newPut3Controller  管理_应用设置_应用上架:发布新应用 第三步(发布应用)");
+        });
+    };
+
+    //下一步
+    $scope.Next= function(){
+        //$scope.Select_No3(putup3);
+        $scope.Save_No3();
+    };
+
+    $scope.Select_No3(appId);
+};

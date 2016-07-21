@@ -1,0 +1,20 @@
+<div class="jjj">
+    <div class="s_img_xia">
+        <img src="images/xiangqing/1-5.png"/>
+        <img src="images/xiangqing/1-6.png"/>
+        <img src="images/xiangqing/1-7.png"/>
+        <img src="images/xiangqing/1-8.png"/>
+    </div>
+    <div style="margin-bottom:20px;">
+        <h1 class="s_img_xiah1">简介</h1>
+        <span class="s_img_xiah1span">核心功能</span>
+        <span class="s_img_xiah1span">1.  更个性化的操作界面</span>
+        <span style="margin-bottom:25px" class="s_img_xiah1span">界面全新设计,清新简介,点化之间尽享畅爽体验</span>
+        <span style="margin-bottom:15px;" class="s_img_xiah1span">版本7.6.9中的新功能</span>
+        <span class="s_img_xiah1span">1.  优化猜您喜欢,猜歌更合心意</span>
+        <span class="s_img_xiah1span">2.  乐酷分类专项升级,独家资源第一时间奉上</span>
+        <span class="s_img_xiah1span">3.  排行榜,歌手支持分享了,独乐了不如众乐乐</span>
+        <span class="s_img_xiah1span">4.  新增演唱会超清直播,感受音乐现场</span>
+        <span class="s_img_xiah1span">5.  K歌新增留声机音效,为你的声音打造唱片的风格</span>
+    </div>
+</div>

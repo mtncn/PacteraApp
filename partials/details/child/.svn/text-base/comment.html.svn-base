@@ -1,0 +1,122 @@
+<div class="jjj">
+    <div class="jjj_children">
+        <h1 class="s_img_xiah1">用户评分</h1>
+        <ul style="background:url(images/xiangqing/2-7.png) no-repeat;" class="ul_42332">
+            <li style="color:#ffffff;">当前版本</li>
+            <li>所有版本</li>
+        </ul>
+        <div class="tab_div">
+            <div class="jjjdiv cb">
+                <div class="xinxinx">
+                    <span class="xinxixnsss">平均评分</span>
+                    <img class="xinxin_img" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_2" src="images/xiangqing/2-3.png"/>
+                    <span class="xinxixnsss">607份评分</span><br/><br/>
+                    <span class="xinxixnsss">点击评分</span>
+                    <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                </div>
+                <span class="span_shugexian"></span>
+                <div class="xinxin_right">
+                    <div  class="xinxin_right_s">
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    </div>
+                    <img class="xinxin_img_input" src="images/xiangqing/input.png"/>
+                    <span  class="xinxin_right_span">100</span><br/>
+                    <div  class="xinxin_right_s">
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    </div>
+                    <img class="xinxin_img_input" src="images/xiangqing/input.png"/>
+                    <span  class="xinxin_right_span">100</span><br/>
+                    <div  class="xinxin_right_s">
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    </div>
+                    <img class="xinxin_img_input" src="images/xiangqing/input.png"/>
+                    <span  class="xinxin_right_span">100</span><br/>
+                    <div  class="xinxin_right_s">
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    </div>
+                    <img class="xinxin_img_input" src="images/xiangqing/input.png"/>
+                    <span  class="xinxin_right_span">100</span><br/>
+                    <div  class="xinxin_right_s">
+                        <img class="xinxin_img" src="images/xiangqing/2-2.png"/>
+                    </div>
+                    <img class="xinxin_img_input" src="images/xiangqing/input.png"/>
+                    <span  class="xinxin_right_span">100</span>
+                </div>
+            </div>
+            <input class="zuanxie" type="button" value="撰写评论"/>
+            <input class="zuanxie" type="button" value="应用支持"/>
+            <span class="zuanxie_userpinglun">457条用户评论</span>
+            <ul class="ul_a">
+                <li>
+                    <span>用户A</span>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_2_a" src="images/xiangqing/2-3.png"/>
+                    <span class="timer_span">2016年01月08号16:35</span>
+                    <P>非常好用的音乐播放器,设计非常人性化,很为用户着想,简约大气,不仅可以听、看MV,还能K歌</P>
+                </li>
+                <li>
+                    <span>用户A</span>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_2_a" src="images/xiangqing/2-3.png"/>
+                    <span class="timer_span">2016年01月08号16:35</span>
+                    <P>非常好用的音乐播放器,设计非常人性化,很为用户着想,简约大气,不仅可以听、看MV,还能K歌</P>
+                </li>
+                <li>
+                    <span>用户A</span>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_2_a" src="images/xiangqing/2-3.png"/>
+                    <span class="timer_span">2016年01月08号16:35</span>
+                    <P>非常好用的音乐播放器,设计非常人性化,很为用户着想,简约大气,不仅可以听、看MV,还能K歌</P>
+                </li>
+                <li>
+                    <span>用户A</span>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_2_a" src="images/xiangqing/2-3.png"/>
+                    <span class="timer_span">2016年01月08号16:35</span>
+                    <P>非常好用的音乐播放器,设计非常人性化,很为用户着想,简约大气,不仅可以听、看MV,还能K歌</P>
+                </li>
+                <li>
+                    <span>用户A</span>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_a" src="images/xiangqing/2-4.png"/>
+                    <img class="xinxin_img_2_a" src="images/xiangqing/2-3.png"/>
+                    <span class="timer_span">2016年01月08号16:35</span>
+                    <P>非常好用的音乐播放器,设计非常人性化,很为用户着想,简约大气,不仅可以听、看MV,还能K歌</P>
+                </li>
+            </ul>
+        </div>
+        <div class="tab_div">......</div>
+    </div>
+</div>

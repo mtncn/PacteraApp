@@ -1,0 +1,18 @@
+{
+    "companyId":2,
+    "id":"FDF9BEDDB8F5CF77170DC66831968C63",
+    "sex":"男",
+    "station":true,
+    "user":
+        {
+            "id":10,
+            "admin":true,
+            "cadmin":false,
+            "isv":false,
+            "user":false,
+            "name":"赵友明1",
+            "role":"admin"
+        },
+    "msg":"用户名或密码错误！"
+}
+

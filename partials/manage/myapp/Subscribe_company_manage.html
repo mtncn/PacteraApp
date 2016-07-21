@@ -1,0 +1,84 @@
+<!--按开发商-->
+
+<div class="conRight_Con_Order_Child showDingyue" id="manage_subscribe_company_scope">
+    <div class="conRight_Con_Order_gRChild" ng-repeat="byCom in apps">
+        <!--<p class="conRight_Con_Order_gRChild_tiltle"></p>-->
+
+        <div class="conRight_Con_Order_gRChild_bot conRight_Con_Order_gRChild_bot_update">
+            <div class="conRight_Collection_childConOrder " ng-repeat="appinfo in byCom.appInfos track by $index">
+                <img onerror="this.src='images/tupianError.jpg'" ng-src="{{appinfo.imageUrl}}"/>
+                <p>
+                    <span class="blackColor">{{appinfo.appName}}</span><br/>
+                    <span class="conRight_Collection_childConL_span">{{appinfo.Describe}}</span>
+                </p>
+            </div>
+        </div>
+
+        <p class="conRight_Con_Order_gRChild_botL">{{byCom.companyID}}</p>
+
+        <div class="conRight_Con_Order_gRChild_botR">
+            <div class="conRight_Con_Order_gRChild_botR_child" ng-repeat="appinfo in byCom.appInfos track by $index">
+                <span>{{appinfo.Station}}：</span>
+                <img ng-if="appinfo.Station=='已订阅'" src="images/ydingyue.png" ng-click="unDo(appinfo.appId,appinfo.flowId)">
+                <img ng-if="appinfo.Station=='取消中'" src="images/企业应用-2.png">
+                <!--<em></em>
+                <span class="conRight_Con_Order_gRChild_botR_child_span" ng-click="unQuestion(appinfo.appId,appinfo.flowId)">提问题</span>-->
+                <em></em>
+                <span class="conRight_Con_Order_gRChild_botR_child_span" ng-click="unPingJia(appinfo.appId,appinfo.flowId,appinfo.version)">评价</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<ul class="fenye" id="fenye">
+    <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+    <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+    <li><a ng-click="changePage(currentPage*1-1)">上一页</a></li>
+    <div ng-repeat="tPage in totalPas">
+        <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+    </div>
+    <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+</ul>
+<div id="friend_told_userinfo_importUser" class="friend_told userinfo importUser ng-hide" ng-show="userImportShow">
+    <h4 id="friend_told_userinfo_importUser_h4">
+        <span>问题提出</span>
+    </h4>
+    <textarea class = 'importUser_input'  placeholder="问题描述"></textarea>
+    <p class="his_dat_last">
+        <button ng-click="saveImportUsers()">提交</button>
+        <button class="his_dat_last_btn" ng-click="closeImportUser()">取消</button>
+    </p>
+</div>
+<div id="friend_told_userinfo_importUser_2" class="friend_told userinfo importUser ng-hide" ng-show="userImportShow_2">
+    <h4 id="friend_told_userinfo_importUser_h4_2">
+        <span>用户评价</span>
+    </h4>
+    <div class="xzw_starSys" id="xzw_starSys">
+        <p class="xzw_starSys_p">点击评分：</p>
+        <div id="xzw_starBox">
+            <ul class="star" id="star">
+                <li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+                <li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+                <li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+                <li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+                <li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+            </ul>
+            <div class="current-rating" id="showb"></div>
+        </div>
+    </div>
+    <textarea class = 'importUser_input importUser_input_pj'  placeholder="评价内容"></textarea>
+    <div   class="newAppAlert" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu]">
+        <button type="button" class="close" ng-click="closeMsgBox_saveBu()"
+                aria-hidden="true">
+            &times;
+        </button>
+        {{testBuResult}}
+    </div>
+    <p class="his_dat_last">
+        <button ng-click="saveImportUsersPingjia()">提交</button>
+        <button class="his_dat_last_btn" ng-click="closeImportUser_2()">取消</button>
+    </p>
+</div>
+
+

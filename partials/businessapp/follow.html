@@ -1,0 +1,11 @@
+<h1>我的关注   ></h1>
+<div ng-repeat="col in colls">
+    <div class="B_right_con cb" ng-mouseover="showImg(col.sortId,col.useId)" ng-mouseleave="hideImg(col.sortId,col.useId)">
+        <span>{{$index+1}}.</span>
+        <img ng-src="{{col.imageurl}}" onerror="this.src='images/tupianError.jpg'" style="display: none;width: 40px;height: 41px;" id="{{col.sortId}}-{{col.useId}}-id"/>
+        <p id="{{col.sortId}}-{{col.useId}}-pid" style="line-height:39px;">{{col.name}}
+            <!--<br/>
+            <span id="{{col.sortId}}-{{col.useId}}-sid" style="margin-top: -12px;margin-left: -20px;">{{col.sort}}</span>-->
+        </p>
+    </div>
+</div>

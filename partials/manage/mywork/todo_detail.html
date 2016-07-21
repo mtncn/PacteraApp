@@ -1,0 +1,55 @@
+<div class="pop_form" >
+    <h4>
+        <span><a ui-sref="manage.todo({todoStatus:0})" class="active">管理</a>/<a ui-sref="manage.todo({todoStatus:0})" class="active">我的待办</a>/待办详情</span>
+    </h4>
+    <p class="daibanxiangqing_til">
+        <i class="titleBold">标题：</i><{{todoEdit.applicationDetail.motif}}>
+    </p>
+    <div class="application daibanxiangqing_app">
+        <span class="shenqingneirong titleBold">申请内容：</span><br><br>
+        <dl class="application_left">
+            <dt>
+                <img onerror="this.src='images/tupianError.jpg'" src="{{todoEdit.applicationDetail.imgURL}}"/>
+            </dt>
+            <dd>
+                <p class="appTitle">{{todoEdit.applicationDetail.appTitle}}</p>
+                <p class="p1">{{todoEdit.applicationDetail.appDetail}}</p>
+                <br>
+                <p>核心功能</p>
+                <p ng-bind-html="todoEdit.applicationDetail.functions" class="ng-binding"></p>
+               <!-- <p class="p1" ng-repeat="func in todoEdit.applicationDetail.functions">
+                    <span>{{$index + 1}}.</span>{{func.funcTitle}}<br>
+                    {{func.funcContent}}
+
+                </p>-->
+            </dd>
+        </dl>
+    </div>
+
+    <div class="application daibanxiangqing_app">
+        <span class="shenqingneirong titleBold">审批历史：</span>
+        <p class="his_dat">
+            <span>节点</span>
+            <span>操作人</span>
+            <span class="his_time">操作时间</span>
+            <span>操作状态</span>
+            <span>审批意见</span>
+        </p>
+        <p class="his_dat noback" ng-repeat="history in todoEdit.approveHistory">
+            <span>{{history.approveNode}}</span>
+            <span>{{history.approver}}</span>
+            <span class="his_time">{{history.updateTime}}</span>
+            <span>{{history.flag}}</span>
+            <span>{{history.advices}}</span>
+        </p>
+    </div>
+
+    <span class="shenqingneirong titleBold  advice_hua">审批意见：</span>
+    <textarea ng-model="comment"> </textarea>
+    <p class="his_dat_last">
+
+        <button ng-click="operation(true)">同意</button>
+        <button ng-click="operation(false)" class="his_dat_last_btn">拒绝</button>
+    </p>
+</div>
+

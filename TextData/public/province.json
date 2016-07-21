@@ -1,0 +1,8 @@
+{
+  "provinces":[
+    {"key":"1","Province":"北京"},
+    {"key":"2","Province":"朝鲜省"},
+    {"key":"3","Province":"韩省"},
+    {"key":"4","Province":"日本省"}
+  ]
+}

@@ -1,0 +1,5 @@
+{"approveTitle":{"approver":"张三","application":"OTRS"},
+  "applicationDetail":{"imgURL":"images/img/qiyefenlei-1.png","appTitle":"酷狗音乐","appDetail":"最好听的音乐在这里",
+    "functions":"1,更个性化的操作界面<br/>界面全新设计清新简洁，点划之间尽享畅想体验"},
+  "approveHistory":[{"approveNode":"提交申请","approver":"张三","updateTime":"2016年3月18日","advices":"同意"}]
+}

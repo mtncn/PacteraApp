@@ -1,0 +1,45 @@
+{
+  "person": {
+    "English": "Xuanling Zeng",
+    "Nickname": "owen",
+    "Name": "曾玄龄",
+    "Sex":"3"
+  },
+  "companyinfo": {
+    "Jobnumber": "P0029019"
+  },
+  "workaddress": {
+    "Company": "北京文思海辉软件技术有限公司",
+    "Street": "海淀区上地东路1号环洋大厦6层 ",
+    "City": "1",
+    "Province": "3",
+    "Postcode": "100085",
+    "Country": "1"
+  },
+  "homeaddress": {
+    "Street": "这是一个秘密",
+    "City": "2",
+    "Province": "2",
+    "Postcode": "这是一个秘密",
+    "Country": "1"
+  },
+  "phone": {
+    "Workphone": "12345678901",
+    "Extension": "12345678",
+    "Workfax": "12345678",
+    "Otherworkphone": "12345678",
+    "Homephone": "12345678",
+    "Pagers": "12345678",
+    "Otherphone": "12345678901",
+    "Mobilephone": "12345678901"
+  },
+  "email": {
+    "Address": "xuanling.zeng@pactera.com"
+  },
+  "emergency": {
+    "Name": "wife",
+    "Address": "这是一个秘密",
+    "Phone": "12345678901",
+    "Relation":"3"
+  }
+}

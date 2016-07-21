@@ -1,0 +1,21 @@
+/*{
+  "id":"11111",
+  "user":{
+    "id":"dingyanchao",
+    "role":"admin"
+  },
+  "sex":"男",
+  "station":true
+}*/
+
+
+{
+    "companyId":2,
+    "id":"FDF9BEDDB8F5CF77170DC66831968C63",
+    "sex":"男","station":true,
+    "user":
+        {"admin":true,"cadmin":false,"id":10,
+            "isv":false,"name":"赵友明1",
+            "role":"admin","user":false
+        }
+}

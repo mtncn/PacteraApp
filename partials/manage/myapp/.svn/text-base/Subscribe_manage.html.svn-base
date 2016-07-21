@@ -1,0 +1,23 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til">我的应用/我的订阅</h3>
+    <ul class="conRight_Collection_Order">
+        <li ui-sref="manage.subscribe.company({selectType:0})" ui-sref-active="colRed borderBottom">按开发商</li>
+        <li ui-sref="manage.subscribe.class({selectType:1})"   ui-sref-active="colRed borderBottom">按我的分类</li>
+    </ul>
+
+    <div class="searchInput">
+        <input placeholder="搜索应用"  type="text"/>
+        <div class="ser_til">
+            <img src="images/img/企业信息-6.png"/>
+        </div>
+    </div>
+
+    <ul  class="conRight_kind_Order cb">
+        <li>应用详情</li>
+        <li class="twoLi">{{fenlei}}</li>
+        <li class="threeLi">操作</li>
+    </ul>
+
+    <div class="conRight_Con_Order" ui-view></div>
+
+</div>

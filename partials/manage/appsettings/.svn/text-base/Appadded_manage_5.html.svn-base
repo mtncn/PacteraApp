@@ -1,0 +1,21 @@
+<div class="conRight_main">
+    <div class="pop_form">
+        <h4 class="noback">
+            <span>发布新应用</span>
+
+        </h4>
+        <div class="step_til">
+            <p>
+                <a href="###">基本信息</a>
+                <a href="###">应用详情</a>
+                <a href="###">发布应用</a>
+                <a href="###">发布范围</a>
+                <a href="###" class="over">发布完成</a>
+            </p>
+        </div>
+        <p class="tijiaowancheng">
+            <img src="images/5.png">
+            <span>已完成，并提交审核，请等待领导审批。</span>
+        </p>
+    </div>
+</div>

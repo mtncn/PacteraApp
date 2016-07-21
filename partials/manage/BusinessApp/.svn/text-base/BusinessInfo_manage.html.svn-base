@@ -1,0 +1,103 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til">企业信息／企业信息</h3>
+    <ul class="conRight_one conRight_one_hua">
+        <li>
+            <a ui-sref="manage.businessinfo" class="selectColor_manage borderBottom">
+                基本信息
+            </a>
+        </li>
+        <li class="">
+            <a ui-sref="manage.businessinfo_user" >
+                用户管理
+            </a>
+        </li>
+    </ul>
+    <div  class="conRight_kind_til cb info_basic" style="background:none;">
+        <div class="change_logo change_logo_hua">
+        	<span>
+                <img ng-src="{{imageSrc}}" />
+        	</span>
+
+            <a class="file" href="javascript:;">更换logo
+                <!--<input type="file" file-model="myFile" name="" id="">-->
+                <fileModel file-model="getFile()" ></fileModel>
+            </a>
+        </div>
+        <form id="saveBuform" name="saveBuForm" ng-submit="saveBusinessInfo(businessInfo)" novalidate>
+        <div class="change_info">
+            <p>
+                <span>公司名称:</span>
+                <input type="text" name="buCompanyName" ng-model="businessInfo.companyName" required/>
+                 <span style="color:red" ng-class="{true: 'Bu_CompanyName_show', false: 'Bu_CompanyName_hidden'}
+                                [saveBuForm.buCompanyName.$dirty && saveBuForm.buCompanyName.$invalid || Bu_CompanyName]">
+                                <span ng-class="{true: 'Bu_CompanyName_show', false: 'Bu_CompanyName_hidden'}
+                                [saveBuForm.buCompanyName.$dirty && saveBuForm.buCompanyName.$invalid || Bu_CompanyName]">请填写公司名称</span>
+                            </span>
+            </p>
+            <p>
+                <span>公司地址:</span>
+                <input type="text" ng-model="businessInfo.companyAddress"/>
+            </p>
+            <p>
+                <span>公司网站:</span>
+                <input type="text" ng-model="businessInfo.companyWebSet"/>
+            </p>
+            <p>
+                <span>电话:</span>
+                <input type="text" name="buCompanyPhone" ng-model="businessInfo.phone" required/>
+                 <span style="color:red" ng-class="{true: 'Bu_CompanyPhone_show', false: 'Bu_CompanyPhone_hidden'}
+                                [saveBuForm.buCompanyPhone.$dirty && saveBuForm.buCompanyPhone.$invalid || Bu_CompanyPhone]">
+                                <span ng-class="{true: 'Bu_CompanyPhone_show', false: 'Bu_CompanyPhone_hidden'}
+                                [saveBuForm.buCompanyPhone.$dirty && saveBuForm.buCompanyPhone.$invalid || Bu_CompanyPhone]">请填写公司电话</span>
+                            </span>
+            </p>
+            <p>
+                <span>传真:</span>
+                <input type="text" ng-model="businessInfo.fax"/>
+            </p>
+            <p>
+                <span>配置验证服务:</span>
+              <select class="selectServer"   ng-model="serverSelected"  ng-options="server.name for server in businessInfo.serverInfo">
+                </select>
+                <a class="serverValid" ng-click="onChange(serverSelected)">配置</a>
+            </p>
+             <div  class="" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu]">
+                <button type="button" class="close" ng-click="closeMsgBox_saveBu()"
+                        aria-hidden="true">
+                    &times;
+                </button>
+              {{testBuResult}}
+            </div>
+            <button class="saveBtn" type="submit"  ng-disabled="
+                               saveBuForm.buCompanyName.$dirty && saveBuForm.buCompanyName.$invalid ||
+                               saveBuForm.buCompanyPhone.$dirty && saveBuForm.buCompanyPhone.$invalid">保存</button>
+        </div>
+            </form>
+    </div>
+    <div class="pop_form pop_form_hua" ng-show="serverShow">
+        <h4>
+            <span>创建:LDAP参数</span>
+            <img ng-click="closeServer()" src="images/d.png">
+        </h4>
+        <div><label>服务器地址（host）</label><input ng-model="serverInfos.host" type="text" placeholder="server"/></div>
+        <div><label>服务器端口（port）</label><input ng-model="serverInfos.port" type="text" placeholder="port"/></div>
+        <div><label>基节点（base）</label><input ng-model="serverInfos.base" type="text" placeholder="server"/></div>
+        <div><label></label><input ng-disabled="true" type="checkbox" ng-model="serverInfos.auth"/>simple authentication</div>
+        <div><label>用户名</label><input ng-model="serverInfos.userName"  placeholder="userName"/></div>
+        <div><label>密码</label><input ng-model="serverInfos.userPwd" placeholder="pwd"/>
+        <!--测试结果信息提示start-->
+        <div  class="" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_testServer]">
+            <button type="button" class="close" ng-click="closeMsgBox_testServer()"
+                    aria-hidden="true">
+                &times;
+            </button>
+         {{testServerResult}}
+        </div>
+            <!--测试结果信息提示end-->
+        <p class="his_dat_last his_dat_last_hua">
+            <button ng-click="testServerInfo(serverInfos)">测试</button>
+            <button ng-click="saveServerInfo(serverInfos)">确认</button>
+            <button class="his_dat_last_btn" ng-click="closeServer()">取消</button>
+        </p>
+    </div>
+</div>

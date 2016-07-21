@@ -1,0 +1,32 @@
+{"pro":
+	[
+	{
+	    "userId":"用户Id(暂不使用)",
+	    "userName":"蔡启林",
+	    "version": "评论版本V1.0",
+	    "rate": 5,
+	    "creaTime": "2016年01月08号16:35",
+	    "text": "评论正文"    
+	},
+	{
+	    "userId":"用户Id(暂不使用)",
+	    "userName":"蔡启林",
+	    "version": "评论版本",
+	    "rate": 4,
+	    "creaTime": "2016年01月08号16:35",
+	    "text": "评论正文"    
+	},
+	{
+	    "userId":"用户Id(暂不使用)",
+	    "userName":"蔡启林",
+	    "version": "评论版本",
+	    "rate": 3,
+	    "creaTime": "2016年01月08号16:35",
+	    "text": "评论正文"    
+	}
+	],
+	"avg":3,
+	"total":"831",
+	"number":"111"
+
+}

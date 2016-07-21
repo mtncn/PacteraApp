@@ -1,0 +1,250 @@
+/**
+ * Created by Ding on 2016.03.24
+ * 企业应用
+ */
+
+.application_state_manbusapp{
+    width: 90%;
+    height: 110px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    margin-top: 25px;
+}
+.application_state_manbusapp h4{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+    background: #f5f5f5;
+}
+.application_state_manbusapp h4 span{
+    margin-left: 20px;
+    color: #999;
+}
+.application_state_manbusapp h4 b{
+    margin-left: 30px;
+}
+.application_left_manbusapp{
+    width: 35%;
+    float: left;
+}
+.application_manbusapp{
+    margin-top: 20px;
+}
+.application_left_manbusapp dt{
+    float: left;
+    width: 20%;
+    margin-left: 15px;
+}
+.application_left_manbusapp dt img{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+.application_left_manbusapp dd{
+    width: 70%;
+    font-size: 12px;
+    float: right;
+}
+.application_left_manbusapp dd .p1{
+    margin-top: 5px;
+}
+
+.application_right_manbusapp{
+    font-size: 12px;
+    width: 60%;
+    float: left;
+    margin-left: 35px;
+}
+.application_right_manbusapp .span1_manbusapp{
+    color: #7a7a7a;
+}
+.application_right_manbusapp button{
+    padding: 3px 15px;
+    border-radius: 5px;
+    background: #334961;
+    color: #fff;
+    margin: 0 15px;
+    font-size: 12px;
+    width: 20%;
+}
+
+/*Created 2016.03.24 End*/
+
+
+/*发布新应用－基本信息*/
+.his_dat_last_no1{
+    padding-right: 12%;
+}
+.his_dat_last_no1 button{
+    width: 35%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.ju{
+    height:40px;
+    width:80px;
+    background-color:red;
+    float:left;
+}
+.more {
+    float:left;
+    display: inline-block;
+    border-color: transparent transparent transparent red;
+    border-style: dashed dashed  dashed solid;
+    border-width:20px   0 20px 20px;
+    width:0px;
+    height:0px;
+}
+
+.upimages{
+    width: 100%;
+    height: 100%;
+}
+.logoimages{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    float: left;
+}
+
+.delectimage{
+    margin: 1% 0 0 10%;
+    z-index:1;
+    position:absolute;
+}
+
+.showupimages_show{
+    visibility:visible;
+}
+.showupimages_hidden{
+    visibility:hidden;
+}
+.updatefont{
+    font-size: inherit;
+    top: 10%;
+    min-height: 500px;
+}
+.update_right{
+    width: 39%;
+    min-height: 450px;
+}
+.updateleft{
+    min-height: 450px;
+}
+.updatebutton{
+    padding: 62% 0 0 10px;
+}
+.updatebutton4
+{
+    padding: 44% 10% 0 0;
+}
+.showDingyue{
+    display:block;
+}
+.update_Dingyue_Height{
+    min-height: 0;
+}
+
+.conRight_Con_Order_gRChild_bot_update{
+    height: auto;
+}
+.step_til_p1 input.hidden_upload{
+    opacity: 0;
+    margin: 20% 0 0 -15%;
+}
+.upload_bk{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: url(../images/jiahao.png) no-repeat;
+    background-position: center;
+}
+.step_fabufanwei_right_title{
+    width: 100%;
+    color: #FFFFFF;
+    background-color: #428bca;
+}
+.step_fabufanwei_right_g{
+    padding: 0 0 10px 0;
+    width: 60%;
+}
+.step_fabufanwei_right_name{
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    /*border: 1px solid #FFFFFF;*/
+}
+.step_fabufanwei_right_type{
+    width: 78%;
+    display: inline-block;
+    text-align: center;
+    /*border: 1px solid #FFFFFF;*/
+}
+/*.step_fabufanwei_right_other{*/
+    /*width: 58%;*/
+    /*display: inline-block;*/
+    /*text-align: left;*/
+    /*/!*border: 1px solid #FFFFFF;*!/*/
+/*}*/
+.step_fabufanwei_leftp1_ul{
+    margin: 3% 0 0 0;
+    width: 100%;
+}
+.step_fabufanwei_leftp1_name{
+    text-align: left;
+    width: 16%;
+    display: inline-block;
+    padding-left: 4%;
+}
+.step_fabufanwei_leftp1_type{
+    text-align: center;
+    width: 78%;
+    display: inline-block;
+    padding-left: 1%;
+}
+/*.step_fabufanwei_leftp1_other{*/
+    /*text-align: left;*/
+    /*width: 59%;*/
+    /*display: inline-block;*/
+    /*padding-left: 1%;*/
+/*}*/
+.step_fabufanwei_leftp1_mouseover{
+    cursor: pointer;
+}
+.step_fabufanwei_right_glist{
+    width: 100%;
+}
+.step_fabufanwei_right_glist li{
+    float: left;
+}
+.station-1{
+    color: #FFFFFF;
+    background-color: #428bca;
+}
+.station-1 li{
+    color: #FFFFFF;
+    background-color: #428bca;
+}
+.station-1 li a{
+    color: #FFFFFF;
+    background-color: #428bca;
+}
+.personImge{
+    width: 75px;
+    height: 90px;
+}
+.personImageInput{
+    width: 6%;
+    /*height: 100%;*/
+    display: inline-block;
+    /*background: url(../images/jiahao.png) no-repeat;*/
+    background-position: center;
+}
+.personImageInput input.hidden_upload{
+    opacity: 0;
+    margin: -12% 0 -33% -10%;
+
+}
+

@@ -1,0 +1,63 @@
+<div style="position:relative; width:100%;">
+    <div  style="display:block"   class="s_ss">
+        <div class="auto cb">
+            <div class="middle">
+                <a href="####" class="aLeft"></a>
+                <a href="####" class="aRight"></a>
+                <div class="scroll">
+                    <div style="background:url(images/ban_1.png)" class="img1">
+                       <!-- <p class="p_1">每月超过<span>150</span>万人下载企业应用</p>
+                        <p class="p_2">总有<span>一款</span>适合你</p>
+                        <section class="p_div">
+                            <img src="images/s3.png"/>
+                            <img src="images/s2.png"/>
+                            <img src="images/s1.png"/>
+                        </section>-->
+                    </div>
+                    <div style="background:url(images/ban_2.png)"></div>
+                    <div style="background:green"></div>
+                    <div style="background:blue"></div>
+                    <div style="background:#C06"></div>
+                </div>
+                <div class="btn">
+                    <span class="hover"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="main">
+            <div class="con_Img">
+                <a  href="####"><img src="images/innerPage_img1.png"/></a>
+                <a href="####" class="firs"><img src="images/innerPage_img2.png"/></a>
+                <a href="####"><img src="images/innerPage_img3.png"/></a>
+            </div>
+            <div class="smallTitle">
+                <p style="margin-left:3%"><a class="a_bold" href="####">产品保证</a><br/><img src="images/innerPage_3.png"/><br/><a class="a_bold_2" href="####">提供最优质的产品</a></p>
+                <p class="firs"><a class="a_bold" href="#####">优质服务</a><br/><img src="images/innerPage_2.png"/><br/><a class="a_bold_2" href="####">提供最优质的服务</a></p>
+                <p><a class="a_bold" href="#####">团队支持</a><br/><img src="images/innerPage_1.png"/><br/><a class="a_bold_2" href="####">提供最强大的团队支持</a></p>
+            </div>
+        </div>
+        -->
+        <div class="main">
+            <div class="con_Img">
+                <a  href="####">
+                    <img src="images/innerPage_img1.png" class="nomargin">
+                    <p>产品保证<br/><img src="images/innerPage_3.png"/><br/>提供最优质的产品</p>
+                </a>
+                <a href="####" class="mid">
+                    <img src="images/innerPage_img2.png" class="nomargin">
+                    <p>优质服务<br/><img src="images/innerPage_2.png"/><br/>提供最优质的服务</p>
+                </a>
+                <a href="####">
+                    <img src="images/innerPage_img3.png" class="nomargin">
+                    <p>团队支持<br/><img src="images/innerPage_1.png"/><br/>提供最强大的团队支持</p>
+                </a>
+            </div>
+        </div>
+
+    </div></div>
+</div>

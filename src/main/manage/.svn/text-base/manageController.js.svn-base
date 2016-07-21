@@ -1,0 +1,13 @@
+/**
+ * Created by Sky on 2016/3/8.
+ */
+module.exports=function($rootScope,$scope,Appsession){
+    //添加管理点击样式
+    $rootScope.mgBtnShowCor='login_2 selectColor_manage';
+    //add by HUA--end
+
+    $scope.cleanAppId = function(){
+        Appsession.destroy();
+    };
+
+};

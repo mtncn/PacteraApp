@@ -1,0 +1,81 @@
+<div class="conRight_main">
+    <form name="upApp3" novalidate>
+    <div class="pop_form">
+        <h3 class="conRight_main_til"><a ui-sref="manage.appadded({Status:0,BiaoShi:'应用上架'})" class="active">管理</a>/应用上架</h3>
+        <div class="step_til">
+            <p class="step_til_p_3">
+                <a href="javascript:void(0)" class="jibenxinxi">基本信息</a>
+                <a href="javascript:void(0)">应用详情</a>
+                <a href="javascript:void(0)">发布应用</a>
+                <a href="javascript:void(0)">发布范围</a>
+                <a href="javascript:void(0)" class="over">发布完成</a>
+            </p>
+        </div>
+
+        <div class="step_til_p1">
+            <span>服务商</span><br>
+            <h7>
+                <div>
+                <input id="conRight_sex_select" type="text" ng-model="putup3.name" name="Developer" placeholder="开发商" required/>
+                <span class="help-block" ng-messages="upApp3.Developer.$error" ng-if="upApp3.Developer.$touched">
+                    <span ng-message="required">开发商必填</span>
+                </span>
+                </div>
+                <div>
+                <input id="conRight_sex_select_1" type="text" ng-model="putup3.phone" name="Phone" placeholder="联系人电话" required/>
+                <span class="help-block" ng-messages="upApp3.Phone.$error" ng-if="upApp3.Phone.$touched">
+                    <span ng-message="required">电话必填</span>
+                </span>
+               </div>
+            </h7>
+            <h7>
+                <div>
+                <input id="conRight_sex_select_3" type="text" ng-model="putup3.linkmanName" name="Name" placeholder="联系人姓名" required/>
+                <span class="help-block" ng-messages="upApp3.Name.$error" ng-if="upApp3.Name.$touched">
+                    <span ng-message="required">姓名必填</span>
+                </span>
+                </div>
+                 <div>
+                <input id="conRight_sex_select_4" class="conRight_sex_select_4" type="text" ng-model="putup3.email" name="Email" placeholder="联系人邮箱" required/>
+                <span class="help-block" ng-messages="upApp3.Email.$error" ng-if="upApp3.Email.$touched">
+                    <span ng-message="required">邮箱必填</span>
+                </span>
+                <span class="reEmail">邮箱格式不正确</span>
+                </div>
+            </h7>
+        </div>
+
+        <div class="step_til_p1">
+            <span>授权协议</span><br>
+            <select class="inp-WIDTH" ng-model="putup3.lice"  ng-options="x.key as x.Lice for x in Licenses"/>
+        </div>
+
+        <div class="step_til_p1">
+            <span>URL</span><br>
+            <h7><input id="conRight_sex_select_5" style="width:40%;" ng-model="putup3.url" type="text" name="Url" required/></h7>
+            <span class="help-block" ng-messages="upApp3.Url.$error" ng-if="upApp3.Url.$touched">
+                    <span ng-message="required">Url必填</span>
+            </span>
+        </div><br>
+        <div  class="newAppAlert" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu]">
+            <button type="button" class="close" ng-click="closeMsgBox_saveBu()"
+                    aria-hidden="true">
+                &times;
+            </button>
+            {{testBuResult}}
+        </div>
+        <p class="his_dat_last his_dat_last_three">
+            <button type="submit" ng-click="Save_No3(putup3)"
+                    ng-disabled="upApp3.Developer.$invalid || upApp3.Phone.$invalid || upApp3.Name.$invalid
+                     || upApp3.Email.$invalid || upApp3.Url.$invalid">保存
+            </button>
+            <button type="submit" ui-sref="manage.appadded2">上一步</button>
+            <button type="submit"  ng-click="Next()" class="his_dat_last_btn"
+                    ng-disabled="upApp3.Developer.$invalid || upApp3.Phone.$invalid || upApp3.Name.$invalid
+                     || upApp3.Email.$invalid || upApp3.Url.$invalid">下一步
+            </button>
+        </p>
+
+    </div>
+    </form>
+</div>

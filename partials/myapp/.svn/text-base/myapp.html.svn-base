@@ -1,0 +1,78 @@
+<div class="s_ss">
+    <div class="zuihou">
+        <div class="zuihou_1">
+            <h1 style="cursor: pointer;" ui-sref="manage.apply({applyStatus:0})">我的申请</h1>
+            <div class="oa_con">
+                <ul ng-repeat="apply in applys">
+                    <li>
+                        <a href="#"  ui-sref="manage.apply({applyStatus:0})">
+                            <img src="images/myuser/1.png"/>
+                            <span class="oa_con_span1">{{apply.motif}}</span>
+                            <span class="oa_con_span2">{{apply.createTime}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul ng-if="success2 == true">
+                    <li style="border:none">
+                        <a href="#">
+                            <span class="oa_con_span3" style="cursor: pointer;" ui-sref="manage.apply({applyStatus:0})">更多>></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-left:6%" class="zuihou_1">
+            <h1 style="cursor: pointer;" ui-sref="manage.todo({todoStatus:0})">我的待办</h1>
+
+            <div class="oa_con">
+                <ul>
+                    <li ng-repeat="do in todo" >
+                        <a href="#"  ui-sref="manage.todo({todoStatus:0})">
+                            <img src="images/myuser/1.png"/>
+                            <span class="oa_con_span1">{{do.motif}}</span>
+                            <span class="oa_con_span2">{{do.createTime}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul ng-if="success == true">
+                    <li style="border:none">
+                        <a href="#">
+                            <span class="oa_con_span3" style="cursor: pointer;" ui-sref="manage.todo({todoStatus:0})">更多>></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="zBottom">
+        <div class="B_left">
+            <h1>我的应用 ></h1>
+            <ul class="B_left_span">
+                <li id="all">
+                    <a ui-sref="myapp.content({id:0})">全部</a>
+                </li>
+                <div ng-repeat="men in menus">
+                    <li ui-sref-active="selectColor"><a ui-sref="myapp.content({id:men.sortId})">{{men.sortName}}</a></li>
+                </div>
+            </ul>
+        </div>
+        <div class="B_middle_span" ui-view=""></div>
+        <!-- 我的收藏div -->
+        <div class="B_right" ui-view="collection">
+
+        </div>
+        <div class="B_right_bootom">
+            <h1>访问历史 ></h1>
+            <div ng-repeat="hs in mhistory">
+                <div class="B_right_con cb" ng-mouseover="showImg(hs.appId)" ng-mouseleave="hideImg(hs.appId)">
+                    <span>{{$index+1}}.</span>
+                    <img style="display: none;width: 40px;height: 41px;" id="{{hs.appId}}-hsid" ng-src="{{hs.imageurl}}"/>
+                    <p style="line-height:39px;">{{hs.useName}}
+                        <!--<br/><span>娱乐</span>-->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bot_tubiao">版权所有©北京文思海辉技术有限公司</div>
+</div>

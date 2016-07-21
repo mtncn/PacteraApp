@@ -1,0 +1,813 @@
+/**
+ * Created by Hua on 16/3/11.
+ */
+
+.conRight_Collection_til p
+{
+    margin-right: 0px;
+    width: 25%;
+    float: right;
+    text-align: left;
+}
+.colRed{
+    color:#e34d3c;
+}
+.errorCor{
+    border-color: #e34d3c;
+}
+.borderBottom{color:#e34d3c;}
+.colRed a{
+    color:#e34d3c;
+}
+.borderBottom{
+    border-bottom-color: #e34d3c;
+}
+.selectColor_manage a{
+    color:#e34d3c;
+    text-decoration: none;
+}
+.active,.activeIcon,.activeIcon:hover{
+    color:#4cACDE;
+}
+.activeIcon{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.inactive{
+    color:#CCC;
+}
+.inactive:hover{
+    color:#CCC;
+    cursor: default;
+}
+.update_pwd{
+    display: block;
+}
+.successCor{
+    float: left;
+    color: #4AB41E;
+    margin-left: 35px;
+    margin-top: 12px;
+}
+.warnCor{
+    float: left;
+    color: #FEB537;
+    margin-left: 35px;
+    margin-top: 12px;
+}
+.linkCor{
+    color: #0086b3;
+}
+.activeCor{
+    color:#878181;
+}
+.conRight_Collection_content_parent{
+    display: block;
+}
+.conRight_Collection_til span{
+    width: 100px;
+    margin-left: 30px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.conRight_Collection_til span.classSpan{
+    margin-left: 0px;
+}
+.conRight_Collection_childConR{
+    text-align: center;
+    float: right;
+    width: 25%;
+
+}
+.pop_form{
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    position: absolute;
+    top:-10px;
+    padding-bottom: 5px;
+    border: 0px;
+    z-index: 2;
+}
+.pop_form h4{
+    background: #fff;
+    color: #333;
+}
+.pop_form h4,.daibanxiangqing_til{
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.advice_hua{
+    vertical-align: top;
+    margin-top:10px;
+}
+.pop_form h4 img
+{
+    top:6px;
+}
+.pop_form h4 span{
+    margin-left: 20px;
+    font-size: 16px;
+}
+.application{
+    margin-top: 10px;
+}
+.daibanxiangqing_app{
+    padding-bottom: 10px;
+}
+.his_dat_last button{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.his_dat_last{
+    text-align: center;
+}
+.conRight_main{
+    min-height: 0px;
+}
+.oprIcon{
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+.conRight_kind_child_til_daiban li img.oprIcon{
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+.appTitle{
+    font-weight: bold;
+    font-size: 18px;
+    height: 30px;
+    line-height: 20px;
+}
+.application_left dt{
+    margin-left: 18px;
+}
+.titleBold{
+    font-weight: bold;
+    font-size: 13px;
+}
+.application_left{
+    width: 65%;
+}
+.application_left dt{
+    width: 10%;
+}
+.dd{
+    width:80%;
+}
+.application_left dd{
+    width: 85%;
+}
+.daibanxiangqing_appNone{
+    border-bottom: none;
+}
+.processImg{width:95%;height:auto;margin: 0 auto;margin-left: 20px;}
+.pop_form_img{
+    padding: 10px;
+}
+.classCor{
+    color: #fff;
+}
+.classBackCor{
+    background: #e34d3c;
+}
+.selectBackCor_menu{
+    background: #334961;
+    color: #fff;
+}
+.selectBackCor_menu a{
+    color: #fff;
+}
+.selectBackCor_menu input.readInput{
+    background: #F6F6F6;
+}
+.selectBackCor_menu1 input.readInput{
+    background: #F6F6F6;
+}
+.mY_kind_ulTil li{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 8%;
+    width: 92%;
+}
+.mY_kind_divTil{
+    width: 70%;
+}
+.oprBtn{
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    background: #334961;
+    border-radius: 5px;
+    display:inline-block;
+    margin-left: 30px;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+}
+.oprBtn:hover{
+    color:#fff;
+}
+.iptMenu{
+    width: 100px;
+    margin-left: 19px;
+    margin-right: 11px;
+}
+.removeMenu{
+    font-size: 13px;
+}
+.oprBtn img{
+    margin-bottom: 2px;
+    margin-right: 5px;}
+.menuClassLi img{
+    float: right;
+    margin-right: 10px;
+    margin-top: 7px;
+}
+.selectBackCor_menu1{
+    background: #F6F6F6;
+}
+.mY_kind_divTil_Child_tilte1{
+    width:96%;
+    height:40px;
+    line-height:40px;
+    background:#F6F6F6;
+    padding-left:4%;
+}
+.mY_kind_ulTil li{
+    cursor: default;
+}
+.menuClassLi img{
+    cursor: pointer;
+}
+.readInput {
+    width: 100px;
+    border: 0;
+    cursor: pointer;
+    vertical-align: top;
+    margin-top: 5px;
+}
+.editInput {
+    width: 100px;
+    cursor: pointer;
+    vertical-align: top;
+    margin-top: 3px;
+}
+.classMaintain{
+    width: 22%;
+}
+.classMaintainDv{
+    width: 65%;
+}
+.classListMargin{
+    margin-left: 2px;
+}
+.removeAddMenu{
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.addAppDv{
+    height: 55px;
+    line-height: 55px;
+    font-size: 18px;
+}
+.marginLeft0{
+    margin-left: 0px;
+}
+.imgRight img{
+    float: right;
+}
+.iptSearch{
+    float: right;
+    margin-right: 20px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    border: 1px solid #fff;
+    background: #fff;
+    width: 220px;
+    margin-top: 10px;
+    padding-left: 5px;
+}
+.mY_kind_divTil_Child_tilte img {
+    position: absolute;
+    top: 15px;
+    right: 4%;
+}
+.addAppWindow {
+    position: absolute;
+    top:2%;
+    left: 7%;
+    z-index:5;
+    background: #fff;
+}
+.btnGroup a{
+    height: 40px;
+    line-height: 40px;
+    width:90px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block;
+
+}
+.btnGroup{
+    text-align: center;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+.btnGroup a.saveBtn{
+    background:#334961;
+    color: #fff;
+
+}
+.btnGroup a.closeBtn{
+    background:#F6F6F6; ;
+}
+.chkAppList{
+    background: url(../images/checked.png) no-repeat;
+    display: block;
+    clear: left;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: bottom;
+    border-radius: 1px;
+    box-sizing: border-box;
+    position: relative;
+}
+.chkAppList1{
+    background: url(../images/unchecked.png) no-repeat;
+    display: block;
+    clear: left;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: bottom;
+    border-radius: 1px;
+    box-sizing: border-box;
+    position: relative;
+}
+.conRight_kind_til li, .conRight_kind_child_til li{
+    width:17.5%;
+}
+.conRight_kind_til li.applyTitle, .conRight_kind_child_til li.applyTitle{
+    width:30%;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.conRight_kind_til_daiban li,.conRight_kind_child_til_daiban li{
+    width:23%;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.conRight_kind_child_til_daiban li.todoTitle,.conRight_kind_til_daiban li.todoTitle{
+    width:31%;
+}
+/*企业信息--开始*/
+.conRight_one_hua{
+    margin-bottom:5px;
+}
+.info_user_hua h4 a:hover{
+    color: #333;
+    border-bottom: none;
+}
+.info_user_hua h4 a.classCor:hover{
+    color: #fff;
+}
+a.classCor:hover{
+    color: #fff;
+}
+.change_logo_hua a{
+    color:#4cACDE;
+}
+.change_logo_hua a:hover{
+    color:#333;
+}
+.info_user_hua h4{
+    padding-left: 10px;
+}
+.info_user_til_hua span{
+    margin-left: 40px;
+    cursor: pointer;
+}
+.step_fabufanwei_til_hua{
+    margin-left: 40px;
+}
+.selectServer{
+    width: 130px;
+}
+input.searchBusiness{
+    background: url("../images/sousuo.png") no-repeat 150px 3px;
+    margin-right: 4%;
+}
+.step_fabufanwei_hua{
+    width:99%;
+}
+.user_right01_til01 .span03_hua {
+    width:30%;
+}
+.user_right01_til01 .span03_email_hua {
+    width:25%;
+}
+.span03_hua img{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.step_fabufanwei_left_hua{
+    padding:0;
+}
+.list-group-item{
+    border:0px;
+}
+.fa-user,.fa-users{
+    font-size: 20px;
+}
+.chkUserList{
+    display: block;
+    clear: left;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: bottom;
+    border-radius: 1px;
+    box-sizing: border-box;
+    position: relative;
+}
+.node-icon{
+    font-size: 20px;
+    margin-right: 10px;
+}
+/*用户弹框开始*/
+.edit{
+    width: 60%;
+}
+.edit h4{
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+}
+.edit h4 span{
+    width: 30%;
+    display: inline-block;
+    text-align: right;
+}
+.edit h4 input{
+    width: 55%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.edit h4 select{
+    width: 55%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin-left: 11px;
+}
+.edit p{
+    width: 35%;
+    padding-top: 25px;
+}
+/*用户弹框结束*/
+
+/*用户组弹框开始*/
+.edit2 h4{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+/*用户组弹框结束*/
+
+/*信息用户导入弹框开始*/
+.userinfo{
+    padding: 15px;
+}
+.userinfo h4 span{
+    margin: 0 15px 0 0;
+}
+.userinfo .inp02{
+    width: 97%;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0;
+    padding-left: 10px;
+  /*  background: url("../images/sousuo.png") no-repeat scroll 98% 5px transparent;*/
+}
+.userinfo .userinfo01{
+    width: 100%;
+    clear: both;
+    margin: 20px 0;
+    min-height: 200px;
+    padding: 10px 0;
+    border: none;
+}
+.userinfo01 p{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+}
+.userinfo01 p span{
+    width: 17%;
+    height: 35px;
+    display: inline-block;
+    text-align: center;
+}
+.userinfo01 .span03{
+    width: 30%;
+}
+.userinfo01 input{
+    margin: 0;
+}
+/*信息用户导入弹框结束*/
+.userWindow{
+    position: absolute;
+    top: 80%;
+    left: 18%;
+    z-index: 3;
+    min-height: 150px;
+}
+.userGroupWindow{
+    position: absolute;
+    top: 80%;
+    left: 18%;
+    z-index: 4;
+    min-height: 150px;
+}
+.importUser{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    z-index:2;
+    width:70%;
+}
+.edit p.btnGroupBottom{
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    text-align: center;
+    padding-bottom: 10px;
+}
+/*#userList p:nth-of-type(odd){ background:#00ccff;}*/
+
+.userinfo01  input.chkUserImport{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.span03_hua img{
+    cursor: pointer;
+}
+.importUserSearch{
+    position: absolute;
+    top:63px;
+    right:40px;
+}
+.user_right01_hua{
+    min-height:420px;
+}
+.user_right01_til01 span.span05{
+    width:30%;
+}
+.span05 img{
+    cursor:pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+input.searchBusiness_hua{
+    background: none;
+}
+.info_user_til_hua{
+    position: relative;
+}
+.info_user_til_hua img{
+    position: absolute;
+    right: 4.5%;
+    top: 15%;
+    cursor: pointer;
+}
+.pop_form_hua{
+    border: 1px solid #CCC;
+    width:80%;
+    margin:0 auto;
+    position: absolute;
+    top:20%;
+    left:10%;
+
+}
+.pop_form_hua h4{
+    background: #334961;
+    color:#fff;
+    margin:0px;
+    margin-bottom: 20px;
+    height: 45px;
+    line-height: 45px;
+}
+.pop_form_hua img{
+    cursor: pointer;
+}
+.pop_form_hua div{
+    margin:10px;
+}
+.pop_form_hua div label{
+   width:150px;
+    text-align: right;
+    padding:10px;
+    font-weight: normal;
+}
+.pop_form_hua div input{
+    border:1px solid #CCCCCC;
+    border-radius: 3px;
+    width:270px;
+    height:30px;
+}
+.pop_form_hua div input[type="checkbox"]{
+    width:20px;
+    margin:0px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.pop_form_hua P{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.his_dat_last_hua{
+    width:90%;
+    margin:0 auto;
+}
+.his_dat_last_hua button{
+    border-radius: 0px;
+    height:35px;
+    padding:5px;
+    width:100px;
+}
+.file {
+    position: relative;
+    display: inline-block;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #4CACDE;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+  color:#333;
+}
+.change_logo_hua a{
+    padding:0px;
+}
+.change_logo_hua span img{
+    max-width: 200px;
+    max-height: 140px;
+
+}
+.conRight_kind_til_daiban li.textLeft1, .conRight_kind_child_til_daiban li.textLeft1{
+    text-align: left;
+}
+.conRight_kind_til li.textLeft1, .conRight_kind_child_til li.textLeft1{
+    text-align: left;
+}
+.user_right01_til01 span.textLeft1{
+    text-align: left;
+}
+.user_right01_til span.textLeft{
+    text-align: left;
+    padding-left: 5%;
+}
+.user_right01_til01 span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.serverValid{
+    color:#4CACDE;
+}
+.user_right01 .user_right01_til li {
+    float: left;
+    width:20%;
+}
+.userList_hua li{
+    width:23%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: none;
+    cursor: default;
+}
+.userList_hua li.chkCol{
+    width:8%;
+}
+.userList_hua li img,.userList_hua_group li img
+{
+    margin-left: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+.userList_hua_group li{
+    width:33%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: none;
+    cursor: default;
+}
+.userList_hua_group li.textLeft1{
+    padding-left: 1%;
+}
+.repeatRowCor ul:nth-of-type(even){ background:#F7F9FB;}
+.change_info button{
+    padding: 0;
+    width:auto;
+    background: none;
+    border-radius: 0;
+    margin:0;
+}
+.change_info button.saveBtn{
+    padding: 5px 20px;
+    width: 70px;
+    background: #334961;
+    border-radius: 5px;
+    color: #fff;
+    margin:30px 180px;
+}
+.alert{
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+.hideMsg{
+    visibility: hidden;
+}
+.showMsg{
+    visibility: visible;
+}
+.userTreeTitle{
+   float: left;
+    width: 25%;
+    display: inline-block;
+    margin-top: 20px;
+}
+.userMsg{
+    float:right;
+    width:60%;
+    margin-right: 7%;
+}
+.repeatRowCor li{
+    font-size: 13px;
+}
+.Bu_CompanyName_hidden,.Bu_CompanyPhone_hidden,.userName_hidden,.userEmail_hidden,.userPhone_hidden{
+    visibility: hidden;
+}
+.Bu_CompanyName_show,.Bu_CompanyPhone_show,.userName_show,.userEmail_show,.userPhone_show{
+    visibility:visible;
+}
+.edit h4 i{
+    display: block;
+    margin-left: 20%;
+}
+#treeUserGroup ul li{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.userWindow input.ng-dirty.ng-invalid{
+    border:1px solid #ccc;
+}
+/*企业信息--结束*/
+/*Created by Hua End*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+{"userGroupList":[
+{
+  "text": "文思海辉",
+  "groupId": "all",
+  "nodes": [
+{
+  "text": "北京文思海辉",
+  "groupId": "pactera_beijing",
+  "state": {
+  "expanded": true
+},
+  "nodes": [
+    {
+      "text": "java部门",
+      "groupId": "java_beijing",
+      "state": {
+        "expanded": true
+      }
+    },
+    {
+      "text": "HTML部门",
+      "groupId": "html_beijing",
+      "state": {
+        "expanded": true
+      }
+    }
+    ]
+},
+    {
+      "text": "大连文思海辉",
+      "groupId": "pactera_dalian",
+      "state": {
+        "expanded": true
+      },
+      "nodes": [
+        {
+          "text": "java部门",
+          "groupId": "java_dalian",
+          "state": {
+            "expanded": true
+          }
+        },
+        {
+          "text": "HTML部门",
+          "groupId": "HTML_dalian",
+          "state": {
+            "expanded": true
+          }
+        }
+      ]
+    },
+    {
+      "text": "无锡文思海辉无锡文思海辉无锡文思海辉无锡文思海辉无锡文思海辉",
+      "groupId": "pactera_wuxi",
+      "state": {
+        "expanded": true
+      },
+      "nodes": [
+        {
+          "text": "java部门",
+          "groupId": "java_wuxi",
+          "state": {
+            "expanded": true
+          }
+        },
+        {
+          "text": "HTML部门",
+          "groupId": "html_wuxi",
+          "state": {
+            "expanded": true
+          }
+        }
+      ]
+    }
+]
+}
+
+],
+"total":5,
+"startPage":1,
+"endPage":5}

@@ -1,0 +1,8 @@
+{
+  "userGroupList": [{"groupId":0,"groupName":"文思海辉dafdddddddddddddddddddddddddddddddddddddddd","updateTime":"","lastUserGroup":0,"orderId":"1"},{"groupId":2,"groupName":"联想","updateTime":"2016-04-05 10:00","lastUserGroup":0,"orderId":"2"},{"groupId":1,"groupName":"百度","updateTime":"2016-04-05 09:00","lastUserGroup":0,"orderId":"3"},{"groupId":4,"groupName":"百度/财务部","updateTime":"2016-04-05 13:00","lastUserGroup":1,"orderId":"4"},{"groupId":5,"groupName":"文思海辉/技术部","updateTime":"2016-04-05 16:30","lastUserGroup":0,"orderId":"5"}],
+  "total":5,
+  "startPage":1,
+  "endPage":5,
+  "flag":true
+}
+

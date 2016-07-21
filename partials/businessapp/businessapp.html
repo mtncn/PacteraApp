@@ -1,0 +1,63 @@
+<div  class="s_ss">
+    <div class="auto_2 cb">
+        <div class="middle_2">
+            <a href="####" class="aLeft_2"></a>
+            <a href="####" class="aRight_2"></a>
+            <div class="scroll_2">
+                <div style="background:url(images/ban_2.png)" class="img1">
+                    <P class="a3_p1">专业/铸就一流品质</P>
+                    <P class="a3_p2">合作/源自双方信任</P>
+                    <section class="a3_divgengduo">
+                        <span>点击查看更多</span>
+                        <span style="background:url(images/login/zi_1.png) no-repeat">产品中心</span>
+                    </section>
+                </div>
+                <div style="background:url(images/ban_2.png)"></div>
+                <div style="background:url(images/carousel/3_v1.png)"></div>
+                <!--<div style="background:green"></div>-->
+                <!--<div style="background:blue"></div>-->
+                <!--<div style="background:#C06"></div>-->
+            </div>
+            <div class="btn_2">
+                <span class="hover_2"></span>
+                <span></span>
+                <span></span>
+                <!--<span></span>-->
+                <!--<span></span>-->
+                <!--<span></span>-->
+            </div>
+        </div>
+    </div>
+    <div class="B">
+        <div class="B_c cb">
+            <div class="B_left">
+                <h1>企业应用   ></h1>
+                <ul class="B_left_span">
+                    <li id="all">
+                        <a ui-sref="businessapp.content({id:0})">全部</a>
+                    </li>
+                    <div ng-repeat="men in menus">
+                        <li ui-sref-active="selectColor"><a ui-sref="businessapp.content({id:men.sortId,page:1,total:0,flag:0,appId:1,searchName:''})">{{men.sortName}}</a></li>
+                    </div>
+                </ul>
+            </div>
+
+
+            <div class="B_middle_span" ui-view="">
+
+            </div>
+            <div class="B_right">
+                <h1>最热TOP10   ></h1>
+                <div ng-repeat="hs in thistory">
+                    <div class="B_right_con cb" ng-mouseover="showImg(hs.appId)" ng-mouseleave="hideImg(hs.appId)">
+                        <span>{{$index+1}}.</span>
+                        <img style="display: none;width: 40px;height: 41px;" id="{{hs.appId}}-thsid" onerror="this.src='images/tupianError.jpg'" ng-src="{{hs.imageurl}}" ng-click="detailsGo(id,hs.appId,hs.flowId,hs.sortId);"/>
+                        <p style="line-height:39px;" ng-click="detailsGo(id,hs.appId,hs.flowId,hs.sortId);">{{hs.name}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bot_tubiao">版权所有©北京文思海辉技术有限公司</div>
+</div>

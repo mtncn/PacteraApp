@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>首页模板</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<script src="../js/jquery-1.11.3.min.js"></script> 
+<script>
+$(document).ready(function () { 
+//菜单栏空跳转点击样式
+      $(".menu ul li").click(function () {
+            var index = $(this).index();
+            $(this).parent().children("li").attr("class", "");//将所有选项置为未选中
+			$(this).parent().children("li").children("div").attr("class", "");
+			$(this).parent().children("li").children().children("img").attr('src','images/index.png');
+			$(this).children().children('img').attr('src','images/index-red.png');
+            $(this).attr("class", "borderColor"); //设置当前选中项为选中样式
+			$(this).children("div").attr("class", "triangle-up");
+			
+        });
+     });
+//菜单栏页面跳转点击样式
+	function changeStyle(obj)
+	 {
+			$('.menu ul li:eq('+obj+')').children().children('img').attr('src','images/index-red.png');
+			$('.menu ul li:eq('+obj+')').attr("class", "borderColor"); //设置当前选中项为选中样式
+			$('.menu ul li:eq('+obj+')').children("div").attr("class", "triangle-up");
+	 }
+</script>
+</head>
+<body>
+<header>
+  <div class="logo">服务市场</div>
+  <div class="line_header"></div>
+  <div class="menu">
+    <ul>
+      <li><a href="首页.html?id=0"><img style="vertical-align:middle;" src="../images/index.png"/></a>
+        <div ></div>
+      </li>
+      <li><a href="#?id=1">关于我们</a>
+        <div ></div>
+      </li>
+      <li><a href="#?id=2">产品中心</a>
+        <div ></div>
+      </li>
+      <li ><a href="data-analysis.html?id=3">最佳实践</a>
+        <div ></div>
+      </li>
+      <li ><a href="#?id=3">使用分析</a>
+        <div ></div>
+      </li>
+      <li ><a href="#?id=4">联系我们</a>
+        <div ></div>
+      </li>
+    </ul>
+    <div class="login"><a>LOGIN</a></div>
+  </div>
+</header>
+<section> <!-- TemplateBeginEditable name="EditRegion3" -->EditRegion3<!-- TemplateEndEditable --> </section>
+<footer>
+  <div class="line_footer"></div>
+</footer>
+
+</body>
+</html>

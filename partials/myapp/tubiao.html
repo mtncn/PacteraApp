@@ -1,0 +1,23 @@
+<div>
+    <div class="sdfghh">
+        <div class="tubiaozui" ng-repeat="pro in pros" ng-mouseover="shoucangShow(pro.appId,pro.sortId)" ng-mouseleave="shoucangHide(pro.appId,pro.sortId)">
+            <div class="tubiaozui_box">
+                <img class="divtubaiozuiImg" ng-src="{{pro.imageurl}}"onerror="this.src='images/tupianError.jpg'"  ng-click="showFunc(pro.url,pro.appId);" style="margin-left:20px;margin-top:11px;"><br/>
+                <span>{{pro.name}}</span>
+            </div>
+            <div class="abc" id="{{pro.appId}}-{{pro.sortId}}-id">
+                <img ng-src="images/myuser/nullTaoxin.png" width="100%" ng-if="pro.flag=='0'" id="{{pro.appId}}-{{pro.sortId}}-1" ng-click="guanzhu(pro.appId,pro.sortId,0)">
+                <img ng-src="images/myuser/shiTaoxin.png" width="100%" ng-if="pro.flag=='1'" id="{{pro.appId}}-{{pro.sortId}}-0" ng-click="guanzhu(pro.appId,pro.sortId,1)">
+            </div>
+        </div>
+    </div>
+    <ul class="fenye">
+        <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+        <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+        <li><a ui-sref="myapp.content({id:id,page:currentPage*1-1,total:totalPage})">上一页</a></li>
+        <div ng-repeat="tPage in totalPas">
+            <li><a ui-sref="myapp.content({id:id,page:tPage,total:totalPage})" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+        </div>
+        <li><a ui-sref="myapp.content({id:id,page:currentPage*1+1,total:totalPage})">下一页</a></li>
+    </ul>
+</div>

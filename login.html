@@ -1,0 +1,35 @@
+<div id="loginin">
+    <img src="images/login_v3/loginbg_ys.png" class="bg">
+    <!--登录框-->
+    <div id="login">
+        <form id="loginForm" name="loginForm" novalidate="novalidate">
+            <h5>登录</h5>
+            <p>
+                <span id="errormsgId">登陆成功！</span>
+                <input type="text" name="username" placeholder="请输入用户名" ng-model="user.username"  required/>
+                <span style="color:red" ng-class="{true: 'login_err_show', false: 'login_err_hidden'}
+                    [loginForm.username.$dirty && loginForm.username.$invalid || first_username]">
+                    <span ng-class="{true: 'login_err_show', false: 'login_err_hidden'}
+                    [loginForm.username.$dirty && loginForm.username.$invalid || first_username]">请填写用户名</span>
+                </span>
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="请输入密码" ng-model="user.password"  required/>
+                <span style="color:red" ng-class="{true: 'login_err_show', false: 'login_err_hidden'}
+                    [loginForm.password.$dirty && loginForm.password.$invalid || first_password]">
+                    <span ng-class="{true: 'login_err_show', false: 'login_err_hidden'}
+                    [loginForm.password.$dirty && loginForm.password.$invalid || first_password]">请填写密码</span>
+                </span>
+            </p>
+            <!--<p><a href="#">忘记密码？</a></p>-->
+            <input  type="button" value="登陆" id="loginsubmit" ng-click="login()"
+                    ng-disabled="loginForm.username.$dirty && loginForm.username.$invalid ||
+                               loginForm.password.$dirty && loginForm.password.$invalid"/>
+        </form>
+
+    </div>
+</div>
+
+<div id="footer">
+    <img src="images/login_v3/14.png">北京文思海辉软件技术有限公司 | <a href="#">服务协议</a> | <a href="#">权利声明</a> | <a href="#">版本更新</a>
+</div>

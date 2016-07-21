@@ -1,0 +1,105 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til"><a class="active">管理</a>/账号安全</h3>
+    <div class="conRightEve">
+        <span>上次登录：2016年01月19号 07:43:23 北京</span>
+        <div class="conRightEve_safe">
+            <span class="conRightEve_safe_span">账号安全系数：</span>
+            <div class="conRightEve_safe_div">
+                <span></span>
+            </div>
+        </div>
+        <div class="conRightEve_upPwd cb">
+           <!-- <img class="conRightEve_upPwd_img" src="images/img/账户安全-1.png"/>-->
+            <span style="font-size: 35px;"  class="{{userPwdIcon}}"></span>
+            <span class="conRightEve_upPwd_span">修改密码</span>
+            <span class="conRightEve_upPwd_span-2 conRightEve_upPwd_span-4" ng-show="pwdTitleShow">密码安全度</span>
+            <div class="conRightEve_div_color" ng-show="pwdTitleShow">
+                <span></span>
+            </div>
+            <span class="conRightEve_upPwd_span-3 conRightEve_oSetUp" ng-click="setPwd()">{{btnPwdSet}}</span>
+            <div class="update_pwd update_pwd_padding cb" ng-show="pwdContentShow">
+                <div class="conRightEve_newPwd">
+                    <span>当前密码</span>
+                    <input type="password"/>
+                </div>
+                <div class="conRightEve_newPwd cb">
+                    <span style="margin-left:14px">新密码</span>
+                    <input style="float:left" type="password"/>
+                    <span class="conRightEve_newPwd_strong">密码强度</span>
+                    <span class="conRightEve_fangkuang"></span>
+                    <span class="conRightEve_fangkuang"></span>
+                    <span class="conRightEve_fangkuang"></span>
+                </div>
+                <div class="conRightEve_newPwd">
+                    <span>确认密码</span>
+                    <input type="password"/>
+                </div>
+                <div class="conRightEve_newPwd">
+                    <input class="btn_Sub_pwd" type="button" value="保存"/>
+                </div>
+            </div>
+        </div>
+        <div class="conRightEve_upPwd cb">
+          <!--  <img class="conRightEve_upPwd_img" src="images/img/账户安全-2.png"/>-->
+            <span style="font-size: 35px;"  class="{{userPhoneIcon}}"></span>
+            <span class="conRightEve_upPwd_span">绑定手机</span>
+            <span class="conRightEve_upPwd_span-2" ng-show="phoneTitleShow">{{phoneTip}}</span>
+            <span class="conRightEve_upPwd_span-3" ng-click="setPhone()">{{btnPhoneSet}}</span>
+            <div class="update_pwd update_pwd_padding cb" ng-show="phoneContentShow">
+                <div class="conRightEve_newPwd">
+                    <span>手机号</span>
+                    <input type="Number"/>
+                </div>
+
+                <div class="conRightEve_newPwd">
+                    <input class="btn_Sub_pwd" type="button" value="保存"/>
+                </div>
+            </div>
+        </div>
+        <div class="conRightEve_upPwd cb">
+          <!--  <img class="conRightEve_upPwd_img" src="images/img/账户安全-1.png"/>-->
+            <span style="font-size: 35px;"  class="{{userEmailIcon}}"></span>
+            <span class="conRightEve_upPwd_span">绑定邮箱</span>
+            <span class="conRightEve_upPwd_span-2" ng-show="emailTitleShow">{{emailTip}}</span>
+            <span class="conRightEve_upPwd_span-3" ng-click="setEmail()">{{btnEmailSet}}</span>
+            <form name="emailForm" novalidate ng-submit="saveEmail()">
+            <div class="update_pwd update_pwd_padding cb" ng-show="emailContentShow">
+                <div class="conRightEve_newPwd">
+                    <span>邮箱</span>
+                    <input  type="email" name="email" ng-model="email" required/>
+                    <i style="color:red" ng-show="emailForm.email.$dirty && emailForm.email.$invalid">
+                   <i  ng-show="emailForm.email.$error.required">邮箱是必须的。</i>
+                     <i ng-show="emailForm.email.$error.email">非法的邮箱地址。</i>
+                    </i>
+                </div>
+
+                <div class="conRightEve_newPwd">
+                    <input   type="submit" value="保存" ng-disabled="emailForm.email.$dirty && emailForm.email.$invalid"/>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="conRightEve_upPwd cb">
+            <!--<img class="conRightEve_upPwd_img" src="images/img/账户安全-2.png"/>-->
+            <span style="font-size: 35px;"  class="{{userWarnIcon}}"></span>
+            <span class="conRightEve_upPwd_span">安全提醒</span>
+            <span class="conRightEve_upPwd_span-2" ng-show="warnTitleShow">{{warnTip}}</span>
+            <span class="conRightEve_upPwd_span-3" ng-click="setWarn()">{{btnWarnSet}}</span>
+            <div class="update_pwd update_pwd_padding cb" ng-show="warnContentShow">
+                <div class="conRightEve_newPwd">
+                    <span>第一个问题</span>
+                    <input type="password" ng-model="warnContent.Q1"/>
+                </div>
+                <div class="conRightEve_newPwd">
+                    <span>第二个问题</span>
+                    <input type="password" ng-model="warnContent.Q2"/>
+                </div>
+
+                <div class="conRightEve_newPwd">
+                    <input class="btn_Sub_pwd" type="button" value="保存"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

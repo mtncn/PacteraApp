@@ -1,0 +1,103 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til"><a ui-sref="manage.businessinfo" class="active">管理</a>/企业信息</h3>
+    <ul class="conRight_one conRight_one_hua">
+        <li>
+            <a ui-sref="manage.businessinfo" >
+                基本信息
+            </a>
+        </li>
+        <li class="">
+            <a ui-sref="manage.businessinfo_user" class="selectColor_manage borderBottom">
+                用户管理
+            </a>
+        </li>
+    </ul>
+    <div class="conRight_kind_til cb">
+        <div class="info_user info_user_hua">
+            <h4>
+                <a ui-sref="manage.businessinfo_user" >用户</a>
+                <a ui-sref="manage.businessinfo_userGroup" class="classCor classBackCor">用户组</a>
+            </h4>
+        </div>
+    </div>
+    <!--用户组-->
+    <p class="info_user_til info_user_til_hua">
+        <span ng-click="createUserGroup()">
+            <img src="images/icon/18.png">
+            新建
+        </span>
+        <input ng-model="searchTitle_userGroup" type="text" class="searchBusiness searchBusiness_hua" /><img ng-click="searchUserGroup(searchTitle_userGroup)" src="images/sousuo.png"/>
+    </p>
+
+    <!--<div class="step_fabufanwei_til step_fabufanwei_til_hua"><span class="userTreeTitle">请选择该应用的发布范围</span>
+        <div   ng-class="{true:'alert alert-danger alert-dismissable showMsg userMsg',false:'alert alert-danger alert-dismissable hideMsg userMsg'}[msgBoxShow_oprUserGroup]">
+            <button type="button" class="close" ng-click="closeMsgBox_oprUserGroup()"
+                    aria-hidden="true">
+                &times;
+            </button>
+           {{oprErrMsg}}
+        </div>
+    </div>-->
+    <div class="step_fabufanwei step_fabufanwei_hua">
+        <div class="step_fabufanwei_left step_fabufanwei_left_hua">
+            <div id="treeUserGroup"></div>
+        </div>
+
+        <div class="user_right01 user_right01_hua" id="userList">
+            <ul  class="conRight_kind_til cb userList_hua_group">
+                  <li class="textLeft1">名称</li>
+                <li>更新时间</li>
+                <li >操作</li>
+            </ul>
+            <div class="con_kind_child_til">
+                <ul style="display:block" class="conRight_kind_child_til repeatRowCor" >
+                    <ul style="    display: inline-block;
+    width: 100%;height:100%" ng-repeat="userGroup in userGroupList" class="userList_hua_group">
+                        <li title="{{userGroup.groupName}}" class="textLeft1">{{userGroup.groupName}}</li>
+                        <li title="{{userGroup.updateTime}}">{{userGroup.updateTime}}</li>
+                        <li>
+                            <img ng-show="$index!=0" ng-click="userGroupOperation(userGroup.groupId,userGroup.orderId,'up')" src="images/icon/19.png">
+                            <img ng-show="$index!=userGroupList.length-1" ng-click="userGroupOperation(userGroup.groupId,userGroup.orderId,'down')" src="images/icon/21.png">
+                            <img ng-click="editUserGroup($index,userGroup,userGroupList)" src="images/icon/16.png">
+                            <img ng-click="userGroupOperation(userGroup.groupId,userGroup.orderId,'delete')" src="images/icon/20.png">
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <ul class="fenye">
+                <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+                <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+                <li><a ng-click="changePage(currentPage*1-1)">上一页</a></li>
+                <div ng-repeat="tPage in totalPas">
+                    <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+                </div>
+                <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--用户组结束-->
+    <!--用户组编辑弹框-->
+    <form name="editUserGroupForm" ng-submit="saveUserGroup(userGroup1)" novalidate>
+    <div class="friend_told edit userWindow" ng-show="userGroupShow">
+        <h4>
+            <span>名称</span><input name="groupName" type="text" ng-model="userGroup1.groupName" class="inp01" ng-focus="firstchange_userGroupName1()" placeholder="用户组名称" ng-change="firstchange_userGroupName()"required/>
+            <i style="color:red" ng-class="{true: 'userName_show', false: 'userName_hidden'}
+                                [editUserGroupForm.groupName.$dirty && editUserGroupForm.groupName.$invalid&&createUserGroupShow&&editUserGroupName1 || editUserGroupName]">
+                <i ng-show="editUserGroupForm.groupName.$error.required">请填写用户组名称</i>
+            </i>
+        </h4>
+        <h4>
+            <span>上一级用户组</span>
+            <select name="lastUserGroup" placeholder="请选择上一级用户组" ng-model="userGroup1.lastUserGroup" ng-change="onChange(userGroup1.lastUserGroup)"  ng-options="userGroup.value as userGroup.name for userGroup in userGroupList_select">
+                <option style="color:#cccccc;" value="">请选择</option>
+            </select>
+           <i class="lastUserGroup_i" style="color:red; display: none;">请选择上一级用户组名称</i>
+        </h4>
+        <p class="his_dat_last btnGroupBottom">
+            <button type="submit" >确认</button>
+            <button type="button" class="his_dat_last_btn" ng-click="closeUserGroup(userGroup1)">关闭</button>
+        </p>
+    </div>
+        </form>
+    <!--用户组编辑弹框结束-->
+</div>

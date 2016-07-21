@@ -1,0 +1,85 @@
+<div class="line_header"></div>
+<div class="menu">
+    <div class="logo"><img class="jiushinide" src="images/logo.png"/></div>
+    <ul>
+
+        <li ui-sref-active="borderColor"><a ui-sref="first">首页</a>
+
+            <div class="we"></div>
+        </li>
+        <li ui-sref-active="borderColor"><a ui-sref="myapp.content">我的应用</a>
+
+            <div class="we"></div>
+        </li>
+        <li ui-sref-active="borderColor"><a ui-sref="businessapp.content">企业应用</a>
+
+            <div class="we"></div>
+        </li>
+        <li ui-sref-active="borderColor"><a ui-sref="help">帮助</a>
+
+            <div class="we"></div>
+        </li>
+    </ul>
+    <div class="login">
+        <div>
+            <img src="images/shezhi.png" style="cursor: pointer;" ui-sref="manage.apply({applyStatus:0})" class="img_shu img_style">
+            <!--<a class="aSpan"> <span class="fa fa-cog"></span></a>-->
+            <a class="bordStyle" ui-sref="manage.apply({applyStatus:0})">管理</a>
+            <img src="images/shuxian.png" class="img_user">
+            <img src="images/user.png" style="cursor: pointer;" class="img_shu img_style" ui-sref="manage.personalinfo">
+            <a class="bordStyle" ui-sref="manage.personalinfo">{{resuser.name}}</a>
+            <img src="images/shuxian.png" class="img_user" ui-sref="loginout">
+            <img src="images/login/zhuxiao2.png"  class="img_shu1 img_style" ui-sref="loginout" style="cursor: pointer;">
+        </div>
+    </div>
+</div>
+<div class="s_ss">
+    <div class="zuihoufdfsd">
+        <h1 class="xiang_h1"><a ui-sref="businessapp.content" >企业应用</a> > {{pros.fatherclass}} > {{pros.name}}</h1>
+        <div class="xiazuihou_1">
+            <div class="xiang_zBottom cb">
+                <div class="xiang_B_left">
+                    <img class="xiang_img1" ng-src="{{pros.imageurl}}">
+                    <h1 class="xiang_img1h1">信息</h1>
+                    <span class="xia_span1">开发商</span><span class="xia_span2">{{pros.developers}}</span><br/>
+                    <span class="xia_span1">类别</span><span class="xia_span2">{{pros.fatherclass}}</span><br/>
+                    <span class="xia_span1">更新日期</span><span class="xia_span2">{{pros.update}}</span><br/>
+                    <span class="xia_span1">版本</span><span class="xia_span2">{{pros.version}}</span><br/>
+                    <span class="xia_span1">订阅量</span><span class="xia_span2">{{pros.subscribe}}</span><br/>
+                    <span class="xia_span1">语言</span><span class="xia_span2">{{pros.language}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="xiazuihou_2">
+            <h1 class="xiazuihou_2h1">{{pros.name}}</h1>
+            <span class="xiazuihou_2h1span">{{pros.dre}}</span>
+            <ul class="xiazuihou_2ul">
+                <li ui-sref-active="xiangqingli" ui-sref="details.details({id:0})">详情</li>
+                <li id="aaa" ui-sref-active="xiangqingli2" ui-sref="details.comment({id:1})">评分与评论</li>
+                <li ui-sref-active="xiangqingli" ui-sref="details.correlation({id:2})">相关</li>
+            </ul>
+
+            <div ui-view=""> </div>
+
+            <input ng-if="pros.station=='可订阅'" type="button" value="可订阅" class="dinfyue" ng-click="dingyue(pros.appId,pros.flowId,1)"/>
+            <input ng-if="pros.station=='订阅中'" type="button" value="订阅中" class="dinfyue" style="background-color: #f0f0f0;color: #000000;"/>
+            <input ng-if="pros.station=='已订阅'" type="button" value="已订阅" class="dinfyue" ng-click="dingyue(pros.appId,pros.flowId,3)"/>
+
+            <div class="btn-group up_dingyue">
+                <button type="button" class="btn btn-default upd">订阅</button>
+            </div>
+
+            <div class="btn-group up_fenxiang">
+                <button type="button" class="btn btn-default">分享</button>
+                <button type="button" id="dropdown-toggle" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">复制链接</a></li>
+                    <li><a href="#">发送给朋友</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

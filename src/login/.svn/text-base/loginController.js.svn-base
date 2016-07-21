@@ -1,0 +1,85 @@
+/**
+ * Created by vision on 16/1/30.
+ *
+ * @param $scope
+ * @param $rootScope
+ * @param AUTH_EVENTS   登录状态  ../src/login/userStation
+ * @param loginservice  登录服务  ../src/login/loginservice
+ */
+module.exports = function ($scope,$rootScope,$state,AUTH_EVENTS, loginService) {
+
+    //绑定用户表单信息
+    $scope.user;
+
+    //初始化 警告显示状态
+    $scope.first_company = false;
+    $scope.first_username = false;
+    $scope.first_password = false;
+    $scope.firstchange_company = function(){
+        //console.log($scope.user);
+        if($scope.user.companyId != null){
+            $scope.first_company = false;
+        }
+    };
+    $scope.firstchange_username = function(){
+        //console.log($scope.user);
+        if($scope.user.username != null){
+            $scope.first_username = false;
+        }
+    };
+    $scope.firstchange_password = function(){
+        //console.log($scope.user);
+        if($scope.user.password != null){
+            $scope.first_password = false;
+        }
+    };
+
+    //登陆
+    $scope.login = function (user) {
+        if(user==undefined)
+        {
+            $scope.first_company = true;
+            $scope.first_username = true;
+            $scope.first_password = true;
+        }
+       if(user.companyId == null||user.companyId == undefined||user.companyId == ''){
+            $scope.first_company = true;
+        }
+       if(user.username == null||user.username == undefined||user.username == ''){
+            $scope.first_username = true;
+        }
+        if(user.password == null||user.password == undefined||user.password == ''){
+            $scope.first_password = true;
+        }
+       if(user.companyId != null&&user.username != null&&user.password != null){
+            loginService.login(user).then(function (data) {
+                //  登陆成功
+                //  $broadcast — dispatches the event downwards to all child scopes
+                //  将事件向下传播到所有子作用域，包括自己
+                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                //console.log(resuser);
+                $scope.message = AUTH_EVENTS.loginSuccess;
+                $scope.setCurrentUser(data);
+                localStorage.id = data.id;
+                localStorage.name = data.name;
+                localStorage.user = data.user;
+                localStorage.admin = data.admin;
+                localStorage.cadmin = data.cadmin;
+                localStorage.isv = data.isv;
+                localStorage.user = data.user;
+            }, function () {
+                //  登录失败
+                $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+            });
+        }
+    };
+    /*页面记住密码提示功能*/
+    $scope.showTip = function(){
+        var checkValue = $("#savepwd").is(":checked");
+        if(checkValue){
+            $("#showTipId").css("display","inline-block");
+        }else{
+            $("#showTipId").css("display","none");
+        }
+    }
+};

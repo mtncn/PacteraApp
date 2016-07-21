@@ -1,0 +1,14 @@
+{
+  "appId": 18,
+  "station": true,
+  "putup":{
+    "types":[
+      {"key":"1","type":"音乐"},
+      {"key":"2","type":"视频"},
+      {"key":"3","type":"娱乐"},
+      {"key":"4","type":"运动"}
+    ],
+    "Language":"1",
+    "Type":"1"
+  }
+}

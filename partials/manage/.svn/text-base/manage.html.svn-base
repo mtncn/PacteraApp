@@ -1,0 +1,43 @@
+<div class="content cb">
+    <div class="conLeft">
+        <div class="conLeft_Bg">
+            <ul class="conLeft_Bg_font">
+                <li class="conLeft_Bg_til">我的任务</li>
+                    <li ui-sref-active="selectColor_manage">
+                        <a ui-sref="manage.apply({applyStatus:0})">我的申请</a>
+                    </li>
+                    <li ui-sref-active="selectColor_manage">
+                        <a ui-sref="manage.todo({todoStatus:0})">我的待办</a>
+                    </li>
+
+                <li class="conLeft_Bg_til">我的应用</li>
+                    <li ui-sref-active="selectColor_manage">
+                        <a ui-sref="manage.myclass">我的分类</a>
+                    </li>
+                    <li ui-sref-active="selectColor_manage">
+                        <a ui-sref="manage.subscribe.company({selectType:0})">我的订阅</a>
+                    </li>
+                    <li ui-sref-active="selectColor_manage">
+                        <a ui-sref="manage.collection">我的收藏</a>
+                    </li>
+
+                <li class="conLeft_Bg_til">企业应用</li>
+                    <li ui-sref-active="selectColor_manage"><a ui-sref="manage.businessinfo">企业信息</a></li>
+                    <li ui-sref-active="selectColor_manage"><a ui-sref="manage.appclass">应用分类</a></li>
+                    <li ui-sref-active="selectColor_manage"><a ui-sref="manage.businessapp">企业应用</a></li>
+
+                <li class="conLeft_Bg_til">应用设置</li>
+                    <li ui-sref-active="selectColor_manage">
+                        <a ui-sref="manage.appadded({Status:0})" ng-click="cleanAppId()">应用上架</a>
+                    </li>
+
+                <li class="conLeft_Bg_til">其他设置</li>
+                    <li ui-sref-active="selectColor_manage"><a ui-sref="manage.personalinfo">个人信息</a></li>
+                    <li ui-sref-active="selectColor_manage"><a ui-sref="manage.accountsecurity">账号安全</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="conRight">
+        <div class="conRight_cont" ui-view=""></div>
+    </div>
+</div>

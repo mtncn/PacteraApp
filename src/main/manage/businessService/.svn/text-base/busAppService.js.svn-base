@@ -1,0 +1,83 @@
+/**
+ * Created by vision on 16/3/23.
+ */
+module.exports = function($http,$q,httpservice,Session){
+    var busAppService = {};
+
+    //查询企业应用
+    busAppService.select = function(){
+        var deferred = $q.defer();
+        $http({
+            method:'GET',
+            url:httpservice.select_manage_bus,
+            params:{
+                'sessionId': Session.id,
+                'userId': Session.userId,
+                'companyId':Session.companyId
+            }
+        }).then(function successCallback(response){
+                deferred.resolve(response.data);
+            },function errorCallback(response){
+                console.log("busAppService  管理_企业应用_企业应用:查询企业应用失败");
+                deferred.reject(response.data);
+            }
+        );
+        return deferred.promise;
+    };
+
+    //根据应用ID查询详细内容
+    busAppService.selectinfo = function(appId){
+        var deferred = $q.defer();
+        $http({
+            method:'GET',
+            url:httpservice.select_createNew_manage_bus,
+            params:{'sessionId': Session.id,'userId': Session.userId,"appId" : appId}
+        }).then(function successCallback(response){
+                //console.log(response.data);
+                deferred.resolve(response.data);
+            },function errorCallback(response){
+                console.log("管理_企业应用_企业应用_构建新版本:根据应用ID查询版本详情失败");
+                deferred.reject(response.data);
+            }
+        );
+        return deferred.promise;
+    };
+
+    //保存新版本
+    busAppService.save = function(p){
+        var deferred = $q.defer();
+        $http({
+            method:'POST',
+            url:httpservice.save_createNew_manage_bus,
+            params:{'personinfo':p,'sessionId': Session.id,'userId': Session.userId}
+        }).then(function successCallback(response){
+                deferred.resolve(response.data);
+            },function errorCallback(response){
+                console.log("管理_企业应用_企业应用_构建新版本:构建新版本保存失败");
+                deferred.reject(response.data);
+            }
+        );
+        return deferred.promise;
+    };
+
+    busAppService.getConfines = function(){
+        var deferred = $q.defer();
+        $http({
+            method:'GET',
+            url:httpservice.manage_appset_putup_no4_left,
+            params:{
+                'sessionId': Session.id,
+                'userId': Session.userId
+            }
+        }).then(function successCallback(response){
+                deferred.resolve(response.data);
+            },function errorCallback(response){
+                console.log("busAppServcie  管理_企业应用_企业应用_构建新版本:获取左侧Tree ");
+                deferred.reject(response.data);
+            }
+        );
+        return deferred.promise;
+    };
+
+    return busAppService;
+};

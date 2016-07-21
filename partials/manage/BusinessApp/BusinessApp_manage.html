@@ -1,0 +1,258 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til"><a ui-sref="manage.businessapp" class="active">管理</a>/企业应用</h3>
+
+    <div class="application_state_manbusapp" ng-repeat="bus in buss">
+        <div id="{{bus.appId}}"  class="application_right_manbusapp_button_div">
+            <img class="application_right_manbusapp_button_div_img" src="images/zs_1.png"/>
+            <div class="application_right_manbusapp_button_div_div">
+                <p style="width:170px; margin-left: 10px;">ClientID:{{client}}</p>
+                <p id="application_right_manbusapp_button_div_div_pppp" style="margin-left: 12px;">
+                    Secret:
+                    <input class="application_right_manbusapp_button_div_div_input" style="border:none;width:60px;" ng-model="password" type="password"/>
+                    <img ng-click="doSomeSth();" class="doSomeSth"   src="images/zs_2.png"/>
+                    <img ng-click="doPwd();" class="doPwd"  src="images/zs_3.png"/>
+                    <img ng-click="chadoSomeSth();" class="doPwd_2"    src="images/zhneghus_22.png"/>
+                    <img ng-click="tijiaodoPwd(client,password);" class="doSomeSth_2"   src="images/zhengshu_11.png"/>
+                </p>
+                <p class="tijiaodoPwd_p" style="color:red;position: absolute; left: -5px; bottom: -1px;">密码修改成功</p>
+            </div>
+            <img class="application_right_manbusapp_button_img" src="images/zs_4.png"/>
+        </div>
+        <h4>
+            <span>{{bus.time1}}</span><span>{{bus.time2}}</span>
+            <b>状态：{{bus.station}}</b>
+        </h4>
+
+        <div class="application_manbusapp">
+            <dl class="application_left_manbusapp">
+                <dt>
+                    <img onerror="this.src='images/tupianError.jpg'" ng-src="{{bus.imageurl}}" alt="加载失败" height="50" width="50"/>
+                </dt>
+                <dd>
+                    <p>{{bus.name}}</p>
+                    <p class="p1">{{bus.dre}}</p>
+                </dd>
+            </dl>
+            <div class="application_right_manbusapp">
+                <button class="application_right_manbusapp_button_1" ng-click="zhangshu(bus.appId,$event)" >证书</button>
+                <button ng-click="createConfines(bus.appId)">发布范围</button>
+                <button ng-click="createNew(bus.appId,bus.todo)">{{bus.todo}}</button>
+                <button ng-click="delete(bus.appId)">删除</button>
+                <span class="span1_manbusapp">版本信息
+                    <img style="cursor: pointer;" ng-click="infoVes(bus.appId)" src="images/jiantou.png">
+                    <div  style="display: none" class="{{bus.appId}} span1_manbusapp_div">
+                        <div class="span1_manbusapp_div_div"ng-repeat="usIn in infoUser track by $index">
+                            <p>版本{{usIn.vesion}}</p>
+                            <ul class="span1_manbusapp_div_div_ul1">
+                                <li>构建版本</li>
+                                <li style="width: 40%">上传日期</li>
+                                <li>状态</li>
+                            </ul>
+                            <ul class="span1_manbusapp_div_div_ul2">
+                                <li style="width: 40%"><img onerror="this.src='images/tupianError.jpg'"  ng-src="{{usIn.image}}"/><i style="display: inline-block;width:80px; height: 22px; overflow: hidden;">{{usIn.name}}</i> </li>
+                                <li>{{usIn.time}}</li>
+                                <li><span class="{{$index}}ssss"></span>{{usIn.status}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </span>
+        </div>
+        </div>
+    </div>
+
+    <ul id="fenye_zs" class="fenye">
+        <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+        <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+        <li><a ng-click="changePage(currentPage*1-1)">上一页</a></li>
+        <div ng-repeat="tPage in totalPas">
+            <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+        </div>
+        <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+    </ul>
+</div>
+
+
+<!--<div class="new_friend_told new_version" ng-show="showcreat">-->
+<!--<h4>-->
+<!--<span>构建新版本</span>-->
+<!--&lt;!&ndash;<img ng-click="showcreat=!showcreat" src="images/17.png">&ndash;&gt;-->
+<!--<img ng-click="closeCreate()" src="images/17.png">-->
+<!--</h4>-->
+<!--<div class="new_version_hid">-->
+<!--<div class="new_version_L">-->
+<!--<p>应用图标</p>-->
+<!--<img ng-src="{{appnewinfo.Imageurl}}">-->
+<!--<p>版本</p>-->
+<!--&lt;!&ndash;<span>1.0</span>&ndash;&gt;-->
+<!--<input type="text" class="inp01" ng-model="appnewinfo.Version" placeholder="请输入版本"/>-->
+<!--</div>-->
+<!--<div class="new_version_R">-->
+<!--<span>版权</span><br>-->
+<!--<input type="text" class="inp01" placeholder="广州酷狗科技有限公司" disabled="disabled"/><br><br>-->
+<!--<span>联系人信息</span><br>-->
+<!--<input type="text" ng-model="appnewinfo.Lastname" placeholder="姓氏"/>-->
+<!--<input type="text" ng-model="appnewinfo.Firstname" placeholder="名字"/>-->
+<!--<select>-->
+<!--<option>China</option>-->
+<!--</select>-->
+<!--<input type="text" ng-model="appnewinfo.Postcode" placeholder="邮政编码"/>-->
+<!--<input type="text" ng-model="appnewinfo.Provinces" placeholder="省"/>-->
+<!--<input type="text" ng-model="appnewinfo.City" placeholder="市"/>-->
+<!--</div>-->
+<!--</div>-->
+<!--<button class="new_version_btn" ng-click="saveNew(appnewinfo)">确认</button>-->
+<!--</div>-->
+
+<!--构建新版本-->
+<!--<div class="goujianxinbanben new_friend_told new_version" ng-show="showcreat">
+    <p>企业应用／构建新版本</p>
+    <p>
+        <span>应用名称</span>
+        <span>版本号</span>
+    </p>
+    <p>
+        <span><input type="text" value="酷狗音乐"/></span>
+        <span><input type="text" value="V1.0"/></span>
+    </p>
+    <p>
+        <span>语言</span>
+        <span>类别</span>
+    </p>
+    <p>
+            <span>
+                <select>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                </select>
+            </span>
+            <span>
+                <select>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                    <option>中文</option>
+                </select>
+            </span>
+    </p>
+    <p>描述</p>
+    <textarea>描述</textarea>
+    <p>应用图标</p>
+    <dl>
+        <dt>
+            <img src="images/13.png">
+        </dt>
+        <dd>
+            <input type="file"/>
+            <p>尺寸：80*80，大小：不超过50k，格式：JPG或png，系统会自动加上圆角</p>
+        </dd>
+    </dl>
+    <p>应用视频预览和屏幕快照</p>
+    <ul>
+        <li class="li01"><img src="images/6.png"></li>
+        <li class="li02"><img class="upimages" src="images/xiangqing/1-6.png"></li>
+        <li class="li03"><img class="upimages" src="images/xiangqing/1-7.png"></li>
+    </ul>
+    <p>授权协议</p>
+    <select class="shouquan">
+        <option>OAuth2.0 Server-side</option>
+        <option>OAuth2.0 Server-side</option>
+        <option>OAuth2.0 Server-side</option>
+        <option>OAuth2.0 Server-side</option>
+    </select>
+    <p>URL地址</p>
+    <input type="text" value="http://www.baidu.com" class="dizhi"/>
+    <button>保存</button>
+</div>-->
+
+
+
+<div class="new_friend_told new_version updatefont" ng-show="showconfines">
+    <div class="step_fabufanwei">
+        <div  class="step_fabufanwei_left updateleft">
+            <div id="treeList"></div>
+        </div>
+
+        <div class="step_fabufanwei_mid">
+            <img ng-click="addUser()" src="images/2.png">
+            <img class="fabufanwei_Img" ng-click="deleteUser()" src="images/1.png"><br>
+
+        </div>
+
+        <!--<div class="step_fabufanwei_right step_fabufanwei_left update_right">-->
+        <!--&lt;!&ndash;<p ng-repeat="us in userUp" ng-click="deleteUserUp(us)" class="step_fabufanwei_leftp1">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="fa fa-users usersGroup"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span>{{us.text}}</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span>{{us.type}}</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--<div ng-repeat="us in userUp track by $index"  class="step_fabufanwei_leftp1_mouseover">-->
+        <!--<ul ng-click="deleteUserUp(us,$index)" ng-class="{'station-1':selected === $index}">-->
+        <!--<li class="step_fabufanwei_leftp1_name">-->
+        <!--<span class="fa fa-users usersGroup"></span>-->
+        <!--<a>{{us.text}}</a>-->
+        <!--</li>-->
+        <!--<li class="step_fabufanwei_leftp1_type">-->
+        <!--<a>{{us.type}}</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="step_fabufanwei_right step_fabufanwei_right_g">
+            <div class="step_fabufanwei_right_title">
+                <span class="step_fabufanwei_right_type">类别</span>
+                <span class="step_fabufanwei_right_name">名称</span>
+                <!--<span class="step_fabufanwei_right_other">备注</span>-->
+                <span class="step_fabufanwei_right_other">订阅审批</span>
+            </div>
+            <div class="step_fabufanwei_right_glist">
+                <div class="step_fabufanwei_leftp1_ul">
+                    <div ng-repeat="us in userUp track by $index" class="step_fabufanwei_leftp1_mouseover">
+                        <ul ng-click="deleteUserUp(us,$index)" ng-class="{'station-1':selected === $index}">
+                            <li class="step_fabufanwei_leftp1_type">
+                                <a>{{us.type}}</a>
+                            </li>
+                            <li class="step_fabufanwei_leftp1_name">
+                                <span class="fa fa-users usersGroup"></span>
+                                <a>{{us.text}}</a>
+                            </li>
+                            <li class="step_fabufanwei_leftp1_other">
+                                <input id="fb-node-{{$index}}" ng-click="changecheck(us,us.ischeck)" ng-checked="us.ischeck"  type="checkbox" >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="step_fabufanwei_leftp1_ul">-->
+            <!--<div ng-repeat="us in userUp track by $index"  class="step_fabufanwei_leftp1_mouseover">-->
+            <!--<ul ng-click="deleteUserUp(us,$index)" ng-class="{'station-1':selected === $index}">-->
+            <!--<li class="step_fabufanwei_leftp1_name">-->
+            <!--<span class="fa fa-users usersGroup"></span>-->
+            <!--<a>{{us.text}}</a>-->
+            <!--</li>-->
+            <!--<li class="step_fabufanwei_leftp1_type">-->
+            <!--<a>{{us.type}}</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+
+
+        </div>
+
+        <p class="his_dat_last his_dat_last_three updatebutton">
+            <button ng-click="saveConfines()">保存</button>
+            <button ng-click="closeConfines()">关闭</button>
+        </p>
+        <div id="newAppAlert_fanwei"  class="newAppAlert" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu]">
+            <button type="button" class="close" ng-click="closeMsgBox_saveBu()"
+                    aria-hidden="true">
+                &times;
+            </button>
+            {{testBuResult}}
+        </div>
+    </div>
+
+</div>
+
+

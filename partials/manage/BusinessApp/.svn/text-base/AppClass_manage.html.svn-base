@@ -1,0 +1,44 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til">企业应用/应用分类</h3>
+    <div class="conRight_Collection_til cb">
+        <span ui-sref="manage.appclass" class="classCor classBackCor">应用分类</span><span class="classSpan" ui-sref="manage.appclassMaintain" >分类维护</span>
+    </div>
+    <div class="mY_kind cb">
+        <ul class="mY_kind_ulTil classList" id="menuUl">
+            <li ng-click="classMenuChange(0,'全部')" class="{{menuClassSelected}}">
+                <a >全部</a>
+            </li>
+            <div ng-repeat="classMenu in classMenuList">
+                <!--针对我的分类-分类菜单列表显示-->
+                <li style="cursor: pointer" ng-click="classMenuChange(classMenu.sortId,classMenu.sortName)"  class="menuClassLi" ng-class="{selectBackCor_menu: currentId == classMenu.sortId}">
+                    <a>{{classMenu.sortName}}</a>
+                </li>
+            </div>
+        </ul>
+        <img class="mY_kind_ImgSanJiao" src="images/img/guanli-wodefenlei_r2_c2.png"/>
+        <!--我的分类和分类维护-应用列表-->
+        <div class="mY_kind_divTil" class="classList">
+            <div style="display:block" class="mY_kind_divTil_Child">
+                <p class=" mY_kind_divTil_Child_tilte">{{listTitle}}</p>
+                <div class="conRight_Collection_content_kind" ng-repeat="class in classList">
+                    <div class="conRight_Collection_childConL classListMargin">
+                        <img ng-src="{{class.imgUrl}}"/>
+                        <p>
+                            <span>{{class.classTitle}}</span><br/>
+                            <span class="conRight_Collection_childConL_span">{{class.classContent}}</span>
+                        </p>
+                    </div>
+                </div>
+                <ul class="fenye">
+                    <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+                    <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+                    <li><a ng-click="changePage(currentPage*1-1)">上一页</a></li>
+                    <div ng-repeat="tPage in totalPas">
+                        <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+                    </div>
+                    <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

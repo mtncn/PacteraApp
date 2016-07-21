@@ -1,0 +1,57 @@
+<div class="conRight_main">
+    <div class="pop_form">
+        <h4 class="noback">
+            <span>发布新应用</span>
+        </h4>
+        <div class="step_til">
+            <p>
+                <a href="###">基本信息</a>
+                <a href="###">应用详情</a>
+                <a href="###">发布应用</a>
+                <a href="###">发布范围</a>
+                <a href="###" class="over">发布完成</a>
+            </p>
+        </div>
+        <div class="step_til_p1">
+            <p class="step_til_p1L">
+                <span>应用图标</span><br>
+                <div class="conRight_Collection_childConL" style="margin-left:0;">
+                    <!--src="images/img/qiyefenlei-1.png"-->
+                    <img class="logoimages" ng-src="{{logoImage}}" />
+                    <p class="conRight_Collection_childConL_span01">
+                        <span>
+                            <!--<input type="file" file-model="upLogoImage"/>-->
+                            <fileModel file-model="upLogoImage()"></fileModel>
+                        </span><br/>
+                        <span class="conRight_Collection_childConL_span">尺寸80*80,不超过50K，格式png、jpg</span>
+                    </p>
+                </div>
+            </p>
+
+            <div class="step_til_p1L">
+                <span class="step_til_p1L_til">应用视频预览和屏幕快照</span>
+            </div>
+
+            <ul>
+                <li class="step_til_ul1 {{showupimages}}">
+                    <!--<input type="file" ng-show="false" file-model="upShowImages"/>-->
+                    <a class="upload_bk" href="javascript:;">
+                        <fileModel file-model="upShowImages()" class="hidden_upload"></fileModel>
+                        <!--<img src="images/jiahao.png" ng-click="uploadimages()">-->
+                    </a>
+                </li>
+                <li ng-repeat="image in showImages">
+                    <img class="delectimage" src="images/17.png" ng-click="delectimage($index,image)">
+                    <img class="upimages" ng-src="{{image}}">
+                </li>
+                <!--<li><img src="images/tupian.png"></li>-->
+            </ul>
+        </div>
+
+        <p class="his_dat_last his_dat_last_three">
+            <button ng-click="Save_No2()">保存</button>
+            <button ui-sref="manage.appadded">上一步</button>
+            <button ui-sref="manage.appadded3" ng-click="Next()" class="his_dat_last_btn">下一步</button>
+        </p>
+    </div>
+</div>

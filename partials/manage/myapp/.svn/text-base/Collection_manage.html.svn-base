@@ -1,0 +1,47 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til">我的应用/我的收藏</h3>
+    <ul class="conRight_Collection">
+        <li ng-click="tabChange(0)" class="{{tabCor0}}">我的收藏</li>
+      <!--  <li ng-click="tabChange(1)" class="{{tabCor1}}">我的关注</li>-->
+    </ul>
+    <div class="searchInput">
+        <input placeholder="搜索应用"  ng-model="searchTitle" type="text"/>
+        <div class="ser_til">
+            <img src="images/img/企业信息-6.png" ng-click="searchCollection(searchTitle)" />
+        </div>
+    </div>
+    <div class="conRight_Collection_til cb">
+        <span>应用内容</span>
+        <p>操作</p>
+    </div>
+    <div class="conRight_Collection_content_gParent">
+        <div style="display:block" class="conRight_Collection_content_parent" >
+            <div class="conRight_Collection_content" ng-repeat="collection in collectionList">
+                <div class="conRight_Collection_childConL">
+             <img ng-src="{{collection.imgUrl}}"/>
+                    <p>
+                        <span>{{collection.colTitle}}</span><br/>
+                        <span class="conRight_Collection_childConL_span">{{collection.colContent}}</span>
+                    </p>
+                </div>
+                <div class="conRight_Collection_childConR">
+                    <img ng-show="$index!=0"  ng-click="ChangeOperation(collection.appId,collection.orderId,collection.sortId,'up')" src="images/2.1.png" />
+                    <img ng-show="$index!=collectionList.length-1" ng-click="ChangeOperation(collection.appId,collection.orderId,collection.sortId,'down')" src="images/2.2.png" />
+                    <img  ng-click="ChangeOperation(collection.appId,collection.orderId,collection.sortId,'delete')"src="images/2.3.png"/>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <ul class="fenye" style="margin-top: 400px;">
+        <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+        <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+        <li><a ng-click="changePage(currentPage*1-1)">上一页</a></li>
+        <div ng-repeat="tPage in totalPas">
+            <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+        </div>
+        <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+    </ul>
+</div>

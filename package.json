@@ -1,0 +1,31 @@
+{
+  "name": "pactera",
+  "version": "0.0.1",
+  "description": "pactera app",
+  "main": "main",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18",
+    "jquery": "^2.2.1"
+  },
+  "devDependencies": {
+    "angular-cookies": "^1.5.5",
+    "angular-messages": "^1.5.2",
+    "angular-sanitize": "^1.5.3",
+    "angular-ui-bootstrap": "^1.2.4",
+    "ng-annotate": "^1.2.1",
+    "ng-annotate-loader": "^0.1.0",
+    "ng-annotate-webpack-plugin": "^0.1.2",
+    "webpack": "^1.13.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pactera",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "ui-router",
+    "webpack"
+  ]
+}

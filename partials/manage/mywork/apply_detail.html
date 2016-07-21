@@ -1,0 +1,44 @@
+<div class="pop_form" >
+    <h4 >
+        <span ng-if="applyStatus==0"><a ui-sref="manage.apply({applyStatus:0})" class="active">管理</a>/<a ui-sref="manage.apply({applyStatus:0})" class="active">我的申请</a>/申请详情</span>
+        <span ng-if="applyStatus==1"><a ui-sref="manage.apply({applyStatus:1})" class="active">管理</a>/<a ui-sref="manage.apply({applyStatus:1})" class="active">我的申请</a>/申请详情</span>
+    </h4>
+    <p class="daibanxiangqing_til">
+        <i class="titleBold">标题：</i><{{applyDetail.applicationDetail.motif}}>
+    </p>
+    <div class="application daibanxiangqing_app">
+        <span class="shenqingneirong titleBold">申请内容：</span><br><br>
+        <dl class="application_left">
+            <dt>
+                <img onerror="this.src='images/tupianError.jpg'" src="{{applyDetail.applicationDetail.imgURL}}"/>
+            </dt>
+            <dd>
+                <p class="appTitle">{{applyDetail.applicationDetail.appTitle}}</p>
+                <p class="p1">{{applyDetail.applicationDetail.appDetail}}</p>
+                <br>
+                <p>核心功能</p>
+                <p ng-bind-html="applyDetail.applicationDetail.functions"></p>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="application daibanxiangqing_app daibanxiangqing_appNone">
+        <span class="shenqingneirong titleBold">审批历史：</span>
+        <p class="his_dat">
+            <span>节点</span>
+            <span>操作人</span>
+            <span class="his_time">操作时间</span>
+            <span>操作状态</span>
+            <span>审批意见</span>
+        </p>
+        <p class="his_dat noback" ng-repeat="history in applyDetail.approveHistory">
+            <span>{{history.approveNode}}</span>
+            <span>{{history.approver}}</span>
+            <span class="his_time">{{history.updateTime}}</span>
+            <span>{{history.flag}}</span>
+            <span>{{history.advices}}</span>
+        </p>
+    </div>
+
+</div>
+

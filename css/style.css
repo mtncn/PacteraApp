@@ -1,0 +1,251 @@
+html, body, div, span,
+object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dd, dl, dt, li, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+q:before, q:after,
+blockquote:before, blockquote:after {
+    content: "";
+}
+
+body {
+    font-family: Helvetica, Arial, Sans-Serif;
+    min-width: 1000px;
+
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*头部部分*/
+
+#nav {
+    width: 100%;
+    height: 100px;
+    color: #004280;
+    font-size: 14px;
+    margin: 0 auto;
+}
+
+.nav_left {
+    float: left;
+}
+
+.nav_mid {
+    float: left;
+}
+
+.nav_left img {
+    width: 120px;
+    margin-top: 32px;
+    margin-left: 30px;
+    height: 35px;
+}
+
+.nav_mid p {
+    margin-top: 39px;
+    margin-left: 15px;
+    color: #000;
+    font-size: 18px;
+}
+
+.nav_right {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.nav_right ul li {
+    float: left;
+    padding: 0 25px;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.nav_right ul li a {
+    /*color: #565353;*/
+}
+
+.nav_right p {
+    line-height: 35px;
+    text-align: right;
+    font-size: 18px;
+}
+
+.nav_right p a {
+    margin-left: 5px;
+    /*color: #565353;*/
+    text-decoration: underline;
+}
+
+/*登录框部分*/
+#loginin {
+    width: 100%;
+    height: 470px;
+    overflow: hidden;
+    position: relative;
+}
+
+#loginin .bg {
+    width: 100%;
+    height: 470px;
+}
+
+#login {
+    width: 220px;
+    height: 320px;
+    position: absolute;
+    top: 60px;
+    right: 10%;
+    border: 2px solid #eeeeee;
+    background: #fff;
+    color: #979393;
+    padding: 0 30px;
+    border-radius: 3px;
+}
+
+#login h5 {
+    width: 100%;
+    height: 45px;
+    line-height: 55px;
+    margin-top: 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    font-weight: normal;
+    color: #000;
+}
+
+#login .pp01 {
+    margin-top: 40px;
+}
+
+#login p {
+    position: relative;
+    width: 100%;
+    height: 37px;
+    line-height: 32px;
+    margin-top: 32px;
+}
+
+#login p input {
+    width: 95%;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 5%;
+    border: 1px solid #ccc;
+    color: #999;
+}
+
+#login p em img {
+    width: 15px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#login p span {
+    position: absolute;
+    left: -13px;
+    top: 18px;
+    width:200px;
+
+}
+
+#loginsubmit {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 40px;
+    background: #ee333b;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    margin: 45px 0 0;
+}
+
+#login a {
+    position: absolute;
+    right: 0px;
+    color: #ee333b;
+    font-size: 12px;
+}
+
+/*脚本部分*/
+#footer {
+    width: 100%;
+    height: 50px;
+    line-height: 70px;
+    color: #4d4d4d;
+    font-size: 12px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#footer a {
+    color: #4d4d4d;
+}
+.login_err_show{
+    visibility: visible;
+    margin: 0 0 0 6%;
+}
+.login_err_hidden{
+    visibility: hidden;
+}
+
+#errormsgId{
+    margin: -50px 0 0 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

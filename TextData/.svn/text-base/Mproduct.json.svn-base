@@ -1,0 +1,14 @@
+{"total":1,
+  "pro":
+    [{"agreementType":"OAuth2.0 Server-side","appId":1,
+        "companyId":2,"flag":1,
+        "imageurl":"images/myuser/14.png","name":"应用帮助台",
+        "sortId":1,"url":"../authorize?response_type=code&client_id=969228528&redirect_uri=https://ecms.chinacloudapp.cn/otrs/index.pl&scope=read",
+        "userId":7},
+      {"agreementType":"OAuth2.0 Server-side","appId":2,
+        "companyId":2,"flag":0,
+        "imageurl":"images/myuser/14.png","name":"应用帮助台",
+        "sortId":2,"url":"../authorize?response_type=code&client_id=969228528&redirect_uri=https://ecms.chinacloudapp.cn/otrs/index.pl&scope=read",
+        "userId":7}
+     ]
+}

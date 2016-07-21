@@ -1,0 +1,8 @@
+<div class="pop_form pop_form_img" >
+    <h4>
+        <span ng-if="applyStatus==0"><a ui-sref="manage.apply({applyStatus:0})" class="active">管理</a>/<a ui-sref="manage.apply({applyStatus:0})" class="active">我的申请</a>/流程图</span>
+        <span ng-if="applyStatus==1"><a ui-sref="manage.apply({applyStatus:1})" class="active">管理</a>/<a ui-sref="manage.apply({applyStatus:1})" class="active">我的申请</a>/流程图</span>
+    </h4>
+    <div><img class="processImg" onerror="this.src='images/tupianError.jpg'" src="{{imgUrl}}"/></div>
+</div>
+

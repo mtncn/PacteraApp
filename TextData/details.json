@@ -1,0 +1,16 @@
+{
+    "pro": {
+        "appId":3,
+        "flowId":2,
+        "attention":"已订阅",
+        "name": "酷我音乐",
+        "imageurl": "images/xiangqing/1-4.png",
+        "developers": "广州酷狗科技有限公司",
+        "fatherclass":"生命之音",
+        "update":"2015年09月08日",
+        "version":"7.9.6",
+        "subscribe":"1000+",
+        "dre":"听歌、看视屏直播,K歌全能播放器",
+        "language":"汉语"
+    }
+}

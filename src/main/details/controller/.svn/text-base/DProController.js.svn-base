@@ -1,0 +1,37 @@
+/**
+ * Created by vision on 16/2/13.
+ */
+module.exports= function($scope,DProService,BProService){
+
+    $scope.pros={};
+
+    DProService.select($scope.pros,$scope.menu).then(function (data) {
+        $scope.pros = data.pro;
+
+        //console.log($scope.pros);
+        //console.log('Selectsuccess');
+    }, function () {
+        console.log('Selectfaild 产品详情');
+    });
+    $scope.dingyue = function(appId,flowId,flag){
+        //要转换的状态
+        BProService.dingyue(appId,flowId,flag).then(function (data) {
+            var dingYueStatus = data;
+            //返回值为true的时候，更新状态成功
+            if(dingYueStatus==true){
+                if(flag==1){
+                    $scope.pros['station']="订阅中";
+                }else if(flag==2){
+                    $scope.pros['station']="可订阅";
+                }else{
+                    $scope.pros['station']="可订阅";
+                }
+            }else{
+                console.log('状态更新失败！返回值='+data);
+            }
+        },function(){
+            console.log('状态更新失败！');
+        });
+    };
+};
+

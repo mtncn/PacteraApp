@@ -1,0 +1,134 @@
+/**
+ * Created by Sky on 2016/3/14.
+ */
+module.exports=function($scope,accountMgService){
+    $scope.btnPwdSet='设置';
+    $scope.btnPhoneSet='设置';
+    $scope.btnEmailSet='设置';
+    $scope.btnWarnSet='设置';
+    $scope.pwdTitleShow=true;
+    $scope.pwdContentShow=false;
+    $scope.phoneTitleShow=true;
+    $scope.phoneContentShow=false;
+    $scope.emailTitleShow=true;
+    $scope.emailContentShow=false;
+    $scope.warnTitleShow=true;
+    $scope.warnContentShow=false;
+    $scope.userPwd='';
+    $scope.userPhone='';
+    $scope.userEmail='';
+    $scope.userWarn='';
+
+    //初始化时获取用户已绑定的信息
+    accountMgService.getData().then(function(data){
+        if(data.userPwd===''||data.userPwd===null||data.userPwd===undefined)
+        {
+            $scope.userPwdIcon='fa fa-exclamation-circle warnCor';
+        }
+        else
+        {
+            $scope.userPwdIcon='fa fa-check-circle successCor';
+        }
+        if(data.phone===''||data.phone===null||data.phone===undefined)
+        {
+            $scope.userPhoneIcon='fa fa-exclamation-circle warnCor';
+            $scope.phoneTip='未绑定手机';
+        }
+        else
+        {
+            $scope.userPhoneIcon='fa fa-check-circle successCor';
+            $scope.phoneTip=data.phone;
+        }
+        if(data.email===''||data.email===null||data.email===undefined)
+        {
+            $scope.userEmailIcon='fa fa-exclamation-circle warnCor';
+            $scope.emailTip='未绑定邮箱';
+        }
+        else
+        {
+            $scope.userEmailIcon='fa fa-check-circle successCor';
+            $scope.emailTip=data.email;
+        }
+        if(data.questions===''||data.questions===null||data.questions===undefined)
+        {
+            $scope.warnTip='未设置安全提醒';
+            $scope.userWarnIcon='fa fa-exclamation-circle warnCor';
+        }
+        else
+        {
+            $scope.userWarnIcon='fa fa-check-circle successCor';
+            $scope.warnTip='已设置安全提醒';
+            $scope.warnContent=data.questions;
+        }
+        $scope.userPhone=data.phone;
+        $scope.userEmail=data.email;
+        $scope.userWarn=data.questions;
+
+    });
+    //保存Email设置
+    $scope.saveEmail=function(){
+        if($scope.email===''||$scope.email===undefined||$scope.email===null)
+        {
+            $scope.borderErrCor=true;
+            console.log($scope.borderErrCor);
+            $scope.btnDisableCor=true;
+        }
+        else
+        {
+            $scope.borderErrCor=false;
+            $scope.btnDisableCor=false;
+        }
+    }
+    //点击设置密码展开与折叠
+    $scope.setPwd=function(){
+        $scope.pwdTitleShow=!$scope.pwdTitleShow;
+        $scope.pwdContentShow=!$scope.pwdContentShow;
+        if($scope.btnPwdSet==='设置')
+        {
+            $scope.btnPwdSet='收起';
+        }
+        else
+        {
+            $scope.btnPwdSet='设置';
+        }
+    };
+    //点击设置手机展开与折叠
+    $scope.setPhone=function(){
+        $scope.phoneTitleShow=!$scope.phoneTitleShow;
+        $scope.phoneContentShow=!$scope.phoneContentShow;
+        if($scope.btnPhoneSet==='设置')
+        {
+            $scope.btnPhoneSet='收起';
+        }
+        else
+        {
+            $scope.btnPhoneSet='设置';
+        }
+    };
+    //点击设置邮箱展开与折叠
+    $scope.setEmail=function(){
+        $scope.emailTitleShow=!$scope.emailTitleShow;
+        $scope.emailContentShow=!$scope.emailContentShow;
+        if($scope.btnEmailSet==='设置')
+        {
+            $scope.btnEmailSet='收起';
+        }
+        else
+        {
+            $scope.btnEmailSet='设置';
+        }
+    };
+    //点击设置安全提醒展开与折叠
+    $scope.setWarn=function(){
+        $scope.warnTitleShow=!$scope.warnTitleShow;
+        $scope.warnContentShow=!$scope.warnContentShow;
+        if($scope.btnWarnSet==='设置')
+        {
+            $scope.btnWarnSet='收起';
+        }
+        else
+        {
+            $scope.btnWarnSet='设置';
+        }
+    };
+};

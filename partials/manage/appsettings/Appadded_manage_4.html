@@ -1,0 +1,81 @@
+<div class="conRight_main">
+    <div class="pop_form">
+        <h3 class="conRight_main_til"><a ui-sref="manage.appadded({Status:0,BiaoShi:'应用上架'})" class="active">管理</a>/应用上架</h3>
+        <div class="step_til">
+            <p class="step_til_p_4">
+                <a href="javascript:void(0)" class="jibenxinxi">基本信息</a>
+                <a href="javascript:void(0)">应用详情</a>
+                <a href="javascript:void(0)">发布应用</a>
+                <a href="javascript:void(0)">发布范围</a>
+                <a href="javascript:void(0)" class="over">发布完成</a>
+            </p>
+        </div>
+        <p class="step_fabufanwei_til">请选择该应用的发布范围</p>
+        <!--<p class="step_fabufanwei_til">订阅审批: <input ng-click="check_input()" class="step_fabufanwei_til_input" type="checkbox" checked> </p>-->
+        <div class="step_fabufanwei">
+            <div class="step_fabufanwei_left">
+
+                <div id="treeList"></div>
+
+            </div>
+
+
+            <div class="step_fabufanwei_mid">
+                <img ng-click="addUser()" src="images/2.png">
+                <img class="ngSrcjjj" ng-click="deleteUser()" src="images/1.png"><br>
+            </div>
+
+
+            <div class="step_fabufanwei_right step_fabufanwei_left step_fabufanwei_right_g" style="height: 415px;">
+                <div class="step_fabufanwei_right_title">
+                    <span class="step_fabufanwei_right_type">类别</span>
+                    <span class="step_fabufanwei_right_name">名称</span>
+                    <span class="step_fabufanwei_right_other">订阅审批</span>
+                </div>
+                <div class="step_fabufanwei_right_glist">
+                    <div class="step_fabufanwei_leftp1_ul">
+                        <div ng-repeat="us in userUp track by $index"  class="step_fabufanwei_leftp1_mouseover">
+                            <ul ng-click="deleteUserUp(us,$index)" ng-class="{'station-1':selected == $index}" class="station">
+                                <li class="step_fabufanwei_leftp1_type">
+                                    <a>{{us.type}}</a>
+                                </li>
+                                <li class="step_fabufanwei_leftp1_name">
+                                    <span class="fa fa-users usersGroup"></span>
+                                    <a>{{us.text}}</a>
+                                </li>
+                                <li class="step_fabufanwei_leftp1_other">
+                                    <input id="fb-node-{{$index}}" ng-click="changecheck(us)"  type="checkbox" checked>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--<p ng-repeat="us in userUp">-->
+                    <!--<span  ng-class=" {'step_fabufanwei_leftp1 step_fabufanwei_leftp1_mouseover':true,'station-1':us.Station_1}">-->
+
+                        <!--<span ng-click="deleteUserUp(us)" class="step_fabufanwei_leftp1_name">-->
+                            <!--<span class="fa fa-users usersGroup"></span>-->
+                            <!--<span>{{us.text}}</span>-->
+                        <!--</span>-->
+                        <!--<span ng-click="deleteUserUp(us)" class="step_fabufanwei_leftp1_type">{{us.type}}</span>-->
+                        <!--<span ng-click="deleteUserUp(us)" class="step_fabufanwei_leftp1_other">此人是个好少年啊</span>-->
+
+                    <!--</span>-->
+                    <!--</p>-->
+                </div>
+            </div>
+        </div>
+        <div id="newAppAlert"  class="newAppAlert" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu]">
+            <button type="button" class="close" ng-click="closeMsgBox_saveBu()"
+                    aria-hidden="true">
+                &times;
+            </button>
+            {{testBuResult}}
+        </div>
+        <p class="his_dat_last his_dat_last_three updatebutton4">
+            <!--<button ng-click="Save_No4()">保存</button>-->
+            <button ui-sref="manage.appadded3">上一步</button>
+            <button  ng-click="Next()" class="his_dat_last_btn">提交审核</button>
+        </p>
+    </div>
+</div>

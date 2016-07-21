@@ -1,0 +1,19 @@
+<div style="background-color: #1c661c;height: 800px;width: 800px">
+    <input type="text" ng-model="help.text"/>
+    <h1 ng-bind="help.text"></h1>
+    <button ng-click="help.btnclick()">点击我改变上述文字</button>
+    <table >
+    <tr ng-repeat="person in help.persons">
+        <td>{{person.name}}</td>
+    </tr>
+    </table>
+</div>
+
+<div style="background-color: #5e6633;height: 800px;width: 800px">
+    <div>
+        <a ui-sref="app.left">左侧区域</a>
+        <a ui-sref="app.left2">左侧区域</a>
+    </div>
+    <div ui-view></div>
+    <div ui-view="detail"></div>
+</div>

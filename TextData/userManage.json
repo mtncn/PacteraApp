@@ -1,0 +1,38 @@
+{"userList":[{
+  "userId":1,
+  "userName": "test",
+  "userPhone": "88888888",
+  "userEmail": "test@pactera.com",
+  "groupId":0,
+  "userStatus":"N"
+},
+  {
+    "userId":2,
+    "userName": "testsddddddddddddddddddddddddddddddddddddddddddd",
+    "userPhone": "",
+    "userEmail": "test@pactera.com",
+    "groupId":3,
+    "userStatus":"Y"
+  },
+  {
+    "userId":3,
+    "userName": "test",
+    "userPhone": "88888888",
+    "userEmail": "test@pactera.com",
+    "groupId":2,
+    "userStatus":"Y"
+  },
+  {
+    "userId":4,
+    "userName": "test",
+    "userPhone": "88888888",
+    "userEmail": "test@pactera.com",
+    "groupId":1,
+    "userStatus":"Y"
+  }
+],
+  "total":5,
+  "startPage":1,
+  "endPage":5,
+  "flag":true
+}

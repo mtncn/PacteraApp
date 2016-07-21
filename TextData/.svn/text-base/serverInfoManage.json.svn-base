@@ -1,0 +1,11 @@
+{
+  "serverInfo":{
+  "host": "Mengniuecc.chinacloudapp.cn",
+  "port": "389",
+  "base": "1111",
+  "auth": true,
+  "userName": "admin",
+  "userPwd": "admin"
+},
+  "flag":true
+}

@@ -1,0 +1,5 @@
+{
+  "menuList":[{"id":"001","sortId":1,"sortName":"技术支持"},
+    {"id":"002","sortId":2,"sortName":"技术支持1"},
+    {"id":"003","sortId":3,"sortName":"技术支持3"}]
+}

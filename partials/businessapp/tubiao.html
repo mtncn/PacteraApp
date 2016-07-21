@@ -1,0 +1,34 @@
+<div>
+    <div class="B_middle_span_input">
+        <input type="text" placeholder="搜索应用" id="yyNameId"/>
+        <img class="B_middle_span_img" src="images/sousuo.png" ng-click="searchImg()"/>
+    </div>
+    <div class="B_middle_main cb">
+        <div class="B_middle_main_fangkuang" ng-repeat="pro in pros">
+            <img class="B_middle_main_fangkuang_img1" onerror="this.src='images/tupianError.jpg'" ng-src="{{pro.imageurl}}" ng-click="detailsGo(id,pro.appId,pro.flowId)">
+            <div class="B_middle_main_fangkuang_right">
+                <p ng-click="detailsGo(id,pro.appId,pro.flowId,pro.sortId)">{{pro.name}}</p>
+                <span>{{pro.des}}</span>
+                <div class="B_middle_main_tutut">
+                    <span id="">{{pro.station}}</span>
+                    <img  ng-click="changeImg(pro.appId,pro.flowId,pro.isApprove,3)"
+                          ng-if="pro.station=='已订阅'" ng-src="images/ydingyue.png" id="{{pro.flowId}}-3"/>
+
+                    <img  ng-if="pro.station=='订阅中'" ng-src="images/zdingyue.png" id="{{pro.flowId}}-2"/>
+
+                    <img  ng-click="changeImg(pro.appId,pro.flowId,pro.isApprove,1)"
+                          ng-if="pro.station=='可订阅'" ng-src="images/wdingyue.png" id="{{pro.flowId}}-1"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="fenye">
+        <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+        <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+        <li><a ui-sref="businessapp.content({id:id,page:currentPage*1-1,total:totalPage})">上一页</a></li>
+        <div ng-repeat="tPage in totalPas">
+            <li><a ui-sref="businessapp.content({id:id,page:tPage,total:totalPage})" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+        </div>
+        <li><a ui-sref="businessapp.content({id:id,page:currentPage*1+1,total:totalPage})">下一页</a></li>
+    </ul>
+</div>

@@ -1,0 +1,113 @@
+
+<div id="conRight_main_2" class="conRight_main">
+    <div class="pop_form">
+        <h3 class="conRight_main_til"><a ui-sref="manage.appadded({Status:0,BiaoShi:'应用上架'})" class="active">管理</a>/应用上架</h3>
+        <div class="step_til">
+            <p class="step_til_p_2">
+                <a href="javascript:void(0)" class="jibenxinxi">基本信息</a>
+                <a href="javascript:void(0)">应用详情</a>
+                <a href="javascript:void(0)">发布应用</a>
+                <a href="javascript:void(0)">发布范围</a>
+                <a href="javascript:void(0)" class="over">发布完成</a>
+            </p>
+        </div>
+        <div class="step_til_p1">
+            <p class="step_til_p1L">
+                <span>应用图标</span><br>
+                <div class="conRight_Collection_childConL" style="margin-left:0;">
+                    <!--src="images/img/qiyefenlei-1.png"-->
+                    <img class="logoimages" onerror="this.src='images/tupianError.jpg'" ng-src="{{logoImage}}" />
+                    <p class="conRight_Collection_childConL_span01">
+                        <span>
+                            <!--<input type="file" file-model="upLogoImage"/>-->
+                            <fileModel file-model="upLogoImage()"></fileModel>
+                        </span><br/>
+                        <span class="conRight_Collection_childConL_span">尺寸80*80,不超过50K，格式png、jpg</span>
+                    </p>
+                </div>
+            </p>
+
+            <div class="step_til_p1L">
+                <span class="step_til_p1L_til">应用视频预览和屏幕快照</span>
+            </div>
+
+            <ul  id="conRight_img_bottom">
+                <img class="jjj_L_img_3" ng-click="jjj_L_img()" src="images/but_r1_c2_L.png"/>
+                <img class="jjj_R_img_3" ng-click="jjj_R_img()" src="images/but_r2_c2_R.png"/>
+                <li class="step_til_ul1 {{showupimages}}">
+                    <!--<input type="file" ng-show="false" file-model="upShowImages"/>-->
+                    <a class="upload_bk" href="javascript:;">
+                        <fileModel file-model="upShowImages()" class="hidden_upload"></fileModel>
+                        <!--<img src="images/jiahao.png" ng-click="uploadimages()">-->
+                    </a>
+                </li>
+                <div class="conRight_img_bottom_div">
+                    <li style="margin-left: 30px; position: relative;" ng-repeat="image in showImages">
+                        <img class="delectimage" id="delectimage" src="images/17.png" ng-click="delectimage($index,image)">
+                        <img class="upimages" onerror="this.src='images/tupianError.jpg'" ng-src="{{image}}">
+                    </li>
+                </div>
+
+                <!--<li><img src="images/tupian.png"></li>-->
+            </ul>
+        </div>
+        <!--<div class="appadded_div_textarea">-->
+            <!--<script type="text/plain" id="myEditor"  style="width:600px;height:100px;">-->
+
+            <!--</script>-->
+        <!--</div>-->
+        <!--<div class="appadded_div_textarea_2">-->
+            <!--<script type="text/plain" id="myEditor_2"  style="width:600px;height:100px;"></script>-->
+        <!--</div>-->
+        <div class="appadded_div_textarea">
+            <p class="appadded_div_textarea_P">核心功能</p>
+            <textarea id="appadded_div_textarea_jian" ckeditor ng-model="introduction"></textarea>
+            <p class="appadded_div_textarea_P">版本新特性</p>
+            <textarea ckeditor ng-model="newGongneng"></textarea>
+        </div>
+        <div id="his_dat_last_threes"  class="newAppAlert" ng-class="{true:'alert alert-danger alert-dismissable showMsg',false:'alert alert-danger alert-dismissable hideMsg'}[msgBoxShow_saveBu]">
+            <button type="button" class="close" ng-click="closeMsgBox_saveBu()"
+                    aria-hidden="true">
+                &times;
+            </button>
+            {{testBuResult}}
+        </div>
+        <p  class="his_dat_last his_dat_last_three">
+            <button ng-click="Save_No2()">保存</button>
+            <button ui-sref="manage.appadded">上一步</button>
+            <button  ng-click="Next()" class="his_dat_last_btn">下一步</button>
+        </p>
+    </div>
+</div>
+
+<!--<script type="text/javascript">-->
+
+    <!--var um = UM.getEditor('myEditor',{-->
+        <!--//这里可以选择自己需要的工具按钮名称,此处仅选择如下七个-->
+        <!--toolbar:['fullscreen source undo redo bold italic underline'],-->
+        <!--//focus时自动清空初始化时的内容-->
+        <!--autoClearinitialContent:true,-->
+        <!--//关闭字数统计-->
+        <!--wordCount:false,-->
+        <!--//关闭elementPath-->
+        <!--elementPathEnabled:false,-->
+        <!--//默认的编辑区域高度-->
+        <!--initialFrameHeight:150-->
+        <!--//更多其他参数，请参考umeditor.config.js中的配置项-->
+    <!--});-->
+    <!--var um = UM.getEditor('myEditor_2',{-->
+        <!--//这里可以选择自己需要的工具按钮名称,此处仅选择如下七个-->
+        <!--toolbar:['fullscreen source undo redo bold italic underline'],-->
+        <!--//focus时自动清空初始化时的内容-->
+        <!--autoClearinitialContent:true,-->
+        <!--//关闭字数统计-->
+        <!--wordCount:false,-->
+        <!--//关闭elementPath-->
+        <!--elementPathEnabled:false,-->
+        <!--//默认的编辑区域高度-->
+        <!--initialFrameHeight:150-->
+        <!--//更多其他参数，请参考umeditor.config.js中的配置项-->
+    <!--});-->
+<!--</script>-->
+
+

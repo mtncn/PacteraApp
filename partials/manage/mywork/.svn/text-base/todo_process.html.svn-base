@@ -1,0 +1,8 @@
+<div class="pop_form pop_form_img" >
+    <h4 >
+        <span ng-if="todoStatus==0"><a ui-sref="manage.todo({todoStatus:0})" class="active">我的任务</a>/<a ui-sref="manage.todo({todoStatus:0})" class="active">我的待办</a>/流程图</span>
+        <span ng-if="todoStatus==1"><a ui-sref="manage.todo({todoStatus:1})" class="active">我的任务</a>/<a ui-sref="manage.todo({todoStatus:1})" class="active">我的已办</a>/流程图</span>
+    </h4>
+    <div><img class="processImg"  src="{{imgUrl}}"/></div>
+</div>
+

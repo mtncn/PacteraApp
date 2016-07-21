@@ -1,0 +1,94 @@
+<div class="conRight_main">
+    <h3 class="conRight_main_til"><a  ui-sref="manage.myclass" class="active">管理</a>/我的分类</h3>
+    <div class="conRight_Collection_block_til cb">
+        <span ng-click="tabChange(0)" class="{{tabCor0}}">我的分类</span><span  ng-click="tabChange(1)" class="{{tabCor1}}">分类维护</span>
+    </div>
+    <a class="oprBtn" ng-show="addShow" ng-click="addMenu()"><img src="images/add.png"/>新建</a> <a class="oprBtn"ng-show="saveShow" ng-click="saveMenu()"><img src="images/save.png"/>保存</a>
+    <div class="mY_kind cb">
+        <ul class="mY_kind_ulTil " id="menuUl" ng-class="{true:'classList',false:'classMaintain'}[!maintainAShow]">
+            <li ng-click="classMenuChange(0,'全部')" class="{{menuClassSelected}}">
+                <a >全部</a>
+            </li>
+            <div ng-repeat="classMenu in classMenuList">
+               <!-- 针对分类维护-分类菜单列表显示-->
+                <li  ng-show="maintainAShow" class="menuClassLi" ng-class="{selectBackCor_menu: currentId == classMenu.sortId,selectBackCor_menu1: currentId == classMenu.sortId&&tabStatus===1}">
+                    <input  ng-click="classMenuChange(classMenu.sortId,classMenu.sortName)" ng-if="currentId1 == classMenu.sortId"  ng-readonly="readonly" ng-class="{false:'editInput',true:'readInput'}[readonly]" ng-model="classMenu.sortName" />
+                    <input  ng-click="classMenuChange(classMenu.sortId,classMenu.sortName)" ng-if="currentId1 != classMenu.sortId" ng-readonly="true" class="readInput" ng-model="classMenu.sortName" />
+                  <span ng-show="currentId == classMenu.sortId" style="display: inline-block">
+                      <img ng-show="!readonly" src="images/update.png"  ng-click="updateMenu(classMenu.sortId)" />
+                      <img ng-click="cancelMenu(classMenu.sortId)" ng-show="!readonly" src="images/cancel.png"/>
+                      <img   ng-click="delMenu(classMenu.sortId)"  ng-show="readonly" src="images/delete.png"/>
+                      <img  ng-show="readonly&&$index!=classMenuList.length-1"  ng-click="downMenu(classMenu.sortId,classMenu.orderId)"  src="images/1.3.png"/>
+                      <img  ng-click="upMenu(classMenu.sortId,classMenu.orderId)" ng-show="readonly&&$index!=0" src="images/1.2.png"/>
+                      <img ng-show="readonly"src="images/1.1.png" ng-click="editMenu(classMenu.sortId,classMenu.sortName)"/>
+                  </span>
+                </li>
+               <!--针对我的分类-分类菜单列表显示-->
+                <li ng-show="!maintainAShow" style="cursor: pointer" ng-click="classMenuChange(classMenu.sortId,classMenu.sortName)"  class="menuClassLi" ng-class="{selectBackCor_menu: currentId == classMenu.sortId&&tabStatus===0,selectBackCor_menu1: currentId == classMenu.sortId&&tabStatus===1}">
+                    <a   >{{classMenu.sortName}}</a>
+                </li>
+            </div>
+        </ul>
+      <img class="mY_kind_ImgSanJiao" src="images/img/guanli-wodefenlei_r2_c2.png"/>
+       <!--我的分类和分类维护-应用列表-->
+        <div class="mY_kind_divTil" ng-class="{true:'classList',false:'classMaintainDv'}[!maintainAShow]">
+            <div style="display:block" class="mY_kind_divTil_Child">
+                <p class="{{listTitleClass}}">{{listTitle}}</p>
+                <div class="conRight_Collection_content_kind" ng-repeat="class in classList">
+                    <div class="conRight_Collection_childConL classListMargin">
+                        <img onerror="this.src='images/tupianError.jpg'" ng-src="{{class.imgUrl}}"/>
+                        <p>
+                            <span>{{class.classTitle}}</span><br/>
+                            <span class="conRight_Collection_childConL_span">{{class.classContent}}</span>
+                        </p>
+                    </div>
+                    <div class="conRight_Collection_childConR">
+                        <img ng-show="maintainAShow&&$index!=0" ng-click="ChangeOperation(class.appId,class.orderId,class.sortId,'up')" src="images/2.1.png"/>
+                        <img ng-show="maintainAShow&&$index!=classList.length-1" ng-click="ChangeOperation(class.appId,class.orderId,class.sortId,'down')" src="images/2.2.png"/>
+                        <img ng-show="maintainAShow" ng-click="ChangeOperation(class.appId,class.orderId,class.sortId,'delete')" src="images/2.3.png"/>
+                    </div>
+                </div>
+               <!-- 分类维护添加按钮-->
+                <img  ng-show="addAppBtnShow" ng-click="addApp(addSortId)" class="mY_kind_divTil_Child_imgAdd" src="images/img/qiyefenlei-4.png"/>
+                <ul class="fenye">
+                    <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPage}}</font>&nbsp;&nbsp;页</li>
+                    <li>当前页&nbsp;{{nowPage}}&nbsp;</li>
+                    <li><a ng-click="changePage(currentPage*1-1)">上一页</a></li>
+                    <div ng-repeat="tPage in totalPas">
+                        <li><a ng-click="changePage(tPage)" ng-class="{selected:tPage==currentPage}">{{tPage}}</a></li>
+                    </div>
+                    <li><a ng-click="changePage(currentPage*1+1)">下一页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--分类维护-添加应用-->
+<div class="mY_kind_divTil addAppWindow ng-hide"  ng-show="addAppShow">
+    <div  class="mY_kind_divTil_Child" style="display: block">
+        <p class="mY_kind_divTil_Child_tilte addAppDv">添加应用 <input ng-model="searchTitle" class="iptSearch" placeholder="搜索应用"/><img ng-click="searchAddApp()" src="images/sousuo.png"/></p>
+        <div class="conRight_Collection_content_kind" ng-repeat="app in appList" >
+
+           <div class="conRight_Collection_childConL marginLeft0">
+                <img onerror="this.src='images/tupianError.jpg'" ng-src="{{app.imgUrl}}"/>
+                <p>
+                    <span>{{app.appTitle}}</span><br/>
+                    <span class="conRight_Collection_childConL_span">{{app.appContent}}</span>
+                </p>
+            </div>
+            <div class="conRight_Collection_childConR">
+                <input ng-class="{true:'chkAppList',false:'chkAppList1',undefined:'chkAppList1'}[chk]" type="checkbox" ng-model="chk" ng-click="checkApp(chk,app.appId)"/>
+            </div>
+        </div>
+        <ul class="fenye">
+            <li>共&nbsp;&nbsp;<font style="color: red;">{{totalPageAdd}}</font>&nbsp;&nbsp;页</li>
+            <li>当前页&nbsp;{{nowPageAdd}}&nbsp;</li>
+            <li><a ng-click="changePageAdd(currentPageAdd*1-1)">上一页</a></li>
+            <div ng-repeat="tPageAdd in totalPasAdd">
+                <li><a ng-click="changePageAdd(tPageAdd)" ng-class="{selected:tPageAdd==currentPageAdd}">{{tPageAdd}}</a></li>
+            </div>
+            <li><a ng-click="changePageAdd(currentPageAdd*1+1)">下一页</a></li>
+        </ul>
+        <div class="btnGroup"><a class="saveBtn" ng-click="addAppSave()">确认</a><a class="closeBtn" ng-click="closeAddAppWindow()">关闭</a></div>
+    </div>
+</div>

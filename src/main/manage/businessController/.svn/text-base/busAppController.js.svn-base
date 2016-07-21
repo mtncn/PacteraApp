@@ -1,0 +1,104 @@
+/**
+ * Created by vision on 16/3/23.
+ */
+module.exports=function($scope,$state,busAppService){
+    //默认构建新应用弹出框为隐藏 ng-show=false
+    $scope.showcreat = false;
+    //企业应用
+    $scope.buss={};
+    //企业应用新版本信息展示
+    $scope.appnewinfo={};
+
+    //关闭构建新应用弹出页
+    $scope.closeCreate = function(){
+        $scope.showcreat = false;
+    };
+
+    //从服务器获取到的Tree列表数据
+    $scope.userGroupList = {};
+    //右侧需要发送到服务器的数据
+    $scope.userUp = [];
+    //左侧当前选中数据
+    $scope.userdata = {};
+    //右侧需要删除数据列表位置
+    $scope.toDeleteUser = {};
+
+    //添加数组中数据
+    $scope.addUser = function(){
+        $scope.userUp.push($scope.userdata);
+    };
+    //确认右侧需要删除数据所在列表位置
+    $scope.deleteUserUp = function(us){
+        $scope.toDeleteUser = $scope.userUp.indexOf(us);
+    };
+    //删除右侧数组中数据
+    $scope.deleteUser = function(){
+        $scope.userUp.splice($scope.toDeleteUser,1);
+    };
+
+    //创建新应用
+    $scope.createNew = function(appId,todo){
+        if(todo == "构建新版本"){
+            busAppService.selectinfo($scope.appnewinfo,appId).then(function(data){
+                $scope.appnewinfo=data.info;
+
+                //console.log("查询成功");
+            },function(){
+                console.log("busAppController   管理_企业应用_企业应用:构建新应用查询失败");
+            });
+            //构建新应用弹出框为显示 ng-show=true
+            $scope.showcreat = true;
+        }else if(todo == "继续编辑"){
+            $state.go('manage.appadded',{appId:appId});
+        }
+    };
+
+    //选择发布范围
+    $scope.createConfines = function(appId){
+        busAppService.getConfines(appId).then(function(data){
+            $scope.userGroupList=data.userGroupList;
+            //绑定tree数据
+            $scope.treeBind();
+        },function(){
+            console.log("busAppController  管理_企业应用_企业应用: 发布范围");
+        });
+        $scope.showconfines = true;
+    };
+
+    //tree列表绑定数据
+    $scope.treeBind=function() {
+        $('#treeList').treeview({
+            expandIcon: 'fa fa-plus-square',//折叠加号图标
+            collapseIcon: 'fa fa-minus-square',//展开减号图标
+            nodeIcon: "fa fa-users usersGroup",//节点图标
+            data: $scope.userGroupList,
+            onNodeSelected: function (event, data) {
+                //$('#treeService').treeview('unselectNode', [data.nodeId, {silent: true}]);
+                //$scope.getUsers(data.href);
+                //$scope.userUp=data.href;
+                $scope.userdata = data;
+            }
+        });
+    };
+
+    //关闭发布范围弹出框
+    $scope.closeConfines = function(){
+        $scope.showconfines = false;
+    };
+
+    $scope.saveNew = function(appnewinfo){
+        busAppService.save(appnewinfo).then(function () {
+            $scope.closeCreate();
+        },function(){
+            console.log("busAppController   管理_企业应用_企业应用:构建新应用失败");
+        })
+    };
+
+    //查询企业应用内容
+    busAppService.select($scope.buss).then(function(data){
+        $scope.buss = data.bus;
+    },function(){
+        console.log("busAppController   管理_企业应用_企业应用:查询企业应用失败");
+    });
+
+};
